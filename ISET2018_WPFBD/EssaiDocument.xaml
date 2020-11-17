@@ -1,0 +1,14 @@
+﻿<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:local="clr-namespace:ISET2017_WPFBD"
+              ColumnWidth="400" FontSize="11" FontFamily="Calibri">
+ <Paragraph FontSize="14">
+  Pourquoi pas un titre ?
+ </Paragraph>
+ <Paragraph>
+  Bonjour à tous, mes petits
+  <Bold>loups</Bold> adorés.
+ </Paragraph>
+ <Paragraph TextAlignment="Right">
+  Au revoir.
+ </Paragraph>
+</FlowDocument>
