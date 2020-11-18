@@ -55,9 +55,6 @@ namespace ISET2018_WPFBD
             f.ShowDialog();
         }
 
-
-
-
         private void btnStock_Click(object sender, RoutedEventArgs e)
         {
             View.Stock f = new View.Stock();
@@ -70,6 +67,7 @@ namespace ISET2018_WPFBD
             if (dgClientsTabBord.SelectedIndex >= 0)
             {
                 LocalPersonne.PersonneSelectionnee2UnePersonne();
+                tbIDClientConf.Text =  tbID.Text;
             }
         }
 
@@ -78,6 +76,7 @@ namespace ISET2018_WPFBD
             if (dgStockTabBord.SelectedIndex >= 0)
             {
                 LocalStock.StockSelectionnee2UnStock();
+                tbIDVoitureConf.Text = tbIDVoiture.Text;
             }
         }
     }

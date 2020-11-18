@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ISET2018_WPFBD"
         xmlns:ViewModel="clr-namespace:ISET2018_WPFBD.ViewModel" x:Class="ISET2018_WPFBD.MainWindow"
         mc:Ignorable="d"
-        Title="Navigation"  WindowState="Maximized" d:DesignHeight="931" d:DesignWidth="913">
+        Title="Navigation"  WindowState="Maximized" Height="1080" Width="1920" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="{x:Type Calendar}"
            x:Key="DateTimeCalendar">
@@ -70,7 +70,8 @@
                         <RowDefinition Height="200px"/>
                         <RowDefinition Height="200px"/>
                     </Grid.RowDefinitions>
-                    <Label Content="CLIENTS" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label Background="gray"></Label>
+                    <Label Content="CLIENTS" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
                     <DataGrid x:Name="dgClientsTabBord" ItemsSource="{Binding BcpPersonnes}"  Grid.Column="0" VerticalScrollBarVisibility="Visible"
                         IsReadOnly="True" AutoGenerateColumns="False" IsEnabled="{Binding ActiverBcpFiche, Mode=OneWay}"
                         SelectedItem="{Binding PersonneSelectionnee, Mode=TwoWay}" SelectionChanged="dgClientsTabBord_SelectionChanged" Grid.Row="1">
@@ -147,7 +148,8 @@
                         <RowDefinition Height="200px"/>
                         <RowDefinition Height="200px"/>
                     </Grid.RowDefinitions>
-                    <Label Content="STOCK" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25"/>
+                    <Label Background="gray"></Label>
+                    <Label Content="STOCK" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"  Height="25"/>
                     <DataGrid x:Name="dgStockTabBord" ItemsSource="{Binding BcpStock}" VerticalScrollBarVisibility="Visible"
                         IsReadOnly="True" AutoGenerateColumns="False" IsEnabled="{Binding ActiverBcpFiche, Mode=OneWay}"
                         SelectedItem="{Binding StockSelectionnee, Mode=TwoWay}" SelectionChanged="dgStockTabBord_SelectionChanged" Grid.Row="1">
@@ -219,15 +221,18 @@
 
                     </Grid>
                 </Grid>
+
                 <!--BAS GAUCHE-->
                 <Grid Grid.Row="1" Grid.Column="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30px"/>
+                        <RowDefinition Height="40px"/>
                         <RowDefinition Height="80px"/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="100px"/>
+                        <RowDefinition Height="100px"/>
+                        <RowDefinition Height="80px"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">Confirmer la vente</Label>
+                    <Label  Background="Gray"></Label>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">Confirmer la vente</Label>
                     <!--LIGNE 1 INFO-->
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
@@ -241,17 +246,17 @@
                         </Grid.ColumnDefinitions>
                         <!--ID CLIENT-->
                         <Label Grid.Row="0" Grid.Column="0">ID Client</Label>
-                        <TextBox Grid.Row="1" Height="20px" Margin="10"></TextBox>
+                        <TextBox Name="tbIDClientConf" Grid.Row="1" Height="20px" Margin="5"></TextBox>
                         <!--ID VOITURE-->
                         <Label Grid.Row="0" Grid.Column="1">ID Voiture</Label>
-                        <TextBox Grid.Row="1" Grid.Column="1"  Height="20px" Margin="10"></TextBox>
+                        <TextBox Name="tbIDVoitureConf" Grid.Row="1" Grid.Column="1"  Height="20px" Margin="5"></TextBox>
                         <!--Prix-->
                         <Label Grid.Row="0" Grid.Column="2">PRIX (€)</Label>
-                        <TextBox Grid.Row="1" Grid.Column="2" Height="20px" Margin="10"></TextBox>
+                        <TextBox Grid.Row="1" Grid.Column="2" Height="20px" Margin="5"></TextBox>
                     </Grid>
                     <Grid Grid.Row="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40px"/>
+                            <RowDefinition Height="25px"/>
                             <RowDefinition Height="50px"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -259,30 +264,45 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <!-- Date de la vente-->
-                        <Label Grid.Row="0">Date de la vente : </Label>
-                        <DatePicker Grid.Row="1"></DatePicker>
+                        <Label Grid.Row="0">Date de la vente :</Label>
+                        <DatePicker Grid.Row="1" Width="300px" HorizontalAlignment="Left" Height="30px" Margin="5px"></DatePicker>
                         <!-- Date de la vente-->
                         <Label Grid.Row="0" Grid.Column="1">Prix (€) :</Label>
-                        <TextBox Grid.Row="1" Grid.Column="1"></TextBox>
+                        <TextBox Grid.Row="1" Grid.Column="1" Width="330px" HorizontalAlignment="Left" Height="20px"></TextBox>
                     </Grid>
-                    <!--PARTIE GRID 3 BOUTONS-->
+                    <!--PARTIE PAIEMENT-->
                     <Grid Grid.Row="3">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40px"/>
+                            <RowDefinition Height="30px"/>
+                            <RowDefinition  Height="40px"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0">Moyen de paiement :</Label>
+                        <ComboBox Grid.Row="1" Grid.Column="1" Width="500px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
+                    </Grid>
+                    <!--PARTIE GRID 3 BOUTONS-->
+                    <Grid Grid.Row="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60px"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <!--Bouton confirmer-->
-                        <Button Grid.Column="0">Confirmer</Button>
+                        <Button Grid.Column="0" Height="30px" Width="300px" HorizontalAlignment="Center" VerticalAlignment="Center">Confirmer</Button>
                         <!--Bouton annuler-->
-                        <Button Grid.Column="1">Annuler</Button>
+                        <Button Grid.Column="1" Height="30px" Width="300px" HorizontalAlignment="Center" VerticalAlignment="Center">Annuler</Button>
                     </Grid>
                 </Grid>
                 <!--BAS DROITE-->
                 <Grid Grid.Row="1" Grid.Column="1">
-
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40px"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Background="Gray"></Label>
+                    <Label Content="TABLEAU DES VENTES" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                    
                 </Grid>
             </Grid>
         </Grid>
