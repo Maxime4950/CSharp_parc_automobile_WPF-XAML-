@@ -23,7 +23,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!--Mennu gauche-->
+        <!--Menu gauche-->
         <Grid Background="#FF3D4ED3" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -45,197 +45,246 @@
             <Button Grid.Row="7" Background="#FF3D4ED3" Foreground="White" Content="Desideratas"/>
             <Button Grid.Row="8" Background="#FF3D4ED3" Foreground="White" Content="Finances"/>
         </Grid>
-
-        <!--Partie droite tableau de bord-->
-        <Grid Background="White" Grid.Column="1">
+        <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="15*"/>
+                <RowDefinition Height="40px"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <DockPanel Grid.Row="0" Background="#FF2C2C2C">
                 <TextBlock HorizontalAlignment="center" VerticalAlignment="center" FontSize="16" Foreground="White"><Run Text="Tableau de bord"/></TextBlock>
             </DockPanel>
-
-            <DockPanel x:Name="panelPrincipal" Grid.Row="1" Background="White">
-                <!--Grid droite divisée en 4 partie-->
-                <Grid>
+            <!--GRID MILIEU-->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <!--HAUT GAUCHE-->
+                <Grid Name="ficheInfoClient" Grid.Row="0" Grid.Column="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="400px"/>
+                        <RowDefinition Height="30px"/>
+                        <RowDefinition Height="200px"/>
+                        <RowDefinition Height="200px"/>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="10px"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="1">
-                        <Rectangle
-                            Width="5"
-                            Height="auto"
-                            Fill="#FF2C2C2C"
-                            Canvas.Left="10"
-                            Canvas.Top="25" 
-                        />
-                    </Grid>
-                    <!--Partie DATAGRID Clients GAUCHE-->
-                    <Grid Name="ficheInfoClient" Grid.Row="0" Grid.Column="0" Margin="0,0,0,121.8" >
+                    <Label Content="CLIENTS" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <DataGrid x:Name="dgClientsTabBord" ItemsSource="{Binding BcpPersonnes}"  Grid.Column="0" VerticalScrollBarVisibility="Visible"
+                        IsReadOnly="True" AutoGenerateColumns="False" IsEnabled="{Binding ActiverBcpFiche, Mode=OneWay}"
+                        SelectedItem="{Binding PersonneSelectionnee, Mode=TwoWay}" SelectionChanged="dgClientsTabBord_SelectionChanged" Grid.Row="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding idClient}" Width="*" />
+                            <DataGridTextColumn Header="Nom" Binding="{Binding nomClient}" Width="*" />
+                            <DataGridTextColumn Header="Prenom" Binding="{Binding prenomClient}" Width="*" />
+                            <DataGridTextColumn Header="Rue" Binding="{Binding rueClient}" Width="*" />
+                            <DataGridTextColumn Header="Numéro" Binding="{Binding numeroClient}" Width="*" />
+                            <DataGridTextColumn Header="Boite" Binding="{Binding boiteClient}" Width="*" />
+                            <DataGridTextColumn Header="Code Postal" Binding="{Binding codePoClient}" Width="*" />
+                            <DataGridTextColumn Header="Localité" Binding="{Binding localiteClient}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Grid.Row="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="180"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
-                        <Label Content="CLIENTS" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <DataGrid x:Name="dgClientsTabBord" ItemsSource="{Binding BcpPersonnes}" Grid.Row="1"  Grid.Column="0" VerticalScrollBarVisibility="Visible"
-                        IsReadOnly="True" AutoGenerateColumns="False" IsEnabled="{Binding ActiverBcpFiche, Mode=OneWay}"
-                        SelectedItem="{Binding PersonneSelectionnee, Mode=TwoWay}" SelectionChanged="dgClientsTabBord_SelectionChanged" >
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Binding="{Binding idClient}" Width="*" />
-                                <DataGridTextColumn Header="Nom" Binding="{Binding nomClient}" Width="*" />
-                                <DataGridTextColumn Header="Prenom" Binding="{Binding prenomClient}" Width="*" />
-                                <DataGridTextColumn Header="Rue" Binding="{Binding rueClient}" Width="*" />
-                                <DataGridTextColumn Header="Numéro" Binding="{Binding numeroClient}" Width="*" />
-                                <DataGridTextColumn Header="Boite" Binding="{Binding boiteClient}" Width="*" />
-                                <DataGridTextColumn Header="Code Postal" Binding="{Binding codePoClient}" Width="*" />
-                                <DataGridTextColumn Header="Localité" Binding="{Binding localiteClient}" Width="*" />
-                            </DataGrid.Columns>
-                        </DataGrid>
-                        <Grid  Grid.Row="2" Margin="0,0,0,38.8">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="40"/>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="40"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <!--Label premiere row-->
-                            <Label Content="ID Client" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Label Content="Nom" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Label Content="Prénom" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Label Content="Rue" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <!--Label premiere row-->
+                        <Label Content="ID Client" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label Content="Nom" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label Content="Prénom" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label Content="Rue" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                            <!--Label deuxième row-->
-                            <!--IDENTIFIANT-->
-                            <TextBox x:Name="tbID" Grid.Row="1" Grid.Column="0" Margin="10" IsReadOnly="True"
+                        <!--Label deuxième row-->
+                        <!--IDENTIFIANT-->
+                        <TextBox x:Name="tbID" Grid.Row="1" Grid.Column="0" Margin="10" IsReadOnly="True"
                             Text="{Binding UnePersonne.ID, Mode=TwoWay}" />
-                            <!--PRENOM-->
-                            <TextBox x:Name="tbPre" Grid.Row="1" Grid.Column="1" Margin="10" IsReadOnly="True"
+                        <!--PRENOM-->
+                        <TextBox x:Name="tbPre" Grid.Row="1" Grid.Column="1" Margin="10" IsReadOnly="True"
                             Text="{Binding UnePersonne.Pre, Mode=TwoWay}" />
-                            <!--NOM-->
-                            <TextBox x:Name="tbNom" Grid.Row="1" Grid.Column="2" Margin="10" IsReadOnly="True"
+                        <!--NOM-->
+                        <TextBox x:Name="tbNom" Grid.Row="1" Grid.Column="2" Margin="10" IsReadOnly="True"
                             Text="{Binding UnePersonne.Nom, Mode=TwoWay}" />
 
-                            <!--RUE-->
-                            <TextBox x:Name="tbRue" Grid.Row="1" Grid.Column="3" Margin="10" IsReadOnly="True"
+                        <!--RUE-->
+                        <TextBox x:Name="tbRue" Grid.Row="1" Grid.Column="3" Margin="10" IsReadOnly="True"
                             Text="{Binding UnePersonne.Rue, Mode=TwoWay}" />
 
-                            <!--Label troisieme row-->
-                            <Label Content="N°" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Label Content="Boîte(*)" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Label Content="Code Postal" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Label Content="Localité" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <!--Label troisieme row-->
+                        <Label Content="N°" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label Content="Boîte(*)" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label Content="Code Postal" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label Content="Localité" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                            <!--Label quatrième row-->
-                            <!--NUMERO-->
-                            <TextBox x:Name="tbNumero" Grid.Row="3" Grid.Column="0" Margin="10" IsReadOnly="True"
+                        <!--Label quatrième row-->
+                        <!--NUMERO-->
+                        <TextBox x:Name="tbNumero" Grid.Row="3" Grid.Column="0" Margin="10" IsReadOnly="True"
                             Text="{Binding UnePersonne.Numero, Mode=TwoWay}" />
-                            <!--BOITE-->
-                            <TextBox x:Name="tbBoite" Grid.Row="3" Grid.Column="1" Margin="10" IsReadOnly="True"
+                        <!--BOITE-->
+                        <TextBox x:Name="tbBoite" Grid.Row="3" Grid.Column="1" Margin="10" IsReadOnly="True"
                             Text="{Binding UnePersonne.Boite, Mode=TwoWay}" />
-                            <!--CODE PO-->
-                            <TextBox x:Name="tbCodePo" Grid.Row="3" Grid.Column="2" Margin="10" IsReadOnly="True"
+                        <!--CODE PO-->
+                        <TextBox x:Name="tbCodePo" Grid.Row="3" Grid.Column="2" Margin="10" IsReadOnly="True"
                             Text="{Binding UnePersonne.CodePo, Mode=TwoWay}" />
-                            <!--LOCALITE-->
-                            <TextBox x:Name="tbLocalite" Grid.Row="3" Grid.Column="3" Margin="10" IsReadOnly="True"
+                        <!--LOCALITE-->
+                        <TextBox x:Name="tbLocalite" Grid.Row="3" Grid.Column="3" Margin="10" IsReadOnly="True"
                             Text="{Binding UnePersonne.Localite, Mode=TwoWay}" />
-
-                        </Grid>
                     </Grid>
-                    <Grid Name="ficheInfoStock" Grid.Row="0" Grid.Column="2">
+                </Grid>
+                <!--HAUT DROITE-->
+                <Grid Name="ficheInfoStock" Grid.Row="0" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30px"/>
+                        <RowDefinition Height="200px"/>
+                        <RowDefinition Height="200px"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="STOCK" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25"/>
+                    <DataGrid x:Name="dgStockTabBord" ItemsSource="{Binding BcpStock}" VerticalScrollBarVisibility="Visible"
+                        IsReadOnly="True" AutoGenerateColumns="False" IsEnabled="{Binding ActiverBcpFiche, Mode=OneWay}"
+                        SelectedItem="{Binding StockSelectionnee, Mode=TwoWay}" SelectionChanged="dgStockTabBord_SelectionChanged" Grid.Row="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID Voiture" Binding="{Binding idVoiture}" Width="*" />
+                            <DataGridTextColumn Header="ID Marque" Binding="{Binding idMarque}" Width="*" />
+                            <DataGridTextColumn Header="ID Modèle" Binding="{Binding idModele}" Width="*" />
+                            <DataGridTextColumn Header="ID Catégorie" Binding="{Binding idCategorie}" Width="*" />
+                            <DataGridTextColumn Header="Année de fabrication" Binding="{Binding anneeFabrication}" Width="*" />
+                            <DataGridTextColumn Header="ID Carburant" Binding="{Binding idCarburant}" Width="*" />
+                            <DataGridTextColumn Header="ID Couleur" Binding="{Binding idCouleur}" Width="*" />
+                            <DataGridTextColumn Header="Kilométrage" Binding="{Binding kilometrage}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <!--Informations du véhicule-->
+                    <Grid Grid.Row="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="180"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
-                        <Label Content="STOCK" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <DataGrid x:Name="dgStockTabBord" ItemsSource="{Binding BcpStock}" Grid.Row="1" VerticalScrollBarVisibility="Visible"
-                        IsReadOnly="True" AutoGenerateColumns="False" IsEnabled="{Binding ActiverBcpFiche, Mode=OneWay}"
-                        SelectedItem="{Binding StockSelectionnee, Mode=TwoWay}" SelectionChanged="dgStockTabBord_SelectionChanged">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID Voiture" Binding="{Binding idVoiture}" Width="*" />
-                                <DataGridTextColumn Header="ID Marque" Binding="{Binding idMarque}" Width="*" />
-                                <DataGridTextColumn Header="ID Modèle" Binding="{Binding idModele}" Width="*" />
-                                <DataGridTextColumn Header="ID Catégorie" Binding="{Binding idCategorie}" Width="*" />
-                                <DataGridTextColumn Header="Année de fabrication" Binding="{Binding anneeFabrication}" Width="*" />
-                                <DataGridTextColumn Header="ID Carburant" Binding="{Binding idCarburant}" Width="*" />
-                                <DataGridTextColumn Header="ID Couleur" Binding="{Binding idCouleur}" Width="*" />
-                                <DataGridTextColumn Header="Kilométrage" Binding="{Binding kilometrage}" Width="*" />
-                            </DataGrid.Columns>
-                        </DataGrid>
-                        <!--Informations du véhicule-->
-                        <Grid Grid.Row="2" Margin="0,0,0,-24" Grid.RowSpan="2">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="40"/>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="40"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <!--Label premiere row-->
-                            <Label Content="ID Voiture" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Label Content="ID Marque" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Label Content="ID Modèle" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Label Content="ID Catégorie" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <!--Label premiere row-->
+                        <Label Content="ID Voiture" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="13,4,13,2.4" Height="24" Width="62"/>
+                        <Label Content="ID Marque" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="12,4,12.8,2.4" Height="24" Width="64"/>
+                        <Label Content="ID Modèle" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="11.2,4,11.6,2.4" Height="24" Width="66"/>
+                        <Label Content="ID Catégorie" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5.4,4,5.6,2.4" Height="24" Width="77"/>
 
-                            <!--Label deuxième row-->
-                            <!--IDENTIFIANT-->
-                            <TextBox x:Name="tbIDVoiture" Grid.Row="1" Grid.Column="0" Margin="10" IsReadOnly="True"
+                        <!--Label deuxième row-->
+                        <!--IDENTIFIANT-->
+                        <TextBox x:Name="tbIDVoiture" Grid.Row="1" Grid.Column="0" Margin="10,10.6,10,8.4" IsReadOnly="True"
                             Text="{Binding UnStock.IdVoiture, Mode=TwoWay}" />
-                            <!--PRENOM-->
-                            <TextBox x:Name="tbIDMarque" Grid.Row="1" Grid.Column="1" Margin="10" IsReadOnly="True"
+                        <!--PRENOM-->
+                        <TextBox x:Name="tbIDMarque" Grid.Row="1" Grid.Column="1" Margin="10,10.6,9.8,8.4" IsReadOnly="True"
                             Text="{Binding UnStock.IdMarque, Mode=TwoWay}" />
-                            <!--NOM-->
-                            <TextBox x:Name="tbIDNom" Grid.Row="1" Grid.Column="2" Margin="10" IsReadOnly="True"
+                        <!--NOM-->
+                        <TextBox x:Name="tbIDNom" Grid.Row="1" Grid.Column="2" Margin="10.2,10.6,9.6,8.4" IsReadOnly="True"
                             Text="{Binding UnStock.IdModele, Mode=TwoWay}" />
 
-                            <!--RUE-->
-                            <TextBox x:Name="tbIDCategorie" Grid.Row="1" Grid.Column="3" Margin="10" IsReadOnly="True"
+                        <!--RUE-->
+                        <TextBox x:Name="tbIDCategorie" Grid.Row="1" Grid.Column="3" Margin="10.4,10.6,9.6,8.4" IsReadOnly="True"
                             Text="{Binding UnStock.IdCategorie, Mode=TwoWay}" />
 
-                            <!--Label troisieme row-->
-                            <Label Content="Annéee de fabrication" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Label Content="ID Carburant" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Label Content="ID Couleur" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Label Content="Kilométrage" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <!--Label troisieme row-->
+                        <Label Content="Annéee de fabrication" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,4.6,0,0.8" Height="25" Width="88"/>
+                        <Label Content="ID Carburant" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,4.6,5.8,0.8" Height="25" Width="77"/>
+                        <Label Content="ID Couleur" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="11.2,4.6,11.6,0.8" Height="25" Width="66"/>
+                        <Label Content="Kilométrage" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="7.4,4.6,7.6,0.8" Height="25" Width="73"/>
 
-                            <!--Label quatrième row-->
-                            <!--NUMERO-->
-                            <TextBox x:Name="tbAnneeFabr" Grid.Row="3" Grid.Column="0" Margin="10" IsReadOnly="True"
+                        <!--Label quatrième row-->
+                        <!--NUMERO-->
+                        <TextBox x:Name="tbAnneeFabr" Grid.Row="3" Grid.Column="0" Margin="10,12.2,10,6.8" IsReadOnly="True"
                             Text="{Binding UnStock.AnneeFabr, Mode=TwoWay}" />
-                            <!--BOITE-->
-                            <TextBox x:Name="tbIDCarburant" Grid.Row="3" Grid.Column="1" Margin="10" IsReadOnly="True"
+                        <!--BOITE-->
+                        <TextBox x:Name="tbIDCarburant" Grid.Row="3" Grid.Column="1" Margin="10,12.2,9.8,6.8" IsReadOnly="True"
                             Text="{Binding UnStock.IdCarburant, Mode=TwoWay}" />
-                            <!--CODE PO-->
-                            <TextBox x:Name="tbIDCouleur" Grid.Row="3" Grid.Column="2" Margin="10" IsReadOnly="True"
+                        <!--CODE PO-->
+                        <TextBox x:Name="tbIDCouleur" Grid.Row="3" Grid.Column="2" Margin="10.2,12.2,9.6,6.8" IsReadOnly="True"
                             Text="{Binding UnStock.IdCouleur, Mode=TwoWay}" />
-                            <!--LOCALITE-->
-                            <TextBox x:Name="tbKilometrage" Grid.Row="3" Grid.Column="3" Margin="10" IsReadOnly="True"
+                        <!--LOCALITE-->
+                        <TextBox x:Name="tbKilometrage" Grid.Row="3" Grid.Column="3" Margin="10.4,12.2,9.6,6.8" IsReadOnly="True"
                             Text="{Binding UnStock.Kilometrage, Mode=TwoWay}" />
 
-                        </Grid>
                     </Grid>
-                    
                 </Grid>
-            </DockPanel>
-        </Grid>
+                <!--BAS GAUCHE-->
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30px"/>
+                        <RowDefinition Height="80px"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">Confirmer la vente</Label>
+                    <!--LIGNE 1 INFO-->
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30px"/>
+                            <RowDefinition Height="50px"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <!--ID CLIENT-->
+                        <Label Grid.Row="0" Grid.Column="0">ID Client</Label>
+                        <TextBox Grid.Row="1" Height="20px" Margin="10"></TextBox>
+                        <!--ID VOITURE-->
+                        <Label Grid.Row="0" Grid.Column="1">ID Voiture</Label>
+                        <TextBox Grid.Row="1" Grid.Column="1"  Height="20px" Margin="10"></TextBox>
+                        <!--Prix-->
+                        <Label Grid.Row="0" Grid.Column="2">PRIX (€)</Label>
+                        <TextBox Grid.Row="1" Grid.Column="2" Height="20px" Margin="10"></TextBox>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40px"/>
+                            <RowDefinition Height="50px"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Date de la vente-->
+                        <Label Grid.Row="0">Date de la vente : </Label>
+                        <DatePicker Grid.Row="1"></DatePicker>
+                        <!-- Date de la vente-->
+                        <Label Grid.Row="0" Grid.Column="1">Prix (€) :</Label>
+                        <TextBox Grid.Row="1" Grid.Column="1"></TextBox>
+                    </Grid>
+                    <!--PARTIE GRID 3 BOUTONS-->
+                    <Grid Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40px"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <!--Bouton confirmer-->
+                        <Button Grid.Column="0">Confirmer</Button>
+                        <!--Bouton annuler-->
+                        <Button Grid.Column="1">Annuler</Button>
+                    </Grid>
+                </Grid>
+                <!--BAS DROITE-->
+                <Grid Grid.Row="1" Grid.Column="1">
 
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
