@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ISET2018_WPFBD"
         xmlns:ViewModel="clr-namespace:ISET2018_WPFBD.ViewModel" x:Class="ISET2018_WPFBD.MainWindow"
         mc:Ignorable="d"
-        Title="Navigation"  WindowState="Maximized" Height="1080" Width="1920" ResizeMode="NoResize">
+        Title="Navigation"  WindowState="Maximized" Height="1080" Width="1920">
     <Window.Resources>
         <Style TargetType="{x:Type Calendar}"
            x:Key="DateTimeCalendar">
@@ -281,9 +281,6 @@
                     </Grid>
                     <!--PARTIE GRID 3 BOUTONS-->
                     <Grid Grid.Row="4">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="60px"/>
-                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
