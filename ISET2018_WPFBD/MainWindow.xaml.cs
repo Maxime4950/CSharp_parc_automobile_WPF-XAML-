@@ -23,12 +23,15 @@ namespace ISET2018_WPFBD
       {
         private ViewModel.VM_Personne LocalPersonne;
         private ViewModel.VM_Stock LocalStock;
+        private ViewModel.VM_Vente LocalVente;
         public MainWindow()
         {
             InitializeComponent();
             LocalPersonne = new ViewModel.VM_Personne();
             LocalStock = new ViewModel.VM_Stock();
+            LocalVente = new ViewModel.VM_Vente();
 
+            ficheInfoVentes.DataContext = LocalVente;
             ficheInfoClient.DataContext = LocalPersonne;
             ficheInfoStock.DataContext = LocalStock;
         }
@@ -61,6 +64,12 @@ namespace ISET2018_WPFBD
             f.ShowDialog();
         }
 
+        private void btnVentes_Click(object sender, RoutedEventArgs e)
+        {
+            View.Vente f = new View.Vente();
+            f.ShowDialog();
+        }
+
 
         private void dgClientsTabBord_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -77,6 +86,15 @@ namespace ISET2018_WPFBD
             {
                 LocalStock.StockSelectionnee2UnStock();
                 tbIDVoitureConf.Text = tbIDVoiture.Text;
+            }
+        }
+
+
+        private void dgVentesTabBord_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgVentesTabBord.SelectedIndex >= 0)
+            {
+                LocalVente.VenteSelectionnee2UneVente();
             }
         }
     }

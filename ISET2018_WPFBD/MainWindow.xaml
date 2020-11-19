@@ -38,7 +38,7 @@
             <Button x:Name="btnTb" Grid.Row="0" Background="#FF3D4ED3" Foreground="White" Content="Tableau de bord"/>
             <Button x:Name="btnClients" Grid.Row="1" Background="#FF3D4ED3" Foreground="White" Click="btnClients_Click" Content="Clients"/>
             <Button Grid.Row="2" Background="#FF3D4ED3" Foreground="White" Content="Achats"/>
-            <Button Grid.Row="3" Background="#FF3D4ED3" Foreground="White" Content="Ventes"/>
+            <Button x:Name="btnVentes" Grid.Row="3" Background="#FF3D4ED3" Foreground="White" Click="btnVentes_Click" Content="Ventes"/>
             <Button x:Name="btnMarques" Grid.Row="4" Background="#FF3D4ED3" Foreground="White" Click="btnMarques_Click" Content="Marques"/>
             <Button x:Name="btnModeles" Grid.Row="5" Background="#FF3D4ED3" Foreground="White" Click="btnModeles_Click" Content="Modèles"/>
             <Button x:Name="btnStock" Grid.Row="6" Background="#FF3D4ED3" Foreground="White" Click="btnStock_Click" Content="Stock"/>
@@ -292,14 +292,27 @@
                     </Grid>
                 </Grid>
                 <!--BAS DROITE-->
-                <Grid Grid.Row="1" Grid.Column="1">
+                <Grid  Name="ficheInfoVentes" Grid.Row="1" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40px"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Label Background="Gray"></Label>
                     <Label Content="TABLEAU DES VENTES" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-                    
+                    <DataGrid Name="dgVentesTabBord" ItemsSource="{Binding Path=BcpVente}" Grid.Row="1" VerticalScrollBarVisibility="Visible"
+                    IsReadOnly="True" AutoGenerateColumns="False" IsEnabled="{Binding Path=ActiverBcpFiche, Mode=OneWay}"
+                    SelectedItem="{Binding VenteSelectionnee, Mode=TwoWay}" SelectionChanged="dgVentesTabBord_SelectionChanged" >  
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID Opération" Binding="{Binding Path=idOperation}" Width="*" />
+                            <DataGridTextColumn Header="ID Voiture" Binding="{Binding Path=idVoiture}" Width="*" />
+                            <DataGridTextColumn Header="ID Client" Binding="{Binding Path=idClient}" Width="*" />
+                            <DataGridTextColumn Header="Prix" Binding="{Binding Path=prixOperation}" Width="*" />
+                            <DataGridTextColumn Header="Date" Binding="{Binding Path=dateOperation}" Width="*" />
+                            <DataGridTextColumn Header="ID Paiement" Binding="{Binding Path=idPaiement}" Width="*" />
+                            <DataGridTextColumn Header="Type Opération" Binding="{Binding Path=typeOperation}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
                 </Grid>
             </Grid>
         </Grid>

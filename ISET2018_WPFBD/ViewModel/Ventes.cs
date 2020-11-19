@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace ISET2018_WPFBD.ViewModel
 {
-    public class VM_AchatVente : BasePropriete
+    public class VM_Vente : BasePropriete
     {
         #region Données Écran
         private string chConnexion = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Maesm\Documents\Complement_P\ISET2018_WPFBD_MVVM_concept\ISET2018_WPFBD\BD_Voiture_mvvm.mdf;Integrated Security=True;Connect Timeout=30";
@@ -29,26 +29,26 @@ namespace ISET2018_WPFBD.ViewModel
             get { return _ActiverBcpFiche; }
             set { AssignerChamp<bool>(ref _ActiverBcpFiche, value, System.Reflection.MethodBase.GetCurrentMethod().Name); }
         }
-        private C_AchatVente _AchatVenteSelectionne;
-        public C_AchatVente AchatVenteSelectionne
+        private C_AchatVente _VenteSelectionnee;
+        public C_AchatVente VenteSelectionnee
         {
-            get { return _AchatVenteSelectionne; }
-            set { AssignerChamp<C_AchatVente>(ref _AchatVenteSelectionne, value, System.Reflection.MethodBase.GetCurrentMethod().Name); }
+            get { return _VenteSelectionnee; }
+            set { AssignerChamp<C_AchatVente>(ref _VenteSelectionnee, value, System.Reflection.MethodBase.GetCurrentMethod().Name); }
         }
         #endregion
 
         #region Données extérieures
-        private VM_UnAchatVente _UnAchatVente;
-        public VM_UnAchatVente UnAchatVente
+        private VM_UneVente _UneVente;
+        public VM_UneVente UneVente
         {
-            get { return _UnAchatVente; }
-            set { AssignerChamp<VM_UnAchatVente>(ref _UnAchatVente, value, System.Reflection.MethodBase.GetCurrentMethod().Name); }
+            get { return _UneVente; }
+            set { AssignerChamp<VM_UneVente>(ref _UneVente, value, System.Reflection.MethodBase.GetCurrentMethod().Name); }
         }
-        private ObservableCollection<C_AchatVente> _BcpAchatVente = new ObservableCollection<C_AchatVente>();
-        public ObservableCollection<C_AchatVente> BcpAchatVente
+        private ObservableCollection<C_AchatVente> _BcpVente = new ObservableCollection<C_AchatVente>();
+        public ObservableCollection<C_AchatVente> BcpVente
         {
-            get { return _BcpAchatVente; }
-            set { _BcpAchatVente = value; }
+            get { return _BcpVente; }
+            set { _BcpVente = value; }
         }
         #endregion
 
@@ -60,11 +60,11 @@ namespace ISET2018_WPFBD.ViewModel
         public BaseCommande cSupprimer { get; set; }
         public BaseCommande cEssaiSelMult { get; set; }
         #endregion
-        public VM_AchatVente()
+        public VM_Vente()
         {
-            UnAchatVente = new VM_UnAchatVente();
-            string Index = UnAchatVente.IDOperation.ToString();
-            BcpAchatVente = ChargerAchatVente(chConnexion, Index);
+            UneVente = new VM_UneVente();
+            string Index = UneVente.IDOperation.ToString();
+            BcpVente = ChargerVente(chConnexion, Index);
             ActiverUneFiche = false;
             cConfirmer = new BaseCommande(Confirmer);
             cAnnuler = new BaseCommande(Annuler);
@@ -75,12 +75,13 @@ namespace ISET2018_WPFBD.ViewModel
         }
 
         //Pour charger les clients afin de les afficher dans le dgv
-        private ObservableCollection<C_AchatVente> ChargerAchatVente(string chConn, string Index)
+        private ObservableCollection<C_AchatVente> ChargerVente(string chConn, string Index)
         {
             ObservableCollection<C_AchatVente> rep = new ObservableCollection<C_AchatVente>();
             List<C_AchatVente> lTmp = new Model.G_AchatVente(chConn).Lire(Index);
             foreach (C_AchatVente Tmp in lTmp)
-                rep.Add(Tmp);
+                if(Tmp.typeOperation == "vente")
+                { rep.Add(Tmp); }
             return rep;
         }
 
@@ -89,13 +90,13 @@ namespace ISET2018_WPFBD.ViewModel
         {
             if (nAjout == -1)
             {
-                UnAchatVente.IDOperation = new Model.G_AchatVente(chConnexion).Ajouter(UnAchatVente.IDVoiture, UnAchatVente.IDClient, UnAchatVente.Prix,UnAchatVente.Date,UnAchatVente.IDPaiement, UnAchatVente.Type);
-                BcpAchatVente.Add(new C_AchatVente(UnAchatVente.IDOperation,UnAchatVente.IDVoiture, UnAchatVente.IDClient, UnAchatVente.Prix, UnAchatVente.Date, UnAchatVente.IDPaiement, UnAchatVente.Type));
+                UneVente.IDOperation = new Model.G_AchatVente(chConnexion).Ajouter(UneVente.IDVoiture, UneVente.IDClient, UneVente.Prix, UneVente.Date, UneVente.IDPaiement, UneVente.Type);
+                BcpVente.Add(new C_AchatVente(UneVente.IDOperation, UneVente.IDVoiture, UneVente.IDClient, UneVente.Prix, UneVente.Date, UneVente.IDPaiement, UneVente.Type));
             }
             else
             {
-                new Model.G_AchatVente(chConnexion).Modifier(UnAchatVente.IDOperation, UnAchatVente.IDVoiture, UnAchatVente.IDClient, UnAchatVente.Prix, UnAchatVente.Date, UnAchatVente.IDPaiement, UnAchatVente.Type);
-                BcpAchatVente[nAjout] = new C_AchatVente(UnAchatVente.IDOperation, UnAchatVente.IDVoiture, UnAchatVente.IDClient, UnAchatVente.Prix, UnAchatVente.Date, UnAchatVente.IDPaiement, UnAchatVente.Type);
+                new Model.G_AchatVente(chConnexion).Modifier(UneVente.IDOperation, UneVente.IDVoiture, UneVente.IDClient, UneVente.Prix, UneVente.Date, UneVente.IDPaiement, UneVente.Type);
+                BcpVente[nAjout] = new C_AchatVente(UneVente.IDOperation, UneVente.IDVoiture, UneVente.IDClient, UneVente.Prix, UneVente.Date, UneVente.IDPaiement, UneVente.Type);
             }
             ActiverUneFiche = false;
         }
@@ -105,33 +106,33 @@ namespace ISET2018_WPFBD.ViewModel
         }
         public void Ajouter()
         {
-            UnAchatVente = new VM_UnAchatVente();
+            UneVente = new VM_UneVente();
             nAjout = -1;
             ActiverUneFiche = true;
         }
         public void Modifier()
         {
-            if (AchatVenteSelectionne != null)
+            if (VenteSelectionnee != null)
             {
-                C_AchatVente Tmp = new Model.G_AchatVente(chConnexion).Lire_ID(AchatVenteSelectionne.idOperation);
-                UnAchatVente = new VM_UnAchatVente();
-                UnAchatVente.IDOperation = Tmp.idOperation;
-                UnAchatVente.IDVoiture = Tmp.idVoiture;
-                UnAchatVente.IDClient = Tmp.idClient;
-                UnAchatVente.Prix = Tmp.prixOperation;
-                UnAchatVente.Date = Tmp.dateOperation;
-                UnAchatVente.IDPaiement = Tmp.idPaiement;
-                UnAchatVente.Type = Tmp.typeOperation;
-                nAjout = BcpAchatVente.IndexOf(AchatVenteSelectionne);
+                C_AchatVente Tmp = new Model.G_AchatVente(chConnexion).Lire_ID(VenteSelectionnee.idOperation);
+                UneVente = new VM_UneVente();
+                UneVente.IDOperation = Tmp.idOperation;
+                UneVente.IDVoiture = Tmp.idVoiture;
+                UneVente.IDClient = Tmp.idClient;
+                UneVente.Prix = Tmp.prixOperation;
+                UneVente.Date = Tmp.dateOperation;
+                UneVente.IDPaiement = Tmp.idPaiement;
+                UneVente.Type = Tmp.typeOperation;
+                nAjout = BcpVente.IndexOf(VenteSelectionnee);
                 ActiverUneFiche = true;
             }
         }
         public void Supprimer()
         {
-            if (AchatVenteSelectionne != null)
+            if (VenteSelectionnee != null)
             {
-                new Model.G_ClientsVoiture(chConnexion).Supprimer(AchatVenteSelectionne.idOperation);
-                BcpAchatVente.Remove(AchatVenteSelectionne);
+                new Model.G_ClientsVoiture(chConnexion).Supprimer(VenteSelectionnee.idOperation);
+                BcpVente.Remove(VenteSelectionnee);
             }
         }
         public void EssaiSelMult(object lListe)
@@ -141,18 +142,18 @@ namespace ISET2018_WPFBD.ViewModel
             { string s = p.nomClient; }
             int nTmp = lTmp.Count;
         }
-        public void AchatVenteSelectionnee2UnAchatVente()
+        public void VenteSelectionnee2UneVente()
         {
-            UnAchatVente.IDOperation = AchatVenteSelectionne.idOperation;
-            UnAchatVente.IDVoiture = AchatVenteSelectionne.idVoiture;
-            UnAchatVente.IDClient = AchatVenteSelectionne.idClient;
-            UnAchatVente.Prix = AchatVenteSelectionne.prixOperation;
-            UnAchatVente.Date = AchatVenteSelectionne.dateOperation;
-            UnAchatVente.IDPaiement = AchatVenteSelectionne.idPaiement;
-            UnAchatVente.Type = AchatVenteSelectionne.typeOperation;
+            UneVente.IDOperation = VenteSelectionnee.idOperation;
+            UneVente.IDVoiture = VenteSelectionnee.idVoiture;
+            UneVente.IDClient = VenteSelectionnee.idClient;
+            UneVente.Prix = VenteSelectionnee.prixOperation;
+            UneVente.Date = VenteSelectionnee.dateOperation;
+            UneVente.IDPaiement = VenteSelectionnee.idPaiement;
+            UneVente.Type = VenteSelectionnee.typeOperation;
         }
     }
-    public class VM_UnAchatVente : BasePropriete
+    public class VM_UneVente : BasePropriete
     {
         private int _IDOperation, _IDVoiture, _IDClient, _Prix, _IDPaiement;
         private DateTime _Date;
