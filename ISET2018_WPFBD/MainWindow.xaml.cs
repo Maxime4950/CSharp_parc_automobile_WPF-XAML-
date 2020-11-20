@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ISET2018_WPFBD.Model;
+using System.Collections.ObjectModel;
 
 namespace ISET2018_WPFBD
 
@@ -24,7 +26,10 @@ namespace ISET2018_WPFBD
         private ViewModel.VM_Personne LocalPersonne;
         private ViewModel.VM_Stock LocalStock;
         private ViewModel.VM_Vente LocalVente;
+        private ViewModel.VM_Vente LocalVenteActualiser;
         private ViewModel.VM_Paiement LocalPaiement;
+
+        private string sConnexion = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Maesm\Documents\Complement_P\ISET2018_WPFBD_MVVM_concept\ISET2018_WPFBD\BD_Voiture_mvvm.mdf;Integrated Security=True;Connect Timeout=30";
         public MainWindow()
         {
             InitializeComponent();
@@ -37,10 +42,14 @@ namespace ISET2018_WPFBD
             ficheInfoClient.DataContext = LocalPersonne;
             ficheInfoStock.DataContext = LocalStock;
 
-            
+            //Ajout des id de paiements
+            for (int i = 0; i < LocalPaiement.BcpPaiement.Count(); i++)
+            {
+                cbPaiementID.Items.Add(LocalPaiement.BcpPaiement[i].idPaiement);
+            }
 
             //Ajout des modes de paiements
-            for(int i = 0; i < LocalPaiement.BcpPaiement.Count(); i++)
+            for (int i = 0; i < LocalPaiement.BcpPaiement.Count(); i++)
             {
                 cbPaiement.Items.Add(LocalPaiement.BcpPaiement[i].nomPaiement);
             }
@@ -106,6 +115,45 @@ namespace ISET2018_WPFBD
             {
                 LocalVente.VenteSelectionnee2UneVente();
             }
+        }
+
+        private void btnConfirmerVente_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbIDClientConf.Text != "" && tbIDVoitureConf.Text != "" && tbPrix.Text != "" && dtpDate.Text != "" && cbPaiement.Text != "")
+            {
+                int iID = new G_AchatVente(sConnexion).Ajouter(int.Parse(tbIDVoitureConf.Text), int.Parse(tbIDClientConf.Text), int.Parse(tbPrix.Text)
+                 , DateTime.Parse(dtpDate.Text), int.Parse(cbPaiementID.Text), "vente");
+                AnnulerInfo(); //Pour vider les textbox
+                ActualiserDataGridVentes();
+                MessageBox.Show ("Vente effectuée N° : " + iID.ToString() + " effectuée");
+            }
+            else
+            {
+                MessageBox.Show("Veuillez remplir tous les champs ! ");
+            }
+        }
+
+
+        //Pour vider les textBoxs
+        private void AnnulerInfo()
+        {
+            tbIDVoitureConf.Text = "";
+            tbIDClientConf.Text = "";
+            dtpDate.Text = "";
+            tbPrix.Text = "";
+            cbPaiementID.Text = "";
+            cbPaiement.Text = "";
+        }
+
+        private void ActualiserDataGridVentes()
+        {
+            LocalVenteActualiser = new ViewModel.VM_Vente();
+            ficheInfoVentes.DataContext = LocalVenteActualiser;
+        }
+
+        private void btnAnnulerVente_Click(object sender, RoutedEventArgs e)
+        {
+            AnnulerInfo();
         }
     }
 }

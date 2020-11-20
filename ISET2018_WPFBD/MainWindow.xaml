@@ -242,7 +242,6 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
-                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <!--ID CLIENT-->
                         <Label Grid.Row="0" Grid.Column="0">ID Client</Label>
@@ -250,9 +249,6 @@
                         <!--ID VOITURE-->
                         <Label Grid.Row="0" Grid.Column="1">ID Voiture</Label>
                         <TextBox Name="tbIDVoitureConf" Grid.Row="1" Grid.Column="1"  Height="20px" Margin="5"></TextBox>
-                        <!--Prix-->
-                        <Label Grid.Row="0" Grid.Column="2">PRIX (€)</Label>
-                        <TextBox Grid.Row="1" Grid.Column="2" Height="20px" Margin="5"></TextBox>
                     </Grid>
                     <Grid Grid.Row="2">
                         <Grid.RowDefinitions>
@@ -265,10 +261,10 @@
                         </Grid.ColumnDefinitions>
                         <!-- Date de la vente-->
                         <Label Grid.Row="0">Date de la vente :</Label>
-                        <DatePicker Grid.Row="1" Width="300px" HorizontalAlignment="Left" Height="30px" Margin="5px"></DatePicker>
-                        <!-- Date de la vente-->
+                        <DatePicker Name="dtpDate" Grid.Row="1" Width="300px" HorizontalAlignment="Left" Height="30px" Margin="5px"></DatePicker>
+                        <!-- Prix de la vente-->
                         <Label Grid.Row="0" Grid.Column="1">Prix (€) :</Label>
-                        <TextBox Grid.Row="1" Grid.Column="1" Width="330px" HorizontalAlignment="Left" Height="20px"></TextBox>
+                        <TextBox Name="tbPrix" Grid.Row="1" Grid.Column="1" Width="330px" HorizontalAlignment="Left" Height="20px"></TextBox>
                     </Grid>
                     <!--PARTIE PAIEMENT-->
                     <Grid Grid.Row="3">
@@ -276,7 +272,13 @@
                             <RowDefinition Height="30px"/>
                             <RowDefinition  Height="40px"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0">Moyen de paiement :</Label>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0">ID Paiement :</Label>
+                        <ComboBox Name="cbPaiementID" Grid.Row="1" Grid.Column="0" Width="500px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
+                        <Label Grid.Row="0" Grid.Column="1">Moyen de paiement :</Label>
                         <ComboBox Name="cbPaiement" Grid.Row="1" Grid.Column="1" Width="500px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
                     </Grid>
                     <!--PARTIE GRID 3 BOUTONS-->
@@ -286,9 +288,9 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <!--Bouton confirmer-->
-                        <Button Grid.Column="0" Height="30px" Width="300px" HorizontalAlignment="Center" VerticalAlignment="Center">Confirmer</Button>
+                        <Button Name="btnConfirmerVente" Grid.Column="0" Height="30px" Width="300px" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnConfirmerVente_Click">Confirmer</Button>
                         <!--Bouton annuler-->
-                        <Button Grid.Column="1" Height="30px" Width="300px" HorizontalAlignment="Center" VerticalAlignment="Center">Annuler</Button>
+                        <Button Name='btnAnnulerVente' Grid.Column="1" Height="30px" Width="300px" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnAnnulerVente_Click">Annuler</Button>
                     </Grid>
                 </Grid>
                 <!--BAS DROITE-->
