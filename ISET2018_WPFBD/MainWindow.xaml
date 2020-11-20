@@ -277,7 +277,7 @@
                             <RowDefinition  Height="40px"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0">Moyen de paiement :</Label>
-                        <ComboBox Grid.Row="1" Grid.Column="1" Width="500px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
+                        <ComboBox Name="cbPaiement" Grid.Row="1" Grid.Column="1" Width="500px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
                     </Grid>
                     <!--PARTIE GRID 3 BOUTONS-->
                     <Grid Grid.Row="4">

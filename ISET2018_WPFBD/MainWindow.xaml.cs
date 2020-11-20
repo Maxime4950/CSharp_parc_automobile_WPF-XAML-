@@ -24,16 +24,26 @@ namespace ISET2018_WPFBD
         private ViewModel.VM_Personne LocalPersonne;
         private ViewModel.VM_Stock LocalStock;
         private ViewModel.VM_Vente LocalVente;
+        private ViewModel.VM_Paiement LocalPaiement;
         public MainWindow()
         {
             InitializeComponent();
             LocalPersonne = new ViewModel.VM_Personne();
             LocalStock = new ViewModel.VM_Stock();
             LocalVente = new ViewModel.VM_Vente();
+            LocalPaiement = new ViewModel.VM_Paiement();
 
             ficheInfoVentes.DataContext = LocalVente;
             ficheInfoClient.DataContext = LocalPersonne;
             ficheInfoStock.DataContext = LocalStock;
+
+            
+
+            //Ajout des modes de paiements
+            for(int i = 0; i < LocalPaiement.BcpPaiement.Count(); i++)
+            {
+                cbPaiement.Items.Add(LocalPaiement.BcpPaiement[i].nomPaiement);
+            }
         }
         private void btnQuitter_Click(object sender, RoutedEventArgs e)
         { 
