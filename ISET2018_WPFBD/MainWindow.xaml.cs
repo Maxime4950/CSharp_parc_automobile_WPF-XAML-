@@ -89,6 +89,12 @@ namespace ISET2018_WPFBD
             f.ShowDialog();
         }
 
+        private void btnAchats_Click(object sender, RoutedEventArgs e)
+        {
+            View.Achats f = new View.Achats();
+            f.ShowDialog();
+        }
+
 
         private void dgClientsTabBord_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -155,5 +161,7 @@ namespace ISET2018_WPFBD
         {
             AnnulerInfo();
         }
+
+        
     }
 }

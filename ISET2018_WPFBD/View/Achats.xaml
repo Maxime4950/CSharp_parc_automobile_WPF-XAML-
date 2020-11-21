@@ -1,11 +1,11 @@
-﻿<Window x:Class="ISET2018_WPFBD.View.Vente"
+﻿<Window x:Class="ISET2018_WPFBD.View.Achats"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ISET2018_WPFBD.View"
         mc:Ignorable="d"
-        Title="Ventes" Height="450" Width="800" WindowState="Maximized">
+        Title="Achats" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="340*"/>
@@ -17,9 +17,9 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Name="dgVentes" ItemsSource="{Binding Path=BcpVente}" Grid.Row="0" VerticalScrollBarVisibility="Visible"
+        <DataGrid Name="dgAchats" ItemsSource="{Binding Path=BcpAchats}" Grid.Row="0" VerticalScrollBarVisibility="Visible"
             IsReadOnly="True" AutoGenerateColumns="False" IsEnabled="{Binding Path=ActiverBcpFiche, Mode=OneWay}"
-            SelectedItem="{Binding VenteSelectionnee, Mode=TwoWay}" SelectionChanged="dgVentes_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,-0.4,30" Grid.RowSpan="2" >
+            SelectedItem="{Binding AchatSelectionnee, Mode=TwoWay}" SelectionChanged="dgAchats_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,-0.4,30" Grid.RowSpan="2" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID Opération" Binding="{Binding Path=idOperation}" Width="*" />
                 <DataGridTextColumn Header="ID Voiture" Binding="{Binding Path=idVoiture}" Width="*" />
@@ -87,35 +87,35 @@
                 <!--IDENTIFIANT OPERATION-->
                 <TextBlock Name="tIdOperation" Text="ID Opération :" VerticalAlignment="Center" Margin="5" />
                 <TextBox Name="tbIdOperation" Grid.Column="1" Margin="10"
-               Text="{Binding Path=UneVente.IDOperation, Mode=TwoWay}" />
+               Text="{Binding Path=UnAchat.IDOperation, Mode=TwoWay}" />
 
                 <!--IDENTIFIANT VOITURE-->
                 <TextBlock Name="tIdVoiture" Text="ID Voiture :" Grid.Row="1" VerticalAlignment="Center" Margin="5" />
                 <TextBox Name="tbIdVoiture" Grid.Row="1" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UneVente.IDVoiture, Mode=TwoWay}" />
+            Text="{Binding Path=UnAchat.IDVoiture, Mode=TwoWay}" />
 
                 <!--IDENTIFIANT CLIENT-->
                 <TextBlock Name="tIdClient" Text="ID Client:" Grid.Row="2" VerticalAlignment="Center" Margin="5"/>
                 <TextBox Name="tbIdClient" Grid.Row="2" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UneVente.IDClient, Mode=TwoWay}" />
+            Text="{Binding Path=UnAchat.IDClient, Mode=TwoWay}" />
 
                 <!--PRIX-->
                 <TextBlock Name="tPrix" Grid.Row="3" Text="Prix (€) :" VerticalAlignment="Center" Margin="5"/>
                 <TextBox Name="tbPrix" Grid.Row="3" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UneVente.Prix, Mode=TwoWay}" />
+            Text="{Binding Path=UnAchat.Prix, Mode=TwoWay}" />
 
                 <!--DATE-->
                 <TextBlock Name="tDate" Grid.Row="4" Text="Numéro :" VerticalAlignment="Center" Margin="5"/>
                 <TextBox Name="tbDate" Grid.Row="4" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UneVente.Date, Mode=TwoWay}" />
+            Text="{Binding Path=UnAchat.Date, Mode=TwoWay}" />
 
                 <!--ID PAIEMENT-->
                 <TextBlock Name="tIdPaiement" Grid.Row="5" Text="ID Paiement :" VerticalAlignment="Center" Margin="5"/>
                 <TextBox Name="tbIdPaiement" Grid.Row="5" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UneVente.IDPaiement, Mode=TwoWay}" />
+            Text="{Binding Path=UnAchat.IDPaiement, Mode=TwoWay}" />
             </Grid>
             <Grid Grid.Column="2">
-                <RichTextBox x:Name="rtbFactureVentes" IsReadOnly="true" Background="LightGray"></RichTextBox>
+                <RichTextBox x:Name="rtbFactureAchats" IsReadOnly="true" Background="LightGray"></RichTextBox>
             </Grid>
         </Grid>
     </Grid>

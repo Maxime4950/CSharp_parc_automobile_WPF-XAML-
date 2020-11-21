@@ -90,6 +90,7 @@
     <Compile Include="Model\G_Modele.cs" />
     <Compile Include="Model\G_Paiement.cs" />
     <Compile Include="Model\G_Stock.cs" />
+    <Compile Include="ViewModel\Achats.cs" />
     <Compile Include="ViewModel\Paiement.cs" />
     <Compile Include="ViewModel\Ventes.cs" />
     <Compile Include="ViewModel\Base.cs" />
@@ -97,6 +98,9 @@
     <Compile Include="ViewModel\Marques.cs" />
     <Compile Include="ViewModel\Modeles.cs" />
     <Compile Include="ViewModel\Stock.cs" />
+    <Compile Include="View\Achats.xaml.cs">
+      <DependentUpon>Achats.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Ventes.xaml.cs">
       <DependentUpon>Ventes.xaml</DependentUpon>
     </Compile>
@@ -169,6 +173,10 @@
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Achats.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Ventes.xaml">
       <SubType>Designer</SubType>

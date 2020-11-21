@@ -19,7 +19,7 @@
     <!--Totalité fenêtre-->
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200px"/>
+            <ColumnDefinition Width="150px"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -37,7 +37,7 @@
             </Grid.RowDefinitions>
             <Button x:Name="btnTb" Grid.Row="0" Background="#FF3D4ED3" Foreground="White" Content="Tableau de bord"/>
             <Button x:Name="btnClients" Grid.Row="1" Background="#FF3D4ED3" Foreground="White" Click="btnClients_Click" Content="Clients"/>
-            <Button Grid.Row="2" Background="#FF3D4ED3" Foreground="White" Content="Achats"/>
+            <Button x:Name="btnAchats" Grid.Row="2" Background="#FF3D4ED3" Foreground="White" Click="btnAchats_Click" Content="Achats"/>
             <Button x:Name="btnVentes" Grid.Row="3" Background="#FF3D4ED3" Foreground="White" Click="btnVentes_Click" Content="Ventes"/>
             <Button x:Name="btnMarques" Grid.Row="4" Background="#FF3D4ED3" Foreground="White" Click="btnMarques_Click" Content="Marques"/>
             <Button x:Name="btnModeles" Grid.Row="5" Background="#FF3D4ED3" Foreground="White" Click="btnModeles_Click" Content="Modèles"/>
@@ -277,9 +277,9 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0">ID Paiement :</Label>
-                        <ComboBox Name="cbPaiementID" Grid.Row="1" Grid.Column="0" Width="500px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
+                        <ComboBox Name="cbPaiementID" Grid.Row="1" Grid.Column="0" Width="300px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
                         <Label Grid.Row="0" Grid.Column="1">Moyen de paiement :</Label>
-                        <ComboBox Name="cbPaiement" Grid.Row="1" Grid.Column="1" Width="500px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
+                        <ComboBox Name="cbPaiement" Grid.Row="1" Grid.Column="1" Width="300px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
                     </Grid>
                     <!--PARTIE GRID 3 BOUTONS-->
                     <Grid Grid.Row="4">
