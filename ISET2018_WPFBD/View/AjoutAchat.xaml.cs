@@ -26,11 +26,6 @@ namespace ISET2018_WPFBD.View
         private ViewModel.VM_Stock LocalStock;
         private ViewModel.VM_Vente LocalVente;
         private ViewModel.VM_Vente LocalVenteActualiser;
-        private ViewModel.VM_Paiement LocalPaiement;
-
-        //Pour les combobox
-        private ViewModel.VM_Marques LocalMarque;
-        private ViewModel.VM_Modeles LocalModele;
 
         private string sConnexion = @"Data Source=DESKTOP-5KJPBES;Initial Catalog=C:\USERS\MAESM\DOCUMENTS\COMPLEMENT_P\ISET2018_WPFBD_MVVM_CONCEPT\ISET2018_WPFBD\BD_VOITURE_MVVM.MDF;Integrated Security=True";
 
@@ -40,10 +35,6 @@ namespace ISET2018_WPFBD.View
             LocalPersonne = new ViewModel.VM_Personne();
             LocalStock = new ViewModel.VM_Stock();
             LocalVente = new ViewModel.VM_Vente();
-            LocalPaiement = new ViewModel.VM_Paiement();
-
-            LocalMarque = new ViewModel.VM_Marques();
-            LocalModele = new ViewModel.VM_Modeles();
 
             ficheInfoVentesA.DataContext = LocalVente;
             ficheInfoClientA.DataContext = LocalPersonne;
@@ -87,6 +78,11 @@ namespace ISET2018_WPFBD.View
 
         private void btnAnnulerAchat_Click(object sender, RoutedEventArgs e)
         {
+            //Supprime la voiture qui avait été ajoutée précédement au stock si on annule car par encore achetée.
+            if(tbIDVoitureConf.Text != "")
+            {
+                new G_StockVoiture(sConnexion).Supprimer(int.Parse(tbIDVoitureConf.Text));
+            }
             AnnulerInfo();
         }
 
@@ -110,7 +106,11 @@ namespace ISET2018_WPFBD.View
         {
             RemplirCbMarque();
             RemplirCbModele();
+            remplirCbCategorie();
+            remplirCbCarburant();
+            remplirCbCouleur();
             remplirCbPaiement();
+            
         }
 
         private void RemplirCbMarque()
@@ -146,6 +146,42 @@ namespace ISET2018_WPFBD.View
             foreach (var aa in requete)
             {
                 cbPaiement.Items.Add(aa.ToString());
+            }
+        }
+
+        private void remplirCbCategorie()
+        {
+            CategorieDataContext DCCategorie = new CategorieDataContext();
+            var requete = from categorie in DCCategorie.CategorieVoiture
+                          select categorie.nomCat;
+
+            foreach (var aa in requete)
+            {
+                cbCategorie.Items.Add(aa.ToString());
+            }
+        }
+
+        private void remplirCbCarburant()
+        {
+            CarburantDataContext DCCarburant = new CarburantDataContext();
+            var requete = from carburant in DCCarburant.CarburantVoiture
+                          select carburant.nomCarburant;
+
+            foreach (var aa in requete)
+            {
+                cbCarburant.Items.Add(aa.ToString());
+            }
+        }
+
+        private void remplirCbCouleur()
+        {
+            CouleurDataContext DCCouleur = new CouleurDataContext();
+            var requete = from couleur in DCCouleur.CouleurVoiture
+                          select couleur.nomCouleur;
+
+            foreach (var aa in requete)
+            {
+                cbCouleur.Items.Add(aa.ToString());
             }
         }
 
@@ -185,6 +221,80 @@ namespace ISET2018_WPFBD.View
             foreach (var aa in requete)
             {
                 tbIDModele.Text = aa.ToString();
+            }
+        }
+
+        private void btnAjouterFrais_Click(object sender, RoutedEventArgs e)
+        {
+            View.FraisAchat f = new View.FraisAchat();
+            f.ShowDialog();
+            /*
+            if (tbIDVoitureConf.Text != "")
+            {
+                View.FraisAchat f = new FraisAchat();
+                f.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Pas de véhicule sélectionné");
+            }*/
+        }
+
+        private void cbCategorie_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CategorieDataContext DCCategorie = new CategorieDataContext();
+            var requete = from categorie in DCCategorie.CategorieVoiture
+                          where categorie.nomCat == cbCategorie.SelectedItem.ToString()
+                          select categorie.idCat;
+
+            foreach (var aa in requete)
+            {
+                tbCategorie.Text = aa.ToString();
+            }
+        }
+
+        private void cbCarburant_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CarburantDataContext DCCarburant = new CarburantDataContext();
+            var requete = from carburant in DCCarburant.CarburantVoiture
+                          where carburant.nomCarburant == cbCarburant.SelectedItem.ToString()
+                          select carburant.idCarburant;
+
+            foreach (var aa in requete)
+            {
+                tbIDCarburant.Text = aa.ToString();
+            }
+        }
+
+        private void cbCouleur_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CouleurDataContext DCCouleur = new CouleurDataContext();
+            var requete = from couleur in DCCouleur.CouleurVoiture
+                          where couleur.nomCouleur == cbCouleur.SelectedItem.ToString()
+                          select couleur.idCouleur;
+
+            foreach (var aa in requete)
+            {
+                tbIDCouleur.Text = aa.ToString();
+            }
+        }
+
+        private void btnConfirmerVoiture_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbIDMarque.Text != "" && tbIDModele.Text != "" && tbCategorie.Text != "" && tbAnneeFabr.Text != "" && tbKilometrage.Text != "" && tbIDCarburant.Text != "" && tbIDCouleur.Text != "")
+            {
+                tbIDClientConf.Text = tbID.Text;
+
+                //Ajout de la voiture dans le stock de la BD
+
+                int iIDVoit = new G_StockVoiture(sConnexion).Ajouter(int.Parse(tbIDMarque.Text), int.Parse(tbIDModele.Text), int.Parse(tbCategorie.Text)
+                    , int.Parse(tbAnneeFabr.Text), int.Parse(tbIDCarburant.Text), int.Parse(tbIDCouleur.Text), int.Parse(tbKilometrage.Text));
+
+                tbIDVoitureConf.Text = iIDVoit.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez remplir toutes les infos du véhicule");
             }
         }
     }

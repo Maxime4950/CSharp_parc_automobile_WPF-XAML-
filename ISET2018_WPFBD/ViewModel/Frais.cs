@@ -139,7 +139,7 @@ namespace ISET2018_WPFBD.ViewModel
             { string s = p.nomFrais; }
             int nTmp = lTmp.Count;
         }
-        public void PersonneSelectionnee2UnePersonne()
+        public void FraisSelectionnee2UnFrais()
         {
             UnFrais.IDFrais = FraisSelectionne.idFrais;
             UnFrais.IDVoiture = FraisSelectionne.idVoiture;

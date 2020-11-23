@@ -75,6 +75,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataAccess\DataObject\Carburant.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Carburant.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\DataObject\Categorie.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Categorie.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\DataObject\Couleur.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Couleur.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\DataObject\Marque.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +139,9 @@
     <Compile Include="View\AjoutAchat.xaml.cs">
       <DependentUpon>AjoutAchat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\FraisAchat.xaml.cs">
+      <DependentUpon>FraisAchat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Ventes.xaml.cs">
       <DependentUpon>Ventes.xaml</DependentUpon>
     </Compile>
@@ -157,6 +175,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="DataAccess\DataObject\Carburant.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Carburant.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataAccess\DataObject\Categorie.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Categorie.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataAccess\DataObject\Couleur.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Couleur.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataAccess\DataObject\Marque.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Marque.designer.cs</LastGenOutput>
@@ -175,6 +208,15 @@
     </None>
     <None Include="DataAccess\DataObject\Modele.dbml.layout">
       <DependentUpon>Modele.dbml</DependentUpon>
+    </None>
+    <None Include="DataAccess\DataObject\Categorie.dbml.layout">
+      <DependentUpon>Categorie.dbml</DependentUpon>
+    </None>
+    <None Include="DataAccess\DataObject\Carburant.dbml.layout">
+      <DependentUpon>Carburant.dbml</DependentUpon>
+    </None>
+    <None Include="DataAccess\DataObject\Couleur.dbml.layout">
+      <DependentUpon>Couleur.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -221,6 +263,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AjoutAchat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FraisAchat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
