@@ -92,21 +92,25 @@
     </Compile>
     <Compile Include="MainWindow.xaml.cs" />
     <Compile Include="Model\A_AchatVente.cs" />
+    <Compile Include="Model\A_Frais.cs" />
     <Compile Include="Model\A_Marque.cs" />
     <Compile Include="Model\A_Modele.cs" />
     <Compile Include="Model\A_Paiement.cs" />
     <Compile Include="Model\A_Stock.cs" />
     <Compile Include="Model\C_AchatVente.cs" />
+    <Compile Include="Model\C_Frais.cs" />
     <Compile Include="Model\C_Marque.cs" />
     <Compile Include="Model\C_Modele.cs" />
     <Compile Include="Model\C_Paiement.cs" />
     <Compile Include="Model\C_Stock.cs" />
     <Compile Include="Model\G_AchatVente.cs" />
+    <Compile Include="Model\G_Frais.cs" />
     <Compile Include="Model\G_Marque.cs" />
     <Compile Include="Model\G_Modele.cs" />
     <Compile Include="Model\G_Paiement.cs" />
     <Compile Include="Model\G_Stock.cs" />
     <Compile Include="ViewModel\Achats.cs" />
+    <Compile Include="ViewModel\Frais.cs" />
     <Compile Include="ViewModel\Paiement.cs" />
     <Compile Include="ViewModel\Ventes.cs" />
     <Compile Include="ViewModel\Base.cs" />
