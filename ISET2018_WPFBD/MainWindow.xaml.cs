@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ISET2018_WPFBD.Model;
 using System.Collections.ObjectModel;
+using ISET2018_WPFBD.DataAccess.DataObject;
 
 namespace ISET2018_WPFBD
 
@@ -23,38 +24,32 @@ namespace ISET2018_WPFBD
      /// </summary>
       public partial class MainWindow : Window
       {
+        #region Initialisation des variables
         private ViewModel.VM_Personne LocalPersonne;
         private ViewModel.VM_Stock LocalStock;
         private ViewModel.VM_Vente LocalVente;
         private ViewModel.VM_Vente LocalVenteActualiser;
-        private ViewModel.VM_Paiement LocalPaiement;
 
-        private string sConnexion = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Maesm\Documents\Complement_P\ISET2018_WPFBD_MVVM_concept\ISET2018_WPFBD\BD_Voiture_mvvm.mdf;Integrated Security=True;Connect Timeout=30";
+        private string sConnexion = @"Data Source=DESKTOP-5KJPBES;Initial Catalog=C:\USERS\MAESM\DOCUMENTS\COMPLEMENT_P\ISET2018_WPFBD_MVVM_CONCEPT\ISET2018_WPFBD\BD_VOITURE_MVVM.MDF;Integrated Security=True";
+        #endregion
+
+        #region Constructeur MainWindow()
         public MainWindow()
         {
             InitializeComponent();
             LocalPersonne = new ViewModel.VM_Personne();
             LocalStock = new ViewModel.VM_Stock();
             LocalVente = new ViewModel.VM_Vente();
-            LocalPaiement = new ViewModel.VM_Paiement();
 
             ficheInfoVentes.DataContext = LocalVente;
             ficheInfoClient.DataContext = LocalPersonne;
             ficheInfoStock.DataContext = LocalStock;
 
-
-            //Ajout des id de paiements
-            for (int i = 0; i < LocalPaiement.BcpPaiement.Count(); i++)
-            {
-                cbPaiementID.Items.Add(LocalPaiement.BcpPaiement[i].idPaiement);
-            }
-
-            //Ajout des modes de paiements
-            for (int i = 0; i < LocalPaiement.BcpPaiement.Count(); i++)
-            {
-                cbPaiement.Items.Add(LocalPaiement.BcpPaiement[i].nomPaiement);
-            }
+            remplirCbPaiement();
         }
+        #endregion
+
+        #region BOUTON DU MENU GAUCHE => EVENEMENTS CLICK
         private void btnQuitter_Click(object sender, RoutedEventArgs e)
         { 
             Close(); 
@@ -101,7 +96,9 @@ namespace ISET2018_WPFBD
             View.AjoutAchat f = new View.AjoutAchat();
             f.ShowDialog();
         }
+        #endregion
 
+        #region 3 DGV => EVENEMENTS SELECTIONCHANGED
 
         private void dgClientsTabBord_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -130,12 +127,16 @@ namespace ISET2018_WPFBD
             }
         }
 
+        #endregion
+
+        #region CONFIRMATION DE LA VENTE
+
         private void btnConfirmerVente_Click(object sender, RoutedEventArgs e)
         {
-            if (tbIDClientConf.Text != "" && tbIDVoitureConf.Text != "" && tbPrix.Text != "" && dtpDate.Text != "" && cbPaiement.Text != "")
+            if (tbIDClientConf.Text != "" && tbIDVoitureConf.Text != "" && tbPrix.Text != "" && dtpDate.Text != "" && tbPaiementID.Text != "")
             {
                 int iID = new G_AchatVente(sConnexion).Ajouter(int.Parse(tbIDVoitureConf.Text), int.Parse(tbIDClientConf.Text), int.Parse(tbPrix.Text)
-                 , DateTime.Parse(dtpDate.Text), int.Parse(cbPaiementID.Text), "vente");
+                 , DateTime.Parse(dtpDate.Text), int.Parse(tbPaiementID.Text), "vente");
                 AnnulerInfo(); //Pour vider les textbox
                 ActualiserDataGridVentes();
                 MessageBox.Show ("Vente effectuée N° : " + iID.ToString() + " effectuée");
@@ -146,6 +147,9 @@ namespace ISET2018_WPFBD
             }
         }
 
+        #endregion
+
+        #region VIDER TOUTES LES TEXTBOX
 
         //Pour vider les textBoxs
         private void AnnulerInfo()
@@ -154,19 +158,51 @@ namespace ISET2018_WPFBD
             tbIDClientConf.Text = "";
             dtpDate.Text = "";
             tbPrix.Text = "";
-            cbPaiementID.Text = "";
-            cbPaiement.Text = "";
+        }
+        #endregion
+
+        #region Combobox et texbox Paiement
+        private void remplirCbPaiement()
+        {
+            PaiementDataContext DCPaiement = new PaiementDataContext();
+            var requete = from paiement in DCPaiement.PaiementVoiture
+                          select paiement.nomPaiement;
+
+            foreach (var aa in requete)
+            {
+                cbPaiement.Items.Add(aa.ToString());
+            }
         }
 
+        private void cbPaiement_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PaiementDataContext DCPaiement = new PaiementDataContext();
+            var requete = from paiement in DCPaiement.PaiementVoiture
+                          where paiement.nomPaiement == cbPaiement.SelectedItem.ToString()
+                          select paiement.idPaiement;
+
+            foreach (var aa in requete)
+            {
+                tbPaiementID.Text = aa.ToString();
+            }
+
+        }
+        #endregion
+
+        #region ACTUALISATION DG VENTE (APRES UNE VENTE)
         private void ActualiserDataGridVentes()
         {
             LocalVenteActualiser = new ViewModel.VM_Vente();
             ficheInfoVentes.DataContext = LocalVenteActualiser;
         }
+        #endregion
+
+        #region Bouton Annuler (reset all tb)
 
         private void btnAnnulerVente_Click(object sender, RoutedEventArgs e)
         {
             AnnulerInfo();
         }
-    }
+        #endregion
+      }
 }

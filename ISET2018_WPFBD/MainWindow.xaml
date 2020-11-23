@@ -279,9 +279,9 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0">ID Paiement :</Label>
-                        <ComboBox Name="cbPaiementID" Grid.Row="1" Grid.Column="0" Width="300px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
+                        <TextBox Name="tbPaiementID" Grid.Row="1" Grid.Column="0" Width="300px" HorizontalAlignment="Left" Height="20px" Margin="5px" Text="1"></TextBox>
                         <Label Grid.Row="0" Grid.Column="1">Moyen de paiement :</Label>
-                        <ComboBox Name="cbPaiement" Grid.Row="1" Grid.Column="1" Width="300px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
+                        <ComboBox Name="cbPaiement" Grid.Row="1" Grid.Column="1" Width="300px" HorizontalAlignment="Left" Height="20px" Margin="5px" SelectionChanged="cbPaiement_SelectionChanged" SelectedIndex="0"></ComboBox>
                     </Grid>
                     <!--PARTIE GRID 3 BOUTONS-->
                     <Grid Grid.Row="4">

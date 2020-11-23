@@ -51,6 +51,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,6 +74,21 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\DataObject\Marque.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Marque.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\DataObject\Modele.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modele.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\DataObject\Paiement.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Paiement.dbml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs" />
     <Compile Include="Model\A_AchatVente.cs" />
@@ -137,10 +153,34 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="DataAccess\DataObject\Marque.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Marque.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataAccess\DataObject\Modele.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Modele.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataAccess\DataObject\Paiement.dbml.layout">
+      <DependentUpon>Paiement.dbml</DependentUpon>
+    </None>
+    <None Include="DataAccess\DataObject\Marque.dbml.layout">
+      <DependentUpon>Marque.dbml</DependentUpon>
+    </None>
+    <None Include="DataAccess\DataObject\Modele.dbml.layout">
+      <DependentUpon>Modele.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="DataAccess\DataObject\Paiement.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Paiement.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -150,16 +190,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BD_Exemple.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BD_Exemple_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DependentUpon>BD_Exemple.mdf</DependentUpon>
-    </Content>
     <Resource Include="Icon1.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>

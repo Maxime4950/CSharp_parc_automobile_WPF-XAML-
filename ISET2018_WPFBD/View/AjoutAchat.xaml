@@ -137,13 +137,12 @@
 
                         <!--Label deuxième row-->
                         <!--MARQUE-->
-                        <ComboBox x:Name="cbMarque" Grid.Row="1" Grid.Column="0" Margin="10,10.6,10,8.4" IsReadOnly="True"
-                            Text="{Binding BcpStock.IdMarque, Mode=TwoWay}" />
+                        <ComboBox x:Name="cbMarque" Grid.Row="1" Grid.Column="0" Margin="10,10.6,10,8.4" IsReadOnly="True" SelectionChanged="cbMarque_SelectionChanged"/>
                         <!--ID MARQUE-->
                         <TextBox x:Name="tbIDMarque" Grid.Row="1" Grid.Column="1" Margin="10.4,10.6,9.6,8.4" IsReadOnly="True" />
 
                         <!--CATEGORIE-->
-                        <ComboBox x:Name="cbModele" Grid.Row="1" Grid.Column="2" Margin="10.2,10.6,9.6,8.4" IsReadOnly="True"/>
+                        <ComboBox x:Name="cbModele" Grid.Row="1" Grid.Column="2" Margin="10.2,10.6,9.6,8.4" IsReadOnly="True" SelectionChanged="cbModele_SelectionChanged"/>
 
                         <!--RUE-->
                         <TextBox x:Name="tbIDModele" Grid.Row="1" Grid.Column="3" Margin="10.4,10.6,9.6,8.4" IsReadOnly="True" />
@@ -239,9 +238,9 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0">ID Paiement :</Label>
-                        <ComboBox Name="cbPaiementID" Grid.Row="1" Grid.Column="0" Width="300px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
+                        <TextBox Name="tbPaiementID" Grid.Row="1" Grid.Column="0" Width="300px" HorizontalAlignment="Left" Height="20px" Margin="5px" Text="1"></TextBox>
                         <Label Grid.Row="0" Grid.Column="1">Moyen de paiement :</Label>
-                        <ComboBox Name="cbPaiement" Grid.Row="1" Grid.Column="1" Width="300px" HorizontalAlignment="Left" Height="20px" Margin="5px"></ComboBox>
+                        <ComboBox Name="cbPaiement" Grid.Row="1" Grid.Column="1" Width="300px" HorizontalAlignment="Left" Height="20px" Margin="5px" SelectedIndex="0" SelectionChanged="cbPaiement_SelectionChanged"></ComboBox>
                     </Grid>
                     <!--PARTIE GRID 3 BOUTONS-->
                     <Grid Grid.Row="4">
