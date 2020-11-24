@@ -30,7 +30,6 @@ namespace ISET2018_WPFBD
         private ViewModel.VM_Personne LocalPersonne;
         private ViewModel.VM_Stock LocalStock;
         private ViewModel.VM_Vente LocalVente;
-        private ViewModel.VM_Vente LocalVenteActualiser;
 
         FactureVente factV = new FactureVente();
 
@@ -156,6 +155,7 @@ namespace ISET2018_WPFBD
                 //Faire la facture avant de supprimer la voiture et les frais
                 new G_StockVoiture(sConnexion).Supprimer(int.Parse(tbIDVoitureConf.Text));
 
+                ActualiserDataGridStock();
                 AnnulerInfo();//Une fois tout fini on peut reinitialiser la page
             }
             else
@@ -220,11 +220,20 @@ namespace ISET2018_WPFBD
         }
         #endregion
 
+        #region ACTUALISATION DG STOCK (APRES UNE VENTE)
+
+        private void ActualiserDataGridStock()
+        {
+            LocalStock = new ViewModel.VM_Stock();
+            ficheInfoStock.DataContext = LocalStock;
+        }
+        #endregion
+
         #region ACTUALISATION DG VENTE (APRES UNE VENTE)
         private void ActualiserDataGridVentes()
         {
-            LocalVenteActualiser = new ViewModel.VM_Vente();
-            ficheInfoVentes.DataContext = LocalVenteActualiser;
+            LocalVente = new ViewModel.VM_Vente();
+            ficheInfoVentes.DataContext = LocalVente;
         }
         #endregion
 
@@ -236,6 +245,7 @@ namespace ISET2018_WPFBD
         }
         #endregion
 
+        #region Remplissage TB en fonction de l'ID
         private void tbIDMarque_TextChanged(object sender, TextChangedEventArgs e)
         {
             if(tbIDMarque.Text != "")
@@ -254,55 +264,68 @@ namespace ISET2018_WPFBD
 
         private void tbIDModele_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ModeleDataContext DCModele = new ModeleDataContext();
-            var requete = from modele in DCModele.ModeleVoiture
-                          where modele.idModele == int.Parse(tbIDModele.Text)
-                          select modele.nomModele;
-
-            foreach (var aa in requete)
+            if(tbIDModele.Text != "")
             {
-                tbNomModele.Text = aa.ToString();
+                ModeleDataContext DCModele = new ModeleDataContext();
+                var requete = from modele in DCModele.ModeleVoiture
+                              where modele.idModele == int.Parse(tbIDModele.Text)
+                              select modele.nomModele;
+
+                foreach (var aa in requete)
+                {
+                    tbNomModele.Text = aa.ToString();
+                }
             }
         }
 
         private void tbIDCategorie_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CategorieDataContext DCCategorie = new CategorieDataContext();
-            var requete = from categorie in DCCategorie.CategorieVoiture
-                          where categorie.idCat == int.Parse(tbIDCategorie.Text)
-                          select categorie.nomCat;
-
-            foreach (var aa in requete)
+            if(tbIDCategorie.Text != "")
             {
-                tbNomCategorie.Text = aa.ToString();
+                CategorieDataContext DCCategorie = new CategorieDataContext();
+                var requete = from categorie in DCCategorie.CategorieVoiture
+                              where categorie.idCat == int.Parse(tbIDCategorie.Text)
+                              select categorie.nomCat;
+
+                foreach (var aa in requete)
+                {
+                    tbNomCategorie.Text = aa.ToString();
+                }
             }
         }
 
 
         private void tbIDCarburant_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CarburantDataContext DCCarburant = new CarburantDataContext();
-            var requete = from carburant in DCCarburant.CarburantVoiture
-                          where carburant.idCarburant == int.Parse(tbIDCarburant.Text)
-                          select carburant.nomCarburant;
-
-            foreach (var aa in requete)
+            if(tbIDCarburant.Text != "")
             {
-                tbNomCarburant.Text = aa.ToString();
+                CarburantDataContext DCCarburant = new CarburantDataContext();
+                var requete = from carburant in DCCarburant.CarburantVoiture
+                              where carburant.idCarburant == int.Parse(tbIDCarburant.Text)
+                              select carburant.nomCarburant;
+
+                foreach (var aa in requete)
+                {
+                    tbNomCarburant.Text = aa.ToString();
+                }
             }
         }
 
         private void tbIDCouleur_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CouleurDataContext DCCouleur = new CouleurDataContext();
-            var requete = from couleur in DCCouleur.CouleurVoiture
-                          where couleur.idCouleur == int.Parse(tbIDCouleur.Text)
-                          select couleur.nomCouleur;
-
-            foreach (var aa in requete)
+            if(tbIDCouleur.Text != "")
             {
-                tbNomCouleur.Text = aa.ToString();
+                CouleurDataContext DCCouleur = new CouleurDataContext();
+                var requete = from couleur in DCCouleur.CouleurVoiture
+                              where couleur.idCouleur == int.Parse(tbIDCouleur.Text)
+                              select couleur.nomCouleur;
+
+                foreach (var aa in requete)
+                {
+                    tbNomCouleur.Text = aa.ToString();
+                }
             }
         }
+        #endregion
     }
 }
