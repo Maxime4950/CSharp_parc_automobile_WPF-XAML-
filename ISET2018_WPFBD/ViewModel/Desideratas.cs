@@ -144,9 +144,9 @@ namespace ISET2018_WPFBD.ViewModel
             { string s = p.idDesiterata.ToString() ; } //a verifier
             int nTmp = lTmp.Count;
         }
-        public void PersonneSelectionnee2UnePersonne()
+        public void DesiderataSelectionne2UnDesiderata()
         {
-            UnDesiderata.IDDesiderata = DesiderataSelectionne.idClient;
+            UnDesiderata.IDDesiderata = DesiderataSelectionne.idDesiterata;
             UnDesiderata.IDClient = DesiderataSelectionne.idClient;
             UnDesiderata.IDMarque = DesiderataSelectionne.idMarque;
             UnDesiderata.IDModele = DesiderataSelectionne.idModele;
@@ -205,8 +205,8 @@ namespace ISET2018_WPFBD.ViewModel
 
         public int? IDCarburant
         {
-            get { return _IDCat; }
-            set { AssignerChamp<int?>(ref _IDCat, value, System.Reflection.MethodBase.GetCurrentMethod().Name); }
+            get { return _IDCarburant; }
+            set { AssignerChamp<int?>(ref _IDCarburant, value, System.Reflection.MethodBase.GetCurrentMethod().Name); }
         }
 
         public int? AnneeMin

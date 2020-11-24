@@ -45,7 +45,7 @@
             <Button x:Name="btnMarques" Grid.Row="5" Background="#FF3D4ED3" Foreground="White" Click="btnMarques_Click" Content="Marques"/>
             <Button x:Name="btnModeles" Grid.Row="6" Background="#FF3D4ED3" Foreground="White" Click="btnModeles_Click" Content="Modèles"/>
             <Button x:Name="btnStock" Grid.Row="7" Background="#FF3D4ED3" Foreground="White" Click="btnStock_Click" Content="Stock"/>
-            <Button x:Name="btnDesideratas" Grid.Row="8" Background="#FF3D4ED3" Foreground="White" Content="Desideratas"/>
+            <Button x:Name="btnDesideratas" Grid.Row="8" Background="#FF3D4ED3" Foreground="White" Content="Desideratas" Click="btnDesideratas_Click"/>
             <Button Grid.Row="9" Background="#FF3D4ED3" Foreground="White" Content="Finances"/>
         </Grid>
         <Grid Grid.Column="1">

@@ -327,5 +327,11 @@ namespace ISET2018_WPFBD
             }
         }
         #endregion
+
+        private void btnDesideratas_Click(object sender, RoutedEventArgs e)
+        {
+            View.Desideratas f = new View.Desideratas();
+            f.ShowDialog();
+        }
     }
 }
