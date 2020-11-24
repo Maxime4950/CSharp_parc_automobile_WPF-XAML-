@@ -63,6 +63,7 @@ namespace ISET2018_WPFBD.ViewModel
         public VM_Frais()
         {
             UnFrais = new VM_UnFrais();
+            UnFrais.IDFrais= 24;
             string Index = UnFrais.IDFrais.ToString();
             BcpFrais = ChargerFrais(chConnexion, Index);
             ActiverUneFiche = false;
@@ -89,7 +90,7 @@ namespace ISET2018_WPFBD.ViewModel
         {
             if (nAjout == -1)
             {
-                UnFrais.IDFrais = new Model.G_Frais(chConnexion).Ajouter(UnFrais.IDVoiture, UnFrais.NomFrais, UnFrais.DescriptionFrais, UnFrais.CoutFrais);
+                UnFrais.IDFrais = new Model.G_Frais(chConnexion).Ajouter(UnFrais.IDVoiture, UnFrais.NomFrais, UnFrais.DescriptionFrais, UnFrais.CoutFrais) ;
                 BcpFrais.Add(new C_Frais(UnFrais.IDFrais, UnFrais.IDVoiture, UnFrais.NomFrais, UnFrais.DescriptionFrais, UnFrais.CoutFrais));
             }
             else
@@ -113,7 +114,7 @@ namespace ISET2018_WPFBD.ViewModel
         {
             if (FraisSelectionne != null)
             {
-                C_Frais Tmp = new Model.G_Frais(chConnexion).Lire_ID(FraisSelectionne.idVoiture);
+                C_Frais Tmp = new Model.G_Frais(chConnexion).Lire_ID(FraisSelectionne.idFrais);
                 UnFrais = new VM_UnFrais();
                 UnFrais.IDFrais = Tmp.idFrais;
                 UnFrais.IDVoiture = Tmp.idVoiture;

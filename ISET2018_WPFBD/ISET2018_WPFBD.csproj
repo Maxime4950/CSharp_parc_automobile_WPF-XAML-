@@ -75,6 +75,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\FactureVente.cs" />
     <Compile Include="DataAccess\DataObject\Carburant.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,6 +90,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Couleur.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\DataObject\Frais.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Frais.dbml</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\DataObject\Marque.designer.cs">
       <AutoGen>True</AutoGen>
@@ -190,6 +196,11 @@
       <LastGenOutput>Couleur.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="DataAccess\DataObject\Frais.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Frais.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataAccess\DataObject\Marque.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Marque.designer.cs</LastGenOutput>
@@ -217,6 +228,9 @@
     </None>
     <None Include="DataAccess\DataObject\Couleur.dbml.layout">
       <DependentUpon>Couleur.dbml</DependentUpon>
+    </None>
+    <None Include="DataAccess\DataObject\Frais.dbml.layout">
+      <DependentUpon>Frais.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

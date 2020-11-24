@@ -69,55 +69,37 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="150px" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100px" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <!--IDENTIFIANT-->
-                <TextBlock Name="tID" Text="Identifiant :" VerticalAlignment="Center" Margin="5" />
-                <TextBox Name="tbID" Grid.Column="1" Margin="10"
-               Text="{Binding Path=UnePersonne.ID, Mode=TwoWay}" />
+                <!--IDENTIFIANT FRAIS-->
+                <TextBlock Name="tIDFrais" Text="Identifiant Frais :" VerticalAlignment="Center" Margin="5" />
+                <TextBox Name="tbIDFrais" Grid.Column="1" Margin="10"
+               Text="{Binding Path=UnFrais.IDFrais, Mode=TwoWay}" />
 
-                <!--PRENOM-->
-                <TextBlock Name="tPre" Text="Prénom :" Grid.Row="1" VerticalAlignment="Center" Margin="5" />
-                <TextBox Name="tbPre" Grid.Row="1" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UnePersonne.Pre, Mode=TwoWay}" />
+                <!--IDENTIFIANT VOITURE-->
+                <TextBlock Name="tIDVoiture" Text="Identifiant Voiture :" Grid.Row="1" VerticalAlignment="Center" Margin="5" />
+                <TextBox Name="tbIDVoiture" Grid.Row="1" Grid.Column="1" Margin="10"
+                         Text="{Binding Path=UnFrais.IDVoiture, Mode=TwoWay}"/>
 
                 <!--NOM-->
-                <TextBlock Name="tNom" Text="Nom :" Grid.Row="2" VerticalAlignment="Center" Margin="5"/>
-                <TextBox Name="tbNom" Grid.Row="2" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UnePersonne.Nom, Mode=TwoWay}" />
+                <TextBlock Name="tNomFrais" Text="Nom du frais :" Grid.Row="2" VerticalAlignment="Center" Margin="5"/>
+                <TextBox Name="tbNomFrais" Grid.Row="2" Grid.Column="1" Margin="10"
+            Text="{Binding Path=UnFrais.NomFrais, Mode=TwoWay}" />
 
                 <!--RUE-->
-                <TextBlock Name="tRue" Grid.Row="3" Text="Rue :" VerticalAlignment="Center" Margin="5"/>
-                <TextBox Name="tbRue" Grid.Row="3" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UnePersonne.Rue, Mode=TwoWay}" />
+                <TextBlock Name="tDescriptionFrais" Grid.Row="3" Text="Description :" VerticalAlignment="Center" Margin="5"/>
+                <TextBox Name="tbDescriptionFrais" Grid.Row="3" Grid.Column="1" Margin="10"
+            Text="{Binding Path=UnFrais.DescriptionFrais, Mode=TwoWay}" />
 
                 <!--NUMERO-->
-                <TextBlock Name="tNumero" Grid.Row="4" Text="Numéro :" VerticalAlignment="Center" Margin="5"/>
-                <TextBox Name="tbNumero" Grid.Row="4" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UnePersonne.Numero, Mode=TwoWay}" />
-
-                <!--BOITE-->
-                <TextBlock Name="tBoite" Grid.Row="5" Text="Boite :" VerticalAlignment="Center" Margin="5"/>
-                <TextBox Name="tbBoite" Grid.Row="5" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UnePersonne.Boite, Mode=TwoWay}" />
-
-                <!--CODE PO-->
-                <TextBlock Name="tCodePo" Grid.Row="6" Text="Code postal :" VerticalAlignment="Center" Margin="5"/>
-                <TextBox Name="tbCodePo" Grid.Row="6" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UnePersonne.CodePo, Mode=TwoWay}" />
-
-                <!--LOCALITE-->
-                <TextBlock Name="tLocalite" Grid.Row="7" Text="Localité :" VerticalAlignment="Center" Margin="5"/>
-                <TextBox Name="tbLocalite" Grid.Row="7" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UnePersonne.Localite, Mode=TwoWay}" />
+                <TextBlock Name="tCoutFrais" Grid.Row="4" Text="Coût :" VerticalAlignment="Center" Margin="5"/>
+                <TextBox Name="tbCoutFrais" Grid.Row="4" Grid.Column="1" Margin="10"
+            Text="{Binding Path=UnFrais.CoutFrais, Mode=TwoWay}" />
             </Grid>
         </Grid>
     </Grid>

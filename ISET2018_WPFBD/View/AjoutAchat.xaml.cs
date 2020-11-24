@@ -26,6 +26,7 @@ namespace ISET2018_WPFBD.View
         private ViewModel.VM_Stock LocalStock;
         private ViewModel.VM_Vente LocalVente;
         private ViewModel.VM_Vente LocalVenteActualiser;
+        private ViewModel.VM_Achat LocalAchat;
 
         private string sConnexion = @"Data Source=DESKTOP-5KJPBES;Initial Catalog=C:\USERS\MAESM\DOCUMENTS\COMPLEMENT_P\ISET2018_WPFBD_MVVM_CONCEPT\ISET2018_WPFBD\BD_VOITURE_MVVM.MDF;Integrated Security=True";
 
@@ -35,10 +36,12 @@ namespace ISET2018_WPFBD.View
             LocalPersonne = new ViewModel.VM_Personne();
             LocalStock = new ViewModel.VM_Stock();
             LocalVente = new ViewModel.VM_Vente();
+            LocalAchat = new ViewModel.VM_Achat();
 
             ficheInfoVentesA.DataContext = LocalVente;
             ficheInfoClientA.DataContext = LocalPersonne;
             ficheInfoVoiture.DataContext = LocalStock;
+            ficheInfoVentesA.DataContext = LocalAchat;
 
             RemplirAllCb();
         }
@@ -52,20 +55,12 @@ namespace ISET2018_WPFBD.View
             }
         }
 
-        private void dgVentesAjoutAchat_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (dgVentesAjoutAchat.SelectedIndex >= 0)
-            {
-                LocalVente.VenteSelectionnee2UneVente();
-            }
-        }
-
         private void btnConfirmerAchat_Click(object sender, RoutedEventArgs e)
         {
             if (tbIDClientConf.Text != "" && tbIDVoitureConf.Text != "" && tbPrix.Text != "" && dtpDate.Text != "" && cbPaiement.Text != "")
             {
                 int iID = new G_AchatVente(sConnexion).Ajouter(int.Parse(tbIDVoitureConf.Text), int.Parse(tbIDClientConf.Text), int.Parse(tbPrix.Text)
-                 , DateTime.Parse(dtpDate.Text), int.Parse(tbPaiementID.Text), "vente");
+                 , DateTime.Parse(dtpDate.Text), int.Parse(tbPaiementID.Text), "achat");
                 AnnulerInfo(); //Pour vider les textbox
                 ActualiserDataGridVentes();
                 MessageBox.Show("Vente effectuée N° : " + iID.ToString() + " effectuée");
@@ -227,6 +222,7 @@ namespace ISET2018_WPFBD.View
         private void btnAjouterFrais_Click(object sender, RoutedEventArgs e)
         {
             View.FraisAchat f = new View.FraisAchat();
+            f.tbIDVoiture.Text = tbIDVoitureConf.Text;
             f.ShowDialog();
             /*
             if (tbIDVoitureConf.Text != "")
@@ -295,6 +291,14 @@ namespace ISET2018_WPFBD.View
             else
             {
                 MessageBox.Show("Veuillez remplir toutes les infos du véhicule");
+            }
+        }
+
+        private void dgAchatAjoutAchat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgAchatAjoutAchat.SelectedIndex >= 0)
+            {
+                LocalAchat.AchatSelectionnee2UnAchat();
             }
         }
     }

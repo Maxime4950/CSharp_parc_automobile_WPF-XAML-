@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using ISET2018_WPFBD.Model;
 using System.Collections.ObjectModel;
 using ISET2018_WPFBD.DataAccess.DataObject;
+using ISET2018_WPFBD.Classes;
+
 
 namespace ISET2018_WPFBD
 
@@ -29,6 +31,8 @@ namespace ISET2018_WPFBD
         private ViewModel.VM_Stock LocalStock;
         private ViewModel.VM_Vente LocalVente;
         private ViewModel.VM_Vente LocalVenteActualiser;
+
+        FactureVente factV = new FactureVente();
 
         private string sConnexion = @"Data Source=DESKTOP-5KJPBES;Initial Catalog=C:\USERS\MAESM\DOCUMENTS\COMPLEMENT_P\ISET2018_WPFBD_MVVM_CONCEPT\ISET2018_WPFBD\BD_VOITURE_MVVM.MDF;Integrated Security=True";
         #endregion
@@ -137,13 +141,40 @@ namespace ISET2018_WPFBD
             {
                 int iID = new G_AchatVente(sConnexion).Ajouter(int.Parse(tbIDVoitureConf.Text), int.Parse(tbIDClientConf.Text), int.Parse(tbPrix.Text)
                  , DateTime.Parse(dtpDate.Text), int.Parse(tbPaiementID.Text), "vente");
-                AnnulerInfo(); //Pour vider les textbox
+
                 ActualiserDataGridVentes();
                 MessageBox.Show ("Vente effectuée N° : " + iID.ToString() + " effectuée");
+
+                //FACTURE
+
+                factV.creerFactureVente(tbIDClientConf, tbNom, tbPre, tbIDVoitureConf, tbNomMarque , tbNomModele,
+                tbNomCategorie, tbAnneeFabr, tbNomCarburant, tbNomCouleur, tbKilometrage, tbPrix, dtpDate, tbPaiementID, cbPaiement);
+
+                //Supprimer les frais associé à la voiture que l'on va supprimer
+                supprimerFraisAssocieALaVoitSupp();
+
+                //Faire la facture avant de supprimer la voiture et les frais
+                new G_StockVoiture(sConnexion).Supprimer(int.Parse(tbIDVoitureConf.Text));
+
+                AnnulerInfo();//Une fois tout fini on peut reinitialiser la page
             }
             else
             {
                 MessageBox.Show("Veuillez remplir tous les champs ! ");
+            }
+        }
+
+        private void supprimerFraisAssocieALaVoitSupp()
+        {
+            FraisDataContext DCFrais = new FraisDataContext();
+
+            var requete = from frais in DCFrais.FraisVoiture
+                          where frais.idVoiture == int.Parse(tbIDVoitureConf.Text)
+                          select frais.idFrais;
+
+            foreach (var aa in requete)
+            {
+                new G_Frais(sConnexion).Supprimer(aa);
             }
         }
 
@@ -204,5 +235,74 @@ namespace ISET2018_WPFBD
             AnnulerInfo();
         }
         #endregion
-      }
+
+        private void tbIDMarque_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(tbIDMarque.Text != "")
+            {
+                MarqueDataContext DCMarque = new MarqueDataContext();
+                var requete = from marque in DCMarque.MarqueVoiture
+                              where marque.idMarque == int.Parse(tbIDMarque.Text)
+                              select marque.nomMarque;
+
+                foreach (var aa in requete)
+                {
+                    tbNomMarque.Text = aa.ToString();
+                }
+            }
+        }
+
+        private void tbIDModele_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ModeleDataContext DCModele = new ModeleDataContext();
+            var requete = from modele in DCModele.ModeleVoiture
+                          where modele.idModele == int.Parse(tbIDModele.Text)
+                          select modele.nomModele;
+
+            foreach (var aa in requete)
+            {
+                tbNomModele.Text = aa.ToString();
+            }
+        }
+
+        private void tbIDCategorie_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CategorieDataContext DCCategorie = new CategorieDataContext();
+            var requete = from categorie in DCCategorie.CategorieVoiture
+                          where categorie.idCat == int.Parse(tbIDCategorie.Text)
+                          select categorie.nomCat;
+
+            foreach (var aa in requete)
+            {
+                tbNomCategorie.Text = aa.ToString();
+            }
+        }
+
+
+        private void tbIDCarburant_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CarburantDataContext DCCarburant = new CarburantDataContext();
+            var requete = from carburant in DCCarburant.CarburantVoiture
+                          where carburant.idCarburant == int.Parse(tbIDCarburant.Text)
+                          select carburant.nomCarburant;
+
+            foreach (var aa in requete)
+            {
+                tbNomCarburant.Text = aa.ToString();
+            }
+        }
+
+        private void tbIDCouleur_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CouleurDataContext DCCouleur = new CouleurDataContext();
+            var requete = from couleur in DCCouleur.CouleurVoiture
+                          where couleur.idCouleur == int.Parse(tbIDCouleur.Text)
+                          select couleur.nomCouleur;
+
+            foreach (var aa in requete)
+            {
+                tbNomCouleur.Text = aa.ToString();
+            }
+        }
+    }
 }

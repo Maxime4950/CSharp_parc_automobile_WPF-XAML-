@@ -201,7 +201,7 @@
                         </Grid.ColumnDefinitions>
                         <!--ID CLIENT-->
                         <Label Grid.Row="0" Grid.Column="0">ID Client</Label>
-                        <TextBox Name="tbIDClientConf" Grid.Row="1" Height="20px" Margin="5,15,37,15" IsReadOnly="True"></TextBox>
+                        <TextBox Name="tbIDClientConf" Grid.Row="1" Height="20px" Margin="5,15,37,15" IsReadOnly="True" Text="1"></TextBox>
                         <!--ID VOITURE-->
                         <Label Grid.Row="0" Grid.Column="1">ID Voiture</Label>
                         <TextBox Name="tbIDVoitureConf" Grid.Row="1" Grid.Column="1" Height="20px" Margin="0,15,14,15" IsReadOnly="True"></TextBox>
@@ -259,9 +259,9 @@
                     </Grid.RowDefinitions>
                     <Label Background="Gray"></Label>
                     <Label Content="TABLEAU DES ACHATS" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-                    <DataGrid Name="dgVentesAjoutAchat" ItemsSource="{Binding Path=BcpAchat}" Grid.Row="1" VerticalScrollBarVisibility="Visible"
+                    <DataGrid Name="dgAchatAjoutAchat" ItemsSource="{Binding Path=BcpAchats}" Grid.Row="1" VerticalScrollBarVisibility="Visible"
                     IsReadOnly="True" AutoGenerateColumns="False" IsEnabled="{Binding Path=ActiverBcpFiche, Mode=OneWay}"
-                    SelectedItem="{Binding AchatSelectionnee, Mode=TwoWay}" SelectionChanged="dgVentesAjoutAchat_SelectionChanged" >
+                    SelectedItem="{Binding AchatSelectionnee, Mode=TwoWay}" SelectionChanged="dgAchatAjoutAchat_SelectionChanged" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID Opération" Binding="{Binding Path=idOperation}" Width="*" />
                             <DataGridTextColumn Header="ID Voiture" Binding="{Binding Path=idVoiture}" Width="*" />

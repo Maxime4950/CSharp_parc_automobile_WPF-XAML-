@@ -69,7 +69,7 @@
                 <Grid Name="ficheInfoClient" Grid.Row="0" Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30px"/>
-                        <RowDefinition Height="200px"/>
+                        <RowDefinition Height="110px"/>
                         <RowDefinition Height="200px"/>
                     </Grid.RowDefinitions>
                     <Label Background="gray"></Label>
@@ -147,8 +147,8 @@
                 <Grid Name="ficheInfoStock" Grid.Row="0" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30px"/>
-                        <RowDefinition Height="200px"/>
-                        <RowDefinition Height="200px"/>
+                        <RowDefinition Height="110px"/>
+                        <RowDefinition Height="250px"/>
                     </Grid.RowDefinitions>
                     <Label Background="gray"></Label>
                     <Label Content="STOCK" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"  Height="25"/>
@@ -171,7 +171,10 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="40"/>
-                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
                             <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -191,35 +194,48 @@
                         <TextBox x:Name="tbIDVoiture" Grid.Row="1" Grid.Column="0" Margin="10,10.6,10,8.4" IsReadOnly="True"
                             Text="{Binding UnStock.IdVoiture, Mode=TwoWay}" />
                         <!--MARQUE-->
-                        <TextBox x:Name="tbIDMarque" Grid.Row="1" Grid.Column="1" Margin="10,10.6,9.8,8.4" IsReadOnly="True"
-                            Text="{Binding UnStock.IdMarque, Mode=TwoWay}" />
+                        <TextBox x:Name="tbIDMarque" Grid.Row="1" Grid.Column="1" Margin="12,11,8,8" IsReadOnly="True"
+                            Text="{Binding UnStock.IdMarque, Mode=TwoWay}" TextChanged="tbIDMarque_TextChanged"/>
                         <!--MODELE-->
                         <TextBox x:Name="tbIDModele" Grid.Row="1" Grid.Column="2" Margin="10.2,10.6,9.6,8.4" IsReadOnly="True"
-                            Text="{Binding UnStock.IdModele, Mode=TwoWay}" />
+                            Text="{Binding UnStock.IdModele, Mode=TwoWay}" TextChanged="tbIDModele_TextChanged" />
 
                         <!--RUE-->
                         <TextBox x:Name="tbIDCategorie" Grid.Row="1" Grid.Column="3" Margin="10.4,10.6,9.6,8.4" IsReadOnly="True"
-                            Text="{Binding UnStock.IdCategorie, Mode=TwoWay}" />
+                            Text="{Binding UnStock.IdCategorie, Mode=TwoWay}" TextChanged="tbIDCategorie_TextChanged"/>
 
                         <!--Label troisieme row-->
-                        <Label Content="Annéee de fabrication" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,4.6,0,0.8" Height="25" Width="88"/>
-                        <Label Content="ID Carburant" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,4.6,5.8,0.8" Height="25" Width="77"/>
-                        <Label Content="ID Couleur" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="11.2,4.6,11.6,0.8" Height="25" Width="66"/>
-                        <Label Content="Kilométrage" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="7.4,4.6,7.6,0.8" Height="25" Width="73"/>
+                        <!--Nom Marque-->
+                        <TextBox x:Name="tbNomMarque" Grid.Row="2" Grid.Column="1" Margin="10,10.6,10,8.4" IsReadOnly="True"/>
+                        <!--Nom MARQUE-->
+                        <TextBox x:Name="tbNomModele" Grid.Row="2" Grid.Column="2" Margin="12,11,8,8" IsReadOnly="True"/>
+                        <!--Nom MODELE-->
+                        <TextBox x:Name="tbNomCategorie" Grid.Row="2" Grid.Column="3" Margin="10.2,10.6,9.6,8.4" IsReadOnly="True" />
+
+                        <!--Label troisieme row-->
+                        <Label Content="Annéee de fabrication" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,4.6,0,0.8" Height="25" Width="88"/>
+                        <Label Content="ID Carburant" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,4.6,5.8,0.8" Height="25" Width="77"/>
+                        <Label Content="ID Couleur" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="11.2,4.6,11.6,0.8" Height="25" Width="66"/>
+                        <Label Content="Kilométrage" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="7.4,4.6,7.6,0.8" Height="25" Width="73"/>
 
                         <!--Label quatrième row-->
                         <!--NUMERO-->
-                        <TextBox x:Name="tbAnneeFabr" Grid.Row="3" Grid.Column="0" Margin="10,12.2,10,6.8" IsReadOnly="True"
+                        <TextBox x:Name="tbAnneeFabr" Grid.Row="4" Grid.Column="0" Margin="10,12.2,10,6.8" IsReadOnly="True"
                             Text="{Binding UnStock.AnneeFabr, Mode=TwoWay}" />
                         <!--BOITE-->
-                        <TextBox x:Name="tbIDCarburant" Grid.Row="3" Grid.Column="1" Margin="10,12.2,9.8,6.8" IsReadOnly="True"
-                            Text="{Binding UnStock.IdCarburant, Mode=TwoWay}" />
+                        <TextBox x:Name="tbIDCarburant" Grid.Row="4" Grid.Column="1" Margin="10,12.2,9.8,6.8" IsReadOnly="True"
+                            Text="{Binding UnStock.IdCarburant, Mode=TwoWay}" TextChanged="tbIDCarburant_TextChanged"/>
                         <!--CODE PO-->
-                        <TextBox x:Name="tbIDCouleur" Grid.Row="3" Grid.Column="2" Margin="10.2,12.2,9.6,6.8" IsReadOnly="True"
-                            Text="{Binding UnStock.IdCouleur, Mode=TwoWay}" />
+                        <TextBox x:Name="tbIDCouleur" Grid.Row="4" Grid.Column="2" Margin="10.2,12.2,9.6,6.8" IsReadOnly="True"
+                            Text="{Binding UnStock.IdCouleur, Mode=TwoWay}" TextChanged="tbIDCouleur_TextChanged" />
                         <!--LOCALITE-->
-                        <TextBox x:Name="tbKilometrage" Grid.Row="3" Grid.Column="3" Margin="10.4,12.2,9.6,6.8" IsReadOnly="True"
+                        <TextBox x:Name="tbKilometrage" Grid.Row="4" Grid.Column="3" Margin="10.4,12.2,9.6,6.8" IsReadOnly="True"
                             Text="{Binding UnStock.Kilometrage, Mode=TwoWay}" />
+
+                        <!--Nom MARQUE-->
+                        <TextBox x:Name="tbNomCarburant" Grid.Row="5" Grid.Column="1" Margin="12,11,8,8" IsReadOnly="True"/>
+                        <!--Nom MODELE-->
+                        <TextBox x:Name="tbNomCouleur" Grid.Row="5" Grid.Column="2" Margin="10.2,10.6,9.6,8.4" IsReadOnly="True" />
 
                     </Grid>
                 </Grid>
