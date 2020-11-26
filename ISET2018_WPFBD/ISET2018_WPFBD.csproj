@@ -75,6 +75,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\FactureAchat.cs" />
     <Compile Include="Classes\FactureVente.cs" />
     <Compile Include="DataAccess\DataObject\Carburant.designer.cs">
       <AutoGen>True</AutoGen>

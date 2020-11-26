@@ -131,15 +131,15 @@ namespace ISET2018_WPFBD.ViewModel
         {
             if (VenteSelectionnee != null)
             {
-                new Model.G_ClientsVoiture(chConnexion).Supprimer(VenteSelectionnee.idOperation);
+                new Model.G_AchatVente(chConnexion).Supprimer(VenteSelectionnee.idOperation);
                 BcpVente.Remove(VenteSelectionnee);
             }
         }
         public void EssaiSelMult(object lListe)
         {
             System.Collections.IList lTmp = (System.Collections.IList)lListe;
-            foreach (C_ClientsVoiture p in lTmp)
-            { string s = p.nomClient; }
+            foreach (C_AchatVente p in lTmp)
+            { int s = p.idOperation; }
             int nTmp = lTmp.Count;
         }
         public void VenteSelectionnee2UneVente()

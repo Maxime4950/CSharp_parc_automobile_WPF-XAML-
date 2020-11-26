@@ -27,7 +27,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <!--HAUT GAUCHE-->
-                <Grid Name="ficheInfoClientA" Grid.Row="0" Grid.Column="0">
+                <Grid Name="ficheInfoClientA" Grid.Row="0" Grid.Column="0" IsEnabled="true">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30px"/>
                         <RowDefinition Height="150px"/>
@@ -105,7 +105,7 @@
                     </Grid>
                 </Grid>
                 <!--HAUT DROITE-->
-                <Grid Name="ficheInfoVoiture" Grid.Row="0" Grid.Column="1">
+                <Grid Name="ficheInfoVoiture" Grid.Row="0" Grid.Column="1" IsEnabled="true">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30px"/>
                         <RowDefinition Height="240px"/>
@@ -178,7 +178,7 @@
                 </Grid>
 
                 <!--BAS GAUCHE-->
-                <Grid Grid.Row="1" Grid.Column="0">
+                <Grid Grid.Row="1" Grid.Column="0" Name="ficheInfoAchat" IsEnabled="false">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40px"/>
                         <RowDefinition Height="80px"/>
@@ -252,7 +252,7 @@
                     </Grid>
                 </Grid>
                 <!--BAS DROITE-->
-                <Grid  Name="ficheInfoVentesA" Grid.Row="1" Grid.Column="1">
+                <Grid  Name="ficheInfoDGAchat" Grid.Row="1" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40px"/>
                         <RowDefinition Height="*"/>
