@@ -48,6 +48,7 @@ namespace ISET2018_WPFBD.View
 
         private void btnConfirmerIdCLient_Click(object sender, RoutedEventArgs e)
         {
+            tbIDDesiderata.Text = "";
             tbIDClientsDesiderata.Text = tbID.Text;
             remplirTBCBDesiderata();
             ficheInfosDesiderata.IsEnabled = true;
@@ -58,6 +59,7 @@ namespace ISET2018_WPFBD.View
         {
             if (dgDesideratas.SelectedCells.Count > 0)
             {
+                ficheInfosDesiderata.IsEnabled = true;
 
                 tbIDDesiderata.Text = LocalDesideratas.DesiderataSelectionne.idDesiterata.ToString();
                 C_Desideratas pTmp = new G_Desideratas(chConnexion).Lire_ID(int.Parse(tbIDDesiderata.Text));
@@ -67,8 +69,16 @@ namespace ISET2018_WPFBD.View
 
                 //Marque
                 tbIDMarqueDesiderata.Text = pTmp.idMarque.ToString();
-                C_Marque MarqueTmp = new G_Marque(chConnexion).Lire_ID(int.Parse(tbIDMarqueDesiderata.Text));
-                cbNomMarqueDesiderata.Text = MarqueTmp.nomMarque;
+                MarqueDataContext DCMarque = new MarqueDataContext();
+                var requete = from marque in DCMarque.MarqueVoiture
+                              where marque.idMarque == int.Parse(tbIDMarqueDesiderata.Text)
+                              select marque.nomMarque;
+
+                foreach (var aa in requete)
+                {
+                    cbNomMarqueDesiderata.Items.Add(aa.ToString());
+                    cbNomCarburantDesiderata.Text = aa.ToString();
+                }
 
                 //Modele
                 tbIDModeleDesiderata.Text = pTmp.idModele.ToString();
@@ -85,8 +95,8 @@ namespace ISET2018_WPFBD.View
 
                 //Carburant
                 tbIDCarburantDesiderata.Text = pTmp.idCarburant.ToString();
-                //C_CarburantVoiture CarbTmp = new G_CarburantVoiture(sConnex).Lire_ID(int.Parse(tbIdCarburant.Text));
-                //cbNomCarburant.Text = CarbTmp.nomCarburant;
+                C_Carburant CarbTmp = new G_Carburant(chConnexion).Lire_ID(int.Parse(tbIDCarburantDesiderata.Text));
+                cbNomCarburantDesiderata.Text = CarbTmp.nomCarburant;
 
                 //Couleur
                 tbIDCouleurDesiderata.Text = pTmp.idCouleur.ToString();
@@ -107,8 +117,8 @@ namespace ISET2018_WPFBD.View
 
         private void bAnnuler_Click(object sender, RoutedEventArgs e)
         {
-            gestionEnabledBoutonMenu(true);
             resetAllInfos();
+            gestionEnabledBoutonMenu(true);
             ficheDataGridClients.IsEnabled = false;
             ficheInfosDesiderata.IsEnabled = false;
         }
@@ -147,16 +157,12 @@ namespace ISET2018_WPFBD.View
             tbIDDesiderata.Text = "";
             tbIDClientsDesiderata.Text = "";
             tbIDMarqueDesiderata.Text = "";
-            cbNomMarqueDesiderata.Text = "";
+            tbIDMarqueDesiderata.Text = "";
             tbIDModeleDesiderata.Text = "";
-            cbNomModeleDesiderata.Text = "";
             tbIDCategorieDesiderata.Text = "";
-            cbNomCategorieDesiderata.Text = "";
             tbAnneeFabrDesiderata.Text = "";
             tbIDCarburantDesiderata.Text = "";
-            cbNomCarburantDesiderata.Text = "";
             tbIDCouleurDesiderata.Text = "";
-            cbNomCouleurDesiderata.Text = "";
             tbKilometrageDesiderata.Text = "";
         }
 
@@ -290,9 +296,10 @@ namespace ISET2018_WPFBD.View
         }
         #endregion
 
-        private void btnConfirmerAjoutDesiderata_Click(object sender, RoutedEventArgs e)
+        private void bQuitter_Click(object sender, RoutedEventArgs e)
         {
-            resetAllInfos();
+            Close();
         }
+
     }
 }

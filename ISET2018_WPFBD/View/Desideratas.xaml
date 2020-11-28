@@ -60,12 +60,12 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Background="#FF3D4ED3" Name="bAjouter" Content="Ajouter" Click="bAjouter_Click"/>
+                <Button Grid.Row="0" Background="#FF3D4ED3" Name="bAjouter" Content="Ajouter" Click="bAjouter_Click"  Command="{Binding cAjouter}" />
                 <Button Grid.Row="1" Background="#FF3D4ED3" Name="bConsulter" Content="Consulter" Click="bConsulter_Click" />
                 <Button Grid.Row="2" Background="#FF3D4ED3" Name="bEditer" Content="Editer" Command="{Binding cModifier}"/>
-                <Button Grid.Row="3" Background="#FF3D4ED3" Name="bSupprimer" Content="Supprimer" Command="{Binding cSupprimer}" />
+                <Button Grid.Row="3" Background="#FF3D4ED3" Name="bSupprimer" Content="Supprimer" IsEnabled="true" Command="{Binding cSupprimer}"/>
                 <Button Grid.Row="4" Background="#FF3D4ED3" Name="bAnnuler" Content="Annuler"  Click="bAnnuler_Click" Command="{Binding cAnnuler}"/>
-                <Button Grid.Row="5" Background="#FF3D4ED3" Name="bQuitter" Content="Quitter" />
+                <Button Grid.Row="5" Background="#FF3D4ED3" Name="bQuitter" Content="Quitter" Click="bQuitter_Click" />
             </Grid>
             <Grid Grid.Column="1" Name ="ficheDataGridClients" IsEnabled="False">
                 <Grid.RowDefinitions>
@@ -173,10 +173,10 @@
                     </Grid.ColumnDefinitions>
                     <!--ID DESIDERATA-->
                     <TextBlock Name="tIDDesiderata" Grid.Column="0" Text="ID Désiderata :" VerticalAlignment="Center" Margin="20"/>
-                    <TextBox Name="tbIDDesiderata" Grid.Row="1" Grid.Column="0" Margin="20,17.4" Text="{Binding Path=UnDesiderata.idDesiderata, Mode=TwoWay}" Height="20px"/>
+                    <TextBox Name="tbIDDesiderata" Grid.Row="1" Grid.Column="0" Margin="20,17.4" Text="{Binding Path=UnDesiderata.IDDesiderata, Mode=TwoWay}" Height="20px"/>
                     <!--ID CLIENT-->
                     <TextBlock Name="tIDClientDesiderata" Grid.Column="2" Text="ID Client :" VerticalAlignment="Center" Margin="5"/>
-                    <TextBox Name="tbIDClientsDesiderata" Grid.Row="1" Grid.Column="3" Margin="10" Text="{Binding Path=UnDesiderata.idClient, Mode=TwoWay}" Height="20px" />
+                    <TextBox Name="tbIDClientsDesiderata" Grid.Row="1" Grid.Column="3" Margin="10" Text="{Binding Path=UnDesiderata.IDClient, Mode=TwoWay}" Height="20px" />
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
@@ -196,11 +196,11 @@
                         </Grid.ColumnDefinitions>
                         <!--NOM + ID MARQUE-->
                         <TextBlock Name="tIDMarqueDesiderata" Grid.Column="0" Text="ID Marque :" VerticalAlignment="Center" Margin="20px"/>
-                        <TextBox Name="tbIDMarqueDesiderata" Grid.Row="1" Grid.Column="0" Margin="10" Text="{Binding Path=UnDesiderata.idMarque, Mode=TwoWay}" Height="30px" Width="50px" />
+                        <TextBox Name="tbIDMarqueDesiderata" Grid.Row="1" Grid.Column="0" Margin="10" Text="{Binding Path=UnDesiderata.IDMarque, Mode=TwoWay}" Height="30px" Width="50px" />
                         <ComboBox Name="cbNomMarqueDesiderata" Grid.Row="1" Grid.Column="1" Margin="10" Height="30px" SelectionChanged="cbNomMarqueDesiderata_SelectionChanged" />
                         <!--NOM + ID MODELE-->
                         <TextBlock Name="tIDModeleDesiderata" Grid.Row="0" Grid.Column="2" Text="ID Modèle :" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox Name="tbIDModeleDesiderata" Grid.Row="1" Grid.Column="2" Margin="10" Text="{Binding Path=UnDesiderata.idMarque, Mode=TwoWay}" Height="30px" />
+                        <TextBox Name="tbIDModeleDesiderata" Grid.Row="1" Grid.Column="2" Margin="10" Text="{Binding Path=UnDesiderata.IDModele, Mode=TwoWay}" Height="30px" />
                         <ComboBox Name="cbNomModeleDesiderata" Grid.Row="1" Grid.Column="3" Margin="10,14.6,21.6,15.4" Height="30px" SelectionChanged="cbNomModeleDesiderata_SelectionChanged" />
                     </Grid>
                 </Grid>
@@ -217,13 +217,13 @@
                         <ColumnDefinition Width="240*"/>
                         <ColumnDefinition Width="22*"/>
                     </Grid.ColumnDefinitions>
-                    <!--NOM + ID MARQUE-->
+                    <!--NOM + ID CATEGORIE-->
                     <TextBlock Name="tIDCategorieDesiderata" Grid.Column="0" Text="ID Catégorie :" VerticalAlignment="Center" Margin="20,17,19.4,17.4"/>
-                    <TextBox Name="tbIDCategorieDesiderata" Grid.Row="1" Grid.Column="0" Margin="20,14.6,30,15.4" Text="{Binding Path=UnDesiderata.idMarque, Mode=TwoWay}" Height="30px" Width="50px" />
+                    <TextBox Name="tbIDCategorieDesiderata" Grid.Row="1" Grid.Column="0" Margin="20,14.6,30,15.4" Text="{Binding Path=UnDesiderata.IDCat, Mode=TwoWay}" Height="30px" Width="50px" />
                     <ComboBox Name="cbNomCategorieDesiderata" Grid.Row="1" Grid.Column="1" Margin="9.6,14.6,9.6,15.4" Height="30px" SelectionChanged="cbNomCategorieDesiderata_SelectionChanged"/>
-                    <!--NOM + ID MODELE-->
+                    <!--ANNEE DE FABR-->
                     <TextBlock Name="tAnneeFabrDesiderata" Grid.Row="0" Grid.Column="2" Text="Année de fabrication :" VerticalAlignment="Center" Margin="5.4,17,4.6,17.4"/>
-                    <TextBox Name="tbAnneeFabrDesiderata" Grid.Row="1" Grid.Column="2" Margin="10.4,14.6,9.6,15.4" Text="{Binding Path=UnDesiderata.idMarque, Mode=TwoWay}" Height="30px" />
+                    <TextBox Name="tbAnneeFabrDesiderata" Grid.Row="1" Grid.Column="2" Margin="10.4,14.6,9.6,15.4" Text="{Binding Path=UnDesiderata.AnneeMin, Mode=TwoWay}" Height="30px" />
                 </Grid>
                 <Grid Grid.Row="3">
                     <Grid.RowDefinitions>
@@ -239,11 +239,11 @@
                     </Grid.ColumnDefinitions>
                     <!--NOM + ID CARBURANT-->
                     <TextBlock Name="tIDCarburantDesiderata" Grid.Column="0" Text="ID Carburant :" VerticalAlignment="Center" Margin="20,17,20,17.4"/>
-                    <TextBox Name="tbIDCarburantDesiderata" Grid.Row="1" Grid.Column="0" Margin="30,14.6,30,15.4" Text="{Binding Path=UnDesiderata.idMarque, Mode=TwoWay}" Height="30px" Width="50px" />
+                    <TextBox Name="tbIDCarburantDesiderata" Grid.Row="1" Grid.Column="0" Margin="30,14.6,30,15.4" Text="{Binding Path=UnDesiderata.IDCarburant, Mode=TwoWay}" Height="30px" Width="50px" />
                     <ComboBox Name="cbNomCarburantDesiderata" Grid.Row="1" Grid.Column="1" Margin="10,14.6,9.2,15.4" Height="30px" SelectionChanged="cbNomCarburantDesiderata_SelectionChanged"/>
                     <!--NOM + ID COULEUR-->
                     <TextBlock Name="tIDCouleurDesiderata" Grid.Row="0" Grid.Column="2" Text="ID Couleur :" VerticalAlignment="Center" Margin="4.8,17,5.2,17.4"/>
-                    <TextBox Name="tbIDCouleurDesiderata" Grid.Row="1" Grid.Column="2" Margin="9.8,14.6,10.2,15.4" Text="{Binding Path=UnDesiderata.idMarque, Mode=TwoWay}" Height="30px" />
+                    <TextBox Name="tbIDCouleurDesiderata" Grid.Row="1" Grid.Column="2" Margin="9.8,14.6,10.2,15.4" Text="{Binding Path=UnDesiderata.IDCouleur, Mode=TwoWay}" Height="30px" />
                     <ComboBox Name="cbNomCouleurDesiderata" Grid.Row="1" Grid.Column="3" Margin="9.8,14.6,21.4,15.4" Height="30px" Grid.ColumnSpan="2" SelectionChanged="cbNomCouleurDesiderata_SelectionChanged" />
                 </Grid>
                 <Grid Grid.Row="4">
@@ -260,9 +260,9 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Name="tKilometrageDesiderata" Grid.Column="0" Text="Kilométrage :" VerticalAlignment="Center" Margin="20"/>
-                        <TextBox Name="tbKilometrageDesiderata" Grid.Column="1" Margin="30,9.6,19.6,10.8" Text="{Binding Path=UnDesiderata.idMarque, Mode=TwoWay}" Height="30px" />
+                        <TextBox Name="tbKilometrageDesiderata" Grid.Column="1" Margin="30,9.6,19.6,10.8" Text="{Binding Path=UnDesiderata.Kilometrage, Mode=TwoWay}" Height="30px" />
                     </Grid>
-                    <Button x:Name="btnConfirmerAjoutDesiderata" Content="Confirmer ajout desiderata" Grid.Column="1" Margin="20px" Height="40px" Width="300px" Background="#FF3D4ED3" Command="{Binding cConfirmer}" Click="btnConfirmerAjoutDesiderata_Click"/>
+                    <Button x:Name="btnConfirmerAjoutDesiderata" Content="Confirmer ajout desiderata" Grid.Column="1" Margin="20px" Height="40px" Width="300px" Background="#FF3D4ED3" Command="{Binding cConfirmer}"/>
                 </Grid>
             </Grid>
         </Grid>

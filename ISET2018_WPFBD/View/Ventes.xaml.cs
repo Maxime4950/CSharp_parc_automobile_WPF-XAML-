@@ -20,14 +20,21 @@ namespace ISET2018_WPFBD.View
     /// </summary>
     public partial class Vente : Window
     {
+        #region Initialisation des variables
         private ViewModel.VM_Vente LocalVente;
         private string chConnexion = @"Data Source=DESKTOP-5KJPBES;Initial Catalog=C:\USERS\MAESM\DOCUMENTS\COMPLEMENT_P\ISET2018_WPFBD_MVVM_CONCEPT\ISET2018_WPFBD\BD_VOITURE_MVVM.MDF;Integrated Security=True";
+        #endregion
+
+        #region Constructeur Vente
         public Vente()
         {
             InitializeComponent();
             LocalVente = new ViewModel.VM_Vente();
             DataContext = LocalVente;
         }
+        #endregion
+
+        #region Méthodes
 
         private void dgVentes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -63,5 +70,31 @@ namespace ISET2018_WPFBD.View
                 rtbFactureVentes.AppendText("La facture n'est pas disponible.");
             }
         }
+
+        private void bDetails_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgVentes.SelectedIndex >= 0)
+            {
+                EtatEnabledBouton(false);
+                FicheDetails.IsEnabled = true;
+            }
+        }
+
+        private void bAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            EtatEnabledBouton(true);
+            FicheDetails.IsEnabled = false;
+            rtbFactureVentes.Document.Blocks.Clear();
+        }
+
+        private void EtatEnabledBouton(bool etat)
+        {
+            bDetails.IsEnabled = etat;
+            bConsulterFacture.IsEnabled = !etat;
+            bSupprimer.IsEnabled = etat;
+            bAnnuler.IsEnabled = !etat;
+            bQuitter.IsEnabled = etat;
+        }
+        #endregion$
     }
 }

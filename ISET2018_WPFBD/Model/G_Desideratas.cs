@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ISET2018_WPFBD.Model
 {
-    class G_Desideratas : G_Base
+    public class G_Desideratas : G_Base
     {
         #region Constructeurs
         public G_Desideratas()

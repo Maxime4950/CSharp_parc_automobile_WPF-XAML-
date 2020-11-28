@@ -88,6 +88,11 @@ namespace ISET2018_WPFBD.ViewModel
         //Confirmation pour l'ajout ou la modification
         public void Confirmer()
         {
+            UnDesiderata.IDDesiderata = new Model.G_Desideratas(chConnexion).Ajouter(UnDesiderata.IDClient, UnDesiderata.IDMarque, UnDesiderata.IDModele, UnDesiderata.IDCat, UnDesiderata.Kilometrage, UnDesiderata.IDCouleur, UnDesiderata.IDCarburant, UnDesiderata.AnneeMin);
+            BcpDesideratas.Add(new C_Desideratas(UnDesiderata.IDDesiderata, UnDesiderata.IDClient, UnDesiderata.IDMarque, UnDesiderata.IDModele, UnDesiderata.IDCat, UnDesiderata.Kilometrage, UnDesiderata.IDCouleur, UnDesiderata.IDCarburant, UnDesiderata.AnneeMin));
+        }
+        public void Confirmer2()
+        {
             if (nAjout == -1)
             {
                 UnDesiderata.IDDesiderata = new Model.G_Desideratas(chConnexion).Ajouter(UnDesiderata.IDClient, UnDesiderata.IDMarque, UnDesiderata.IDModele, UnDesiderata.IDCat, UnDesiderata.Kilometrage, UnDesiderata.IDCouleur, UnDesiderata.IDCarburant, UnDesiderata.AnneeMin);
@@ -133,7 +138,7 @@ namespace ISET2018_WPFBD.ViewModel
         {
             if (DesiderataSelectionne != null)
             {
-                new Model.G_Desideratas(chConnexion).Supprimer(DesiderataSelectionne.idClient);
+                new Model.G_Desideratas(chConnexion).Supprimer(DesiderataSelectionne.idDesiterata);
                 BcpDesideratas.Remove(DesiderataSelectionne);
             }
         }

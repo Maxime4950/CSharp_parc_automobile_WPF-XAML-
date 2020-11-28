@@ -57,17 +57,16 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Background="#FF3D4ED3" Name="bAjouter" Content="Détails" IsEnabled="{Binding Path=ActiverBcpFiche, Mode=OneWay}"/>
-                <Button Grid.Row="1" Background="#FF3D4ED3" Name="bConsulterFacture" Content="Consulter Facture" IsEnabled="{Binding Path=ActiverUneFiche, Mode=OneWay}" Click="bConsulterFacture_Click"/>
-                <Button Grid.Row="2" Background="#FF3D4ED3" Name="bSupprimer" Content="Supprimer" IsEnabled="{Binding Path=ActiverBcpFiche, Mode=OneWay}"
+                <Button Grid.Row="0" Background="#FF3D4ED3" Name="bDetails" Content="Détails" IsEnabled="True" Click="bDetails_Click"/>
+                <Button Grid.Row="1" Background="#FF3D4ED3" Name="bConsulterFacture" Content="Consulter Facture" IsEnabled="False" Click="bConsulterFacture_Click"/>
+                <Button Grid.Row="2" Background="#FF3D4ED3" Name="bSupprimer" Content="Supprimer" IsEnabled="True"
                  Command="{Binding cSupprimer}"/>
-                <Button Grid.Row="3" Background="#FF3D4ED3" Name="bAnnuler" Content="Annuler" IsEnabled="{Binding Path=ActiverUneFiche, Mode=OneWay}"
-                Command="{Binding cAnnuler}" />
-                <Button Grid.Row="4" Background="#FF3D4ED3" Name="bQuitter" Content="Quitter" IsEnabled="{Binding Path=ActiverBcpFiche, Mode=OneWay}" Click="bQuitter_Click"/>
+                <Button Grid.Row="3" Background="#FF3D4ED3" Name="bAnnuler" Content="Annuler" IsEnabled="False" Click="bAnnuler_Click"/>
+                <Button Grid.Row="4" Background="#FF3D4ED3" Name="bQuitter" Content="Quitter" IsEnabled="True" Click="bQuitter_Click"/>
 
 
             </Grid>
-            <Grid Name="UneFiche" IsEnabled="{Binding Path=ActiverUneFiche, Mode=OneWay}" Grid.Column="1">
+            <Grid Name="FicheDetails" IsEnabled="false" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto" />
@@ -85,32 +84,32 @@
                 <!--IDENTIFIANT OPERATION-->
                 <TextBlock Name="tIdOperation" Text="ID Opération :" VerticalAlignment="Center" Margin="5" />
                 <TextBox Name="tbIdOperation" Grid.Column="1" Margin="10"
-               Text="{Binding Path=UneVente.IDOperation, Mode=TwoWay}" />
+               Text="{Binding Path=UneVente.IDOperation, Mode=TwoWay}" IsReadOnly="True"/>
 
                 <!--IDENTIFIANT VOITURE-->
                 <TextBlock Name="tIdVoiture" Text="ID Voiture :" Grid.Row="1" VerticalAlignment="Center" Margin="5" />
                 <TextBox Name="tbIdVoiture" Grid.Row="1" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UneVente.IDVoiture, Mode=TwoWay}" />
+            Text="{Binding Path=UneVente.IDVoiture, Mode=TwoWay}" IsReadOnly="True"/>
 
                 <!--IDENTIFIANT CLIENT-->
                 <TextBlock Name="tIdClient" Text="ID Client:" Grid.Row="2" VerticalAlignment="Center" Margin="5"/>
                 <TextBox Name="tbIdClient" Grid.Row="2" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UneVente.IDClient, Mode=TwoWay}" />
+            Text="{Binding Path=UneVente.IDClient, Mode=TwoWay}" IsReadOnly="True"/>
 
                 <!--PRIX-->
                 <TextBlock Name="tPrix" Grid.Row="3" Text="Prix (€) :" VerticalAlignment="Center" Margin="5"/>
                 <TextBox Name="tbPrix" Grid.Row="3" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UneVente.Prix, Mode=TwoWay}" />
+            Text="{Binding Path=UneVente.Prix, Mode=TwoWay}" IsReadOnly="True"/>
 
                 <!--DATE-->
-                <TextBlock Name="tDate" Grid.Row="4" Text="Numéro :" VerticalAlignment="Center" Margin="5"/>
+                <TextBlock Name="tDate" Grid.Row="4" Text="Date :" VerticalAlignment="Center" Margin="5"/>
                 <TextBox Name="tbDate" Grid.Row="4" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UneVente.Date, Mode=TwoWay}" />
+            Text="{Binding Path=UneVente.Date, Mode=TwoWay}" IsReadOnly="True"/>
 
                 <!--ID PAIEMENT-->
                 <TextBlock Name="tIdPaiement" Grid.Row="5" Text="ID Paiement :" VerticalAlignment="Center" Margin="5"/>
                 <TextBox Name="tbIdPaiement" Grid.Row="5" Grid.Column="1" Margin="10"
-            Text="{Binding Path=UneVente.IDPaiement, Mode=TwoWay}" />
+            Text="{Binding Path=UneVente.IDPaiement, Mode=TwoWay}" IsReadOnly="True"/>
             </Grid>
             <Grid Grid.Column="2">
                 <RichTextBox x:Name="rtbFactureVentes" IsReadOnly="true" Background="LightGray"></RichTextBox>

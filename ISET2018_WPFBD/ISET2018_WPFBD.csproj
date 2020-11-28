@@ -49,6 +49,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EasyHTMLReports, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EasyHTMLReports.1.0.0\lib\EasyHTMLReports.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -114,6 +117,7 @@
     </Compile>
     <Compile Include="MainWindow.xaml.cs" />
     <Compile Include="Model\A_AchatVente.cs" />
+    <Compile Include="Model\A_Carburant.cs" />
     <Compile Include="Model\A_Desideratas.cs" />
     <Compile Include="Model\A_Frais.cs" />
     <Compile Include="Model\A_Marque.cs" />
@@ -121,6 +125,7 @@
     <Compile Include="Model\A_Paiement.cs" />
     <Compile Include="Model\A_Stock.cs" />
     <Compile Include="Model\C_AchatVente.cs" />
+    <Compile Include="Model\C_Carburant.cs" />
     <Compile Include="Model\C_Desideratas.cs" />
     <Compile Include="Model\C_Frais.cs" />
     <Compile Include="Model\C_Marque.cs" />
@@ -128,6 +133,7 @@
     <Compile Include="Model\C_Paiement.cs" />
     <Compile Include="Model\C_Stock.cs" />
     <Compile Include="Model\G_AchatVente.cs" />
+    <Compile Include="Model\G_Carburant.cs" />
     <Compile Include="Model\G_Desideratas.cs" />
     <Compile Include="Model\G_Frais.cs" />
     <Compile Include="Model\G_Marque.cs" />
@@ -249,6 +255,7 @@
       <LastGenOutput>Paiement.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
