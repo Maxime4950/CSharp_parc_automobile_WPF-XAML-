@@ -90,6 +90,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Categorie.dbml</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\DataObject\Client.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Client.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\DataObject\Couleur.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,6 +123,8 @@
     <Compile Include="MainWindow.xaml.cs" />
     <Compile Include="Model\A_AchatVente.cs" />
     <Compile Include="Model\A_Carburant.cs" />
+    <Compile Include="Model\A_Categorie.cs" />
+    <Compile Include="Model\A_Couleur.cs" />
     <Compile Include="Model\A_Desideratas.cs" />
     <Compile Include="Model\A_Frais.cs" />
     <Compile Include="Model\A_Marque.cs" />
@@ -126,6 +133,8 @@
     <Compile Include="Model\A_Stock.cs" />
     <Compile Include="Model\C_AchatVente.cs" />
     <Compile Include="Model\C_Carburant.cs" />
+    <Compile Include="Model\C_Categorie.cs" />
+    <Compile Include="Model\C_Couleur.cs" />
     <Compile Include="Model\C_Desideratas.cs" />
     <Compile Include="Model\C_Frais.cs" />
     <Compile Include="Model\C_Marque.cs" />
@@ -134,6 +143,8 @@
     <Compile Include="Model\C_Stock.cs" />
     <Compile Include="Model\G_AchatVente.cs" />
     <Compile Include="Model\G_Carburant.cs" />
+    <Compile Include="Model\G_Categorie.cs" />
+    <Compile Include="Model\G_Couleur.cs" />
     <Compile Include="Model\G_Desideratas.cs" />
     <Compile Include="Model\G_Frais.cs" />
     <Compile Include="Model\G_Marque.cs" />
@@ -156,8 +167,8 @@
     <Compile Include="View\AjoutAchat.xaml.cs">
       <DependentUpon>AjoutAchat.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Desideratas.xaml.cs">
-      <DependentUpon>Desideratas.xaml</DependentUpon>
+    <Compile Include="View\Desiderata.xaml.cs">
+      <DependentUpon>Desiderata.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FraisAchat.xaml.cs">
       <DependentUpon>FraisAchat.xaml</DependentUpon>
@@ -205,6 +216,11 @@
       <LastGenOutput>Categorie.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="DataAccess\DataObject\Client.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Client.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataAccess\DataObject\Couleur.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Couleur.designer.cs</LastGenOutput>
@@ -245,6 +261,9 @@
     </None>
     <None Include="DataAccess\DataObject\Frais.dbml.layout">
       <DependentUpon>Frais.dbml</DependentUpon>
+    </None>
+    <None Include="DataAccess\DataObject\Client.dbml.layout">
+      <DependentUpon>Client.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -295,7 +314,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Desideratas.xaml">
+    <Page Include="View\Desiderata.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

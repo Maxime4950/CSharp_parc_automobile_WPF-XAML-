@@ -1,0 +1,149 @@
+﻿<Window x:Class="ISET2018_WPFBD.View.Desiderata"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ISET2018_WPFBD.View"
+        mc:Ignorable="d"
+        Title="Desiderata" Height="616" Width="1113" WindowState="Maximized">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30px"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Name="ficheDataGridDesideratas">
+                <DataGrid Name="dgDesideratas" ItemsSource="{Binding Path=BcpDesideratas}" Grid.Row="0" VerticalScrollBarVisibility="Visible"
+                IsReadOnly="True" AutoGenerateColumns="False" IsEnabled="{Binding Path=ActiverBcpFiche, Mode=OneWay}" SelectionChanged="dgDesideratas_SelectionChanged"
+                SelectedItem="{Binding DesiderataSelectionne, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID Desiderata" Binding="{Binding Path=idDesiderata}" Width="*" />
+                        <DataGridTextColumn Header="ID Client" Binding="{Binding Path=idClient}" Width="*" />
+                        <DataGridTextColumn Header="ID Marque" Binding="{Binding Path=idMarque}" Width="*" />
+                        <DataGridTextColumn Header="ID Modele" Binding="{Binding Path=idModele}" Width="*" />
+                        <DataGridTextColumn Header="ID Catégorie" Binding="{Binding Path=idCat}" Width="*" />
+                        <DataGridTextColumn Header="Kilométrage" Binding="{Binding Path=kilometrageMax}" Width="*" />
+                        <DataGridTextColumn Header="ID Couleur" Binding="{Binding Path=idCouleur}" Width="*" />
+                        <DataGridTextColumn Header="ID Carburant" Binding="{Binding Path=idCarburant}" Width="*" />
+                        <DataGridTextColumn Header="Année min fabr" Binding="{Binding Path=anneeMin}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <!--Grid central-->
+            <Grid Grid.Row="1" Background="Gray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150px"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" >Options</TextBlock>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Informations</TextBlock>
+            </Grid>
+
+            <!--Grid bas-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150px"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="350px"/>
+                </Grid.ColumnDefinitions>
+                <!--Grid bas gauche (boutons)-->
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Background="#FF3D4ED3" Name="bAjouter" Content="Ajouter" IsEnabled="{Binding Path=ActiverBcpFiche, Mode=OneWay}"
+                Command="{Binding cAjouter}"/>
+                    <Button Grid.Row="1" Background="#FF3D4ED3" Name="bEditer" Content="Editer" IsEnabled="{Binding Path=ActiverBcpFiche, Mode=OneWay}"
+                Command="{Binding cModifier}" Click="bEditer_Click" />
+                    <Button Grid.Row="2" Background="#FF3D4ED3" Name="bSupprimer" Content="Supprimer"
+                 Command="{Binding cSupprimer}"/>
+                    <Button Grid.Row="3" Background="#FF3D4ED3" Name="bAnnuler" Content="Annuler" IsEnabled="{Binding Path=ActiverUneFiche, Mode=OneWay}"
+                Command="{Binding cAnnuler}" />
+                    <Button Grid.Row="4" Background="#FF3D4ED3" Name="bConfirmer" Content="Confirmer" IsEnabled="{Binding Path=ActiverUneFiche, Mode=OneWay}"
+                Command="{Binding cConfirmer}"/>
+                    <Button Grid.Row="5" Background="#FF3D4ED3" Name="bQuitter" Content="Quitter" IsEnabled="{Binding Path=ActiverBcpFiche, Mode=OneWay}" Click="bQuitter_Click" />
+
+
+                </Grid>
+                <Grid Name="UneFiche" IsEnabled="{Binding Path=ActiverUneFiche, Mode=OneWay}" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100px" />
+                        <ColumnDefinition Width="150px" />
+                        <ColumnDefinition Width="300px" />
+                    </Grid.ColumnDefinitions>
+                    <!--IDENTIFIANT DESIDERATA-->
+                    <TextBlock Name="tIDDesiderata" Text="ID Désiderata :" VerticalAlignment="Center" Margin="5" />
+                    <TextBox Name="tbIDDesiderata" Grid.Column="1" Margin="10"
+                    Text="{Binding Path=UnDesiderata.IDDesiderata, Mode=TwoWay}" />
+
+                    <!--CLIENT-->
+                    <TextBlock Name="tIDClient" Text="ID Client :" Grid.Row="1" VerticalAlignment="Center" Margin="5" />
+                    <TextBox Name="tbIDClient" Grid.Row="1" Grid.Column="1" Margin="10"
+                    Text="{Binding Path=UnDesiderata.IDClient, Mode=TwoWay}" />
+                    <ComboBox Name="cbNomClient" Grid.Row="1" Grid.Column="2" Height="20px" Width="250px" SelectionChanged="cbNomClient_SelectionChanged" IsEditable="True"/>
+                    
+
+                    <!--MARQUE-->
+                    <TextBlock Name="tIDMarque" Text="ID Marque :" Grid.Row="2" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Name="tbIDMarque" Grid.Row="2" Grid.Column="1" Margin="10"
+                    Text="{Binding Path=UnDesiderata.IDMarque, Mode=TwoWay}" />
+                    <ComboBox Name="cbNomMarque" Grid.Row="2" Grid.Column="2" Height="20px" Width="250px" SelectionChanged="cbNomMarque_SelectionChanged" IsEditable="True"/>
+                    
+
+                    <!--MODELE-->
+                    <TextBlock Name="tIDModele" Grid.Row="3" Text="ID Modèle :" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Name="tbIDModele" Grid.Row="3" Grid.Column="1" Margin="10"
+                    Text="{Binding Path=UnDesiderata.IDModele, Mode=TwoWay}" />
+                    <ComboBox Name="cbNomModele" Grid.Row="3" Grid.Column="2" Height="20px" Width="250px" SelectionChanged="cbNomModele_SelectionChanged" IsEditable="True"/>
+
+                    <!--CATEGORIE-->
+                    <TextBlock Name="tIDCategorie" Grid.Row="4" Text="ID Catégorie :" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Name="tbIDCategorie" Grid.Row="4" Grid.Column="1" Margin="10"
+                    Text="{Binding Path=UnDesiderata.IDCat, Mode=TwoWay}" />
+                    <ComboBox Name="cbNomCategorie" Grid.Row="4" Grid.Column="2" Height="20px" Width="250px" SelectionChanged="cbNomCategorie_SelectionChanged" IsEditable="True"/>
+
+                    <!--BOITE-->
+                    <TextBlock Name="tAnneeMin" Grid.Row="5" Text="Année min :" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Name="tbAnneeMin" Grid.Row="5" Grid.Column="1" Margin="10"
+                    Text="{Binding Path=UnDesiderata.AnneeMin, Mode=TwoWay}"/>
+
+                    <!--CARBURANT-->
+                    <TextBlock Name="tIDCarburant" Grid.Row="6" Text="ID Carburant :" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Name="tbIDCarburant" Grid.Row="6" Grid.Column="1" Margin="10"
+                    Text="{Binding Path=UnDesiderata.IDCarburant, Mode=TwoWay}" />
+                    <ComboBox Name="cbNomCarburant" Grid.Row="6" Grid.Column="2" Height="20px" Width="250px" SelectionChanged="cbNomCarburant_SelectionChanged" IsEditable="True"/>
+
+                    <!--COULEUR-->
+                    <TextBlock Name="tIDCouleur" Grid.Row="7" Text="ID Couleur :" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Name="tbIDCouleur" Grid.Row="7" Grid.Column="1" Margin="10"
+                    Text="{Binding Path=UnDesiderata.IDCouleur, Mode=TwoWay}" />
+                    <ComboBox Name="cbNomCouleur" Grid.Row="7" Grid.Column="2" Height="20px" Width="250px" SelectionChanged="cbNomCouleur_SelectionChanged" IsEditable="True"/>
+
+                    <!--KILOMETRAGE-->
+                    <TextBlock Name="tKilometrage" Grid.Row="8" Text="Kilométrage :" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Name="tbKilometrage" Grid.Row="8" Grid.Column="1" Margin="10"
+                    Text="{Binding Path=UnDesiderata.Kilometrage, Mode=TwoWay}" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ISET2018_WPFBD.Model;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace ISET2018_WPFBD.ViewModel
 {
@@ -113,6 +114,7 @@ namespace ISET2018_WPFBD.ViewModel
         }
         public void Ajouter()
         {
+            MessageBox.Show("test");
             UnePersonne = new VM_UnePersonne();
             nAjout = -1;
             ActiverUneFiche = true;
@@ -139,6 +141,7 @@ namespace ISET2018_WPFBD.ViewModel
         {
         if (PersonneSelectionnee != null)
         {
+            MessageBox.Show(PersonneSelectionnee.idClient.ToString());
             new Model.G_ClientsVoiture(chConnexion).Supprimer(PersonneSelectionnee.idClient);
             BcpPersonnes.Remove(PersonneSelectionnee);
         }

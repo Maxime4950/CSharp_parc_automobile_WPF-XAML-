@@ -58,7 +58,7 @@
                 Command="{Binding cAjouter}"/>
                 <Button Grid.Row="1" Background="#FF3D4ED3" Name="bEditer" Content="Editer" IsEnabled="{Binding Path=ActiverBcpFiche, Mode=OneWay}"
                 Command="{Binding cModifier}" />
-                <Button Grid.Row="2" Background="#FF3D4ED3" Name="bSupprimer" Content="Supprimer" IsEnabled="{Binding Path=ActiverBcpFiche, Mode=OneWay}"
+                <Button Grid.Row="2" Background="#FF3D4ED3" Name="bSupprimer" Content="Supprimer"
                  Command="{Binding cSupprimer}"/>
                 <Button Grid.Row="3" Background="#FF3D4ED3" Name="bAnnuler" Content="Annuler" IsEnabled="{Binding Path=ActiverUneFiche, Mode=OneWay}"
                 Command="{Binding cAnnuler}" />

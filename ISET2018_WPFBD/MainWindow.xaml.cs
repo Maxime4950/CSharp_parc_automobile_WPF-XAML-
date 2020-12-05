@@ -330,7 +330,7 @@ namespace ISET2018_WPFBD
 
         private void btnDesideratas_Click(object sender, RoutedEventArgs e)
         {
-            View.Desideratas f = new View.Desideratas();
+            View.Desiderata f = new View.Desiderata();
             f.ShowDialog();
         }
     }

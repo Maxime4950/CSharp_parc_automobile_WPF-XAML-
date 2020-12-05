@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="C:\USERS\MAESM\DOCUMENTS\COMPLEMENT_P\ISET2018_WPFBD_MVVM_CONCEPT\ISET2018_WPFBD\BD_VOITURE_MVVM.MDF" Class="ClientDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-5KJPBES;Initial Catalog=C:\USERS\MAESM\DOCUMENTS\COMPLEMENT_P\ISET2018_WPFBD_MVVM_CONCEPT\ISET2018_WPFBD\BD_VOITURE_MVVM.MDF;Integrated Security=True" SettingsObjectName="ISET2018_WPFBD.Properties.Settings" SettingsPropertyName="C__USERS_MAESM_DOCUMENTS_COMPLEMENT_P_ISET2018_WPFBD_MVVM_CONCEPT_ISET2018_WPFBD_BD_VOITURE_MVVM_MDFConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ClientsVoiture" Member="ClientsVoiture">
+    <Type Name="ClientsVoiture">
+      <Column Name="idClient" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nomClient" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="prenomClient" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="rueClient" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="numeroClient" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="boiteClient" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="codePoClient" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="localiteClient" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

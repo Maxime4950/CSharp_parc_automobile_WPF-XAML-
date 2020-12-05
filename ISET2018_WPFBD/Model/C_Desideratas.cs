@@ -9,7 +9,7 @@ namespace ISET2018_WPFBD.Model
     public class C_Desideratas
     {
         #region Données membres
-        private int _idDesiterata;
+        private int _idDesiderata;
         private int _idClient;
         private int _idMarque;
         private int? _idModele;
@@ -33,17 +33,17 @@ namespace ISET2018_WPFBD.Model
             idCarburant = idCarburant_;
             anneeMin = anneeMin_;
         }
-        public C_Desideratas(int idDesiterata_, int idClient_, int idMarque_, int? idModele_, int? idCat_, int? kilometrageMax_, int? idCouleur_, int? idCarburant_, int? anneeMin_)
+        public C_Desideratas(int idDesiderata_, int idClient_, int idMarque_, int? idModele_, int? idCat_, int? kilometrageMax_, int? idCouleur_, int? idCarburant_, int? anneeMin_)
          : this(idClient_, idMarque_, idModele_, idCat_, kilometrageMax_, idCouleur_, idCarburant_, anneeMin_)
         {
-            idDesiterata = idDesiterata_;
+            idDesiderata = idDesiderata_;
         }
         #endregion
         #region Accesseurs
-        public int idDesiterata
+        public int idDesiderata
         {
-            get { return _idDesiterata; }
-            set { _idDesiterata = value; }
+            get { return _idDesiderata; }
+            set { _idDesiderata = value; }
         }
         public int idClient
         {

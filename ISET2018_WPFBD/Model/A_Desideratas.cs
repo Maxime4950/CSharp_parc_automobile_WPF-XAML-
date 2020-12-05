@@ -16,10 +16,10 @@ namespace ISET2018_WPFBD.Model
 		#endregion
 		public int Ajouter(int idClient, int idMarque, int? idModele, int? idCat, int? kilometrageMax, int? idCouleur, int? idCarburant, int? anneeMin)
 		{
-			CreerCommande("AjouterDesiterataVoiture");
+			CreerCommande("AjouterDesideratasVoiture");
 			int res = 0;
-			Commande.Parameters.Add("idDesiterata", SqlDbType.Int);
-			Direction("idDesiterata", ParameterDirection.Output);
+			Commande.Parameters.Add("idDesiderata", SqlDbType.Int);
+			Direction("idDesiderata", ParameterDirection.Output);
 			Commande.Parameters.AddWithValue("@idClient", idClient);
 			Commande.Parameters.AddWithValue("@idMarque", idMarque);
 			if (idModele == null) Commande.Parameters.AddWithValue("@idModele", Convert.DBNull);
@@ -36,15 +36,15 @@ namespace ISET2018_WPFBD.Model
 			else Commande.Parameters.AddWithValue("@anneeMin", anneeMin);
 			Commande.Connection.Open();
 			Commande.ExecuteNonQuery();
-			res = int.Parse(LireParametre("idDesiterata"));
+			res = int.Parse(LireParametre("idDesiderata"));
 			Commande.Connection.Close();
 			return res;
 		}
-		public int Modifier(int idDesiterata, int idClient, int idMarque, int? idModele, int? idCat, int? kilometrageMax, int? idCouleur, int? idCarburant, int? anneeMin)
+		public int Modifier(int idDesiderata, int idClient, int idMarque, int? idModele, int? idCat, int? kilometrageMax, int? idCouleur, int? idCarburant, int? anneeMin)
 		{
-			CreerCommande("ModifierDesiterataVoiture");
+			CreerCommande("ModifierDesiderataVoiture");
 			int res = 0;
-			Commande.Parameters.AddWithValue("@idDesiterata", idDesiterata);
+			Commande.Parameters.AddWithValue("@idDesiderata", idDesiderata);
 			Commande.Parameters.AddWithValue("@idClient", idClient);
 			Commande.Parameters.AddWithValue("@idMarque", idMarque);
 			if (idModele == null) Commande.Parameters.AddWithValue("@idModele", Convert.DBNull);
@@ -66,7 +66,7 @@ namespace ISET2018_WPFBD.Model
 		}
 		public List<C_Desideratas> Lire(string Index)
 		{
-			CreerCommande("SelectionnerDesiterataVoiture");
+			CreerCommande("SelectionnerDesideratasVoiture");
 			Commande.Parameters.AddWithValue("@Index", Index);
 			Commande.Connection.Open();
 			SqlDataReader dr = Commande.ExecuteReader();
@@ -74,7 +74,7 @@ namespace ISET2018_WPFBD.Model
 			while (dr.Read())
 			{
 				C_Desideratas tmp = new C_Desideratas();
-				tmp.idDesiterata = int.Parse(dr["idDesiterata"].ToString());
+				tmp.idDesiderata = int.Parse(dr["idDesiderata"].ToString());
 				tmp.idClient = int.Parse(dr["idClient"].ToString());
 				tmp.idMarque = int.Parse(dr["idMarque"].ToString());
 				if (dr["idModele"] != DBNull.Value) tmp.idModele = int.Parse(dr["idModele"].ToString());
@@ -89,16 +89,16 @@ namespace ISET2018_WPFBD.Model
 			Commande.Connection.Close();
 			return res;
 		}
-		public C_Desideratas Lire_ID(int idDesiterata)
+		public C_Desideratas Lire_ID(int idDesiderata)
 		{
-			CreerCommande("SelectionnerDesiterataVoiture_ID");
-			Commande.Parameters.AddWithValue("@idDesiterata", idDesiterata);
+			CreerCommande("SelectionnerDesideratasVoiture_ID");
+			Commande.Parameters.AddWithValue("@idDesiderata", idDesiderata);
 			Commande.Connection.Open();
 			SqlDataReader dr = Commande.ExecuteReader();
 			C_Desideratas res = new C_Desideratas();
 			while (dr.Read())
 			{
-				res.idDesiterata = int.Parse(dr["idDesiterata"].ToString());
+				res.idDesiderata = int.Parse(dr["idDesiderata"].ToString());
 				res.idClient = int.Parse(dr["idClient"].ToString());
 				res.idMarque = int.Parse(dr["idMarque"].ToString());
 				if (dr["idModele"] != DBNull.Value) res.idModele = int.Parse(dr["idModele"].ToString());
@@ -112,11 +112,11 @@ namespace ISET2018_WPFBD.Model
 			Commande.Connection.Close();
 			return res;
 		}
-		public int Supprimer(int idDesiterata)
+		public int Supprimer(int idDesiderata)
 		{
-			CreerCommande("SupprimerDesiterataVoiture");
+			CreerCommande("SupprimerDesideratasVoiture");
 			int res = 0;
-			Commande.Parameters.AddWithValue("@idDesiterata", idDesiterata);
+			Commande.Parameters.AddWithValue("@idDesiderata", idDesiderata);
 			Commande.Connection.Open();
 			res = Commande.ExecuteNonQuery();
 			Commande.Connection.Close();

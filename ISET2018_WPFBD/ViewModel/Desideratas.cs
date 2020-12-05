@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ISET2018_WPFBD.Model;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace ISET2018_WPFBD.ViewModel
 {
@@ -88,15 +89,11 @@ namespace ISET2018_WPFBD.ViewModel
         //Confirmation pour l'ajout ou la modification
         public void Confirmer()
         {
-            UnDesiderata.IDDesiderata = new Model.G_Desideratas(chConnexion).Ajouter(UnDesiderata.IDClient, UnDesiderata.IDMarque, UnDesiderata.IDModele, UnDesiderata.IDCat, UnDesiderata.Kilometrage, UnDesiderata.IDCouleur, UnDesiderata.IDCarburant, UnDesiderata.AnneeMin);
-            BcpDesideratas.Add(new C_Desideratas(UnDesiderata.IDDesiderata, UnDesiderata.IDClient, UnDesiderata.IDMarque, UnDesiderata.IDModele, UnDesiderata.IDCat, UnDesiderata.Kilometrage, UnDesiderata.IDCouleur, UnDesiderata.IDCarburant, UnDesiderata.AnneeMin));
-        }
-        public void Confirmer2()
-        {
             if (nAjout == -1)
             {
                 UnDesiderata.IDDesiderata = new Model.G_Desideratas(chConnexion).Ajouter(UnDesiderata.IDClient, UnDesiderata.IDMarque, UnDesiderata.IDModele, UnDesiderata.IDCat, UnDesiderata.Kilometrage, UnDesiderata.IDCouleur, UnDesiderata.IDCarburant, UnDesiderata.AnneeMin);
-                BcpDesideratas.Add(new C_Desideratas(UnDesiderata.IDDesiderata,UnDesiderata.IDClient, UnDesiderata.IDMarque, UnDesiderata.IDModele, UnDesiderata.IDCat, UnDesiderata.Kilometrage, UnDesiderata.IDCouleur, UnDesiderata.IDCarburant, UnDesiderata.AnneeMin));
+                BcpDesideratas.Add(new C_Desideratas(UnDesiderata.IDDesiderata, UnDesiderata.IDClient, UnDesiderata.IDMarque, UnDesiderata.IDModele, UnDesiderata.IDCat, UnDesiderata.Kilometrage, UnDesiderata.IDCouleur, UnDesiderata.IDCarburant, UnDesiderata.AnneeMin));
+                MessageBox.Show("Ajout confirmé");
             }
             else
             {
@@ -117,11 +114,12 @@ namespace ISET2018_WPFBD.ViewModel
         }
         public void Modifier()
         {
+
             if (DesiderataSelectionne != null)
             {
-                C_Desideratas Tmp = new Model.G_Desideratas(chConnexion).Lire_ID(DesiderataSelectionne.idDesiterata);
+                C_Desideratas Tmp = new Model.G_Desideratas(chConnexion).Lire_ID(DesiderataSelectionne.idDesiderata);
                 UnDesiderata = new VM_UnDesiderata();
-                UnDesiderata.IDDesiderata = Tmp.idDesiterata;
+                UnDesiderata.IDDesiderata = Tmp.idDesiderata;
                 UnDesiderata.IDClient = Tmp.idClient;
                 UnDesiderata.IDMarque = Tmp.idMarque;
                 UnDesiderata.IDModele = Tmp.idModele;
@@ -138,7 +136,7 @@ namespace ISET2018_WPFBD.ViewModel
         {
             if (DesiderataSelectionne != null)
             {
-                new Model.G_Desideratas(chConnexion).Supprimer(DesiderataSelectionne.idDesiterata);
+                new Model.G_Desideratas(chConnexion).Supprimer(DesiderataSelectionne.idDesiderata);
                 BcpDesideratas.Remove(DesiderataSelectionne);
             }
         }
@@ -146,12 +144,12 @@ namespace ISET2018_WPFBD.ViewModel
         {
             System.Collections.IList lTmp = (System.Collections.IList)lListe;
             foreach (C_Desideratas p in lTmp)
-            { string s = p.idDesiterata.ToString() ; } //a verifier
+            { int s = p.idDesiderata; }
             int nTmp = lTmp.Count;
         }
         public void DesiderataSelectionne2UnDesiderata()
         {
-            UnDesiderata.IDDesiderata = DesiderataSelectionne.idDesiterata;
+            UnDesiderata.IDDesiderata = DesiderataSelectionne.idDesiderata;
             UnDesiderata.IDClient = DesiderataSelectionne.idClient;
             UnDesiderata.IDMarque = DesiderataSelectionne.idMarque;
             UnDesiderata.IDModele = DesiderataSelectionne.idModele;
@@ -165,7 +163,7 @@ namespace ISET2018_WPFBD.ViewModel
     public class VM_UnDesiderata : BasePropriete
     {
         private int _IDDesiderata, _IDClient, _IDMarque;
-        private int? _IDModele, _IDCat, _Kilometrage,_IDCouleur,_IDCarburant,_AnneeMin;
+        private int? _IDModele, _IDCat, _Kilometrage, _IDCouleur, _IDCarburant, _AnneeMin;
         public int IDDesiderata
         {
             get { return _IDDesiderata; }
