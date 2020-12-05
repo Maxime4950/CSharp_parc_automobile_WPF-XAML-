@@ -33,6 +33,8 @@ namespace ISET2018_WPFBD
 
         FactureVente factV = new FactureVente();
 
+        JournalEvenements journal = new JournalEvenements();
+
         private string sConnexion = @"Data Source=DESKTOP-5KJPBES;Initial Catalog=C:\USERS\MAESM\DOCUMENTS\COMPLEMENT_P\ISET2018_WPFBD_MVVM_CONCEPT\ISET2018_WPFBD\BD_VOITURE_MVVM.MDF;Integrated Security=True";
         #endregion
 
@@ -99,6 +101,18 @@ namespace ISET2018_WPFBD
             View.AjoutAchat f = new View.AjoutAchat();
             f.ShowDialog();
         }
+
+        private void btnDesideratas_Click(object sender, RoutedEventArgs e)
+        {
+            View.Desiderata f = new View.Desiderata();
+            f.ShowDialog();
+        }
+
+        private void btnFinances_Click(object sender, RoutedEventArgs e)
+        {
+            View.Finances f = new View.Finances();
+            f.ShowDialog();
+        }
         #endregion
 
         #region 3 DGV => EVENEMENTS SELECTIONCHANGED
@@ -120,7 +134,6 @@ namespace ISET2018_WPFBD
                 tbIDVoitureConf.Text = tbIDVoiture.Text;
             }
         }
-
 
         private void dgVentesTabBord_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -155,7 +168,12 @@ namespace ISET2018_WPFBD
                 //Faire la facture avant de supprimer la voiture et les frais
                 new G_StockVoiture(sConnexion).Supprimer(int.Parse(tbIDVoitureConf.Text));
 
+                C_ClientsVoiture tmp = new G_ClientsVoiture(sConnexion).Lire_ID(int.Parse(tbIDClientConf.Text));
+
+                journal.AjoutVenteJournal(tbIDVoiture, tbNomMarque, tbNomModele, tbIDClientConf, tmp.nomClient, tmp.prenomClient, dtpDate, tbPrix);
+
                 ActualiserDataGridStock();
+                ActualiserDataGridVentes();
                 AnnulerInfo();//Une fois tout fini on peut reinitialiser la page
             }
             else
@@ -234,6 +252,14 @@ namespace ISET2018_WPFBD
         {
             LocalVente = new ViewModel.VM_Vente();
             ficheInfoVentes.DataContext = LocalVente;
+        }
+        #endregion
+
+        #region ACTUALISATION DG CLIENTS  car sinon pas de modif quand on revient de la page client
+        private void ActualiserDataGridClient()
+        {
+            LocalPersonne = new ViewModel.VM_Personne();
+            ficheInfoClient.DataContext = LocalPersonne;
         }
         #endregion
 
@@ -328,10 +354,12 @@ namespace ISET2018_WPFBD
         }
         #endregion
 
-        private void btnDesideratas_Click(object sender, RoutedEventArgs e)
+
+        #region ACTUALISATION DG CLIENTS DOUBLE CLICK car sinon pas de modif quand on revient de la page client
+        private void dgClientsTabBord_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            View.Desiderata f = new View.Desiderata();
-            f.ShowDialog();
+            ActualiserDataGridClient();
         }
+        #endregion
     }
 }

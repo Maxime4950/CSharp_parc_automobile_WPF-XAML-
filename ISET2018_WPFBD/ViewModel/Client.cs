@@ -139,13 +139,14 @@ namespace ISET2018_WPFBD.ViewModel
         }
         public void Supprimer()
         {
-        if (PersonneSelectionnee != null)
-        {
-            MessageBox.Show(PersonneSelectionnee.idClient.ToString());
-            new Model.G_ClientsVoiture(chConnexion).Supprimer(PersonneSelectionnee.idClient);
-            BcpPersonnes.Remove(PersonneSelectionnee);
+            if (PersonneSelectionnee != null)
+            {
+                MessageBox.Show(PersonneSelectionnee.idClient.ToString());
+                new Model.G_ClientsVoiture(chConnexion).Supprimer(PersonneSelectionnee.idClient);
+                BcpPersonnes.Remove(PersonneSelectionnee);
+            }
         }
-        }
+
         public void EssaiSelMult(object lListe)
         {
            System.Collections.IList lTmp = (System.Collections.IList)lListe;

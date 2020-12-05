@@ -1,0 +1,99 @@
+﻿<Window x:Class="ISET2018_WPFBD.View.Finances"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ISET2018_WPFBD.View"
+        mc:Ignorable="d"
+        Title="Gestion des finances" Height="1080" Width="1920" WindowState="Maximized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="100px"/>
+        </Grid.RowDefinitions>
+        <!--JOURNAL DES EVENEMENTS 1ere ROW-->
+        <Grid Grid.Row="0">
+            <RichTextBox Name="rtbJournalEvenements" Background="LightGray" FontSize="10" HorizontalAlignment="Left">
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0" />
+                    </Style>
+                </RichTextBox.Resources>
+            </RichTextBox>
+        </Grid>
+        <!--LABEL CHIFFRE AFFAIRES 2ème ROW-->
+        <Grid Grid.Row="1">
+            <TextBlock Background="#FF3D4ED3"/>
+            <TextBlock Background="Transparent" Text="Finances sur une periode voulue" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15px" Foreground="White"/>
+        </Grid>
+        <!--3ème ROW-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!--Colonne 0 : CHOIX PERIODE-->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--RROW 0 COLONNE 0-->
+                <Grid Grid.Row="0">
+                    <Label Content="Date de début de la période souhaitée" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <DatePicker Name="dtpDateDebut" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400px" SelectedDateChanged="dtpDateDebut_SelectedDateChanged"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Label Content="Date de fin de la période souhaitée" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <DatePicker Name="dtpDateFin" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400px" SelectedDateChanged="dtpDateFin_SelectedDateChanged"/>
+                </Grid>
+            </Grid>
+            <!--Colonne 1-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30px"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock Background="LightGray"/>
+                    <Label Content="TOTAL DES VENTES" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <RichTextBox Name="rtbVentes"/>
+                </Grid>
+            </Grid>
+            <!--Colonne 2-->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30px"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock Background="LightGray"/>
+                    <Label Content="TOTAL DES ACHATS" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <RichTextBox Name="rtbAchats"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <!--4ème ROW-->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Name="lblBeneficePerte" Content="BENEFICE/PERTE HEBDOMADAIRE : " Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20px" />
+            <Button Content="Quitter"  Grid.Column="1" FontSize="15px"></Button>
+        </Grid>
+    </Grid>
+</Window>

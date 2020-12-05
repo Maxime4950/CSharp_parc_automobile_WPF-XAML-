@@ -1,0 +1,66 @@
+											J O U R N A L   D E S   E V E N E M E N T S
+			
+
+
+
+ACHAT D'UN VEHICULE	[11/12/2020] => : BMW E30 (ID :  36)  	AU CLIENT : Dethier Vanessa(ID : 3)	 POUR LE PRIX DE : 17000€
+												_________________________________________
+
+
+
+VENTE D'UN VEHICULE	[05/12/2020]: Renault E30 (ID :  28)  	AU CLIENT : Maes Maxime(ID : 8)	 POUR LE PRIX DE : 52000€
+												_________________________________________
+
+
+
+SUPPRESSION VENTE D'UN VEHICULE	[05/12/2020]:  (ID :  28)  	AU CLIENT : Maes Maxime(ID : 8)	 POUR LE PRIX DE : 52000€
+												_________________________________________
+
+
+
+SUPPRESSION VENTE D'UN VEHICULE	[28/11/2020]:  (ID :  26)  	AU CLIENT : Maes Maxime(ID : 8)	 POUR LE PRIX DE : 16000€
+												_________________________________________
+
+
+
+VENTE D'UN VEHICULE	[05/12/2020]: Renault E30 (ID :  25)  	AU CLIENT : Bruce Willis(ID : 5)	 POUR LE PRIX DE : 35678€
+												_________________________________________
+
+
+
+SUPPRESSION VENTE D'UN VEHICULE	[05/12/2020]:  (ID :  25)  	AU CLIENT : Bruce Willis(ID : 5)	 POUR LE PRIX DE : 35678€
+											_________________________________________
+
+
+
+SUPPRESSION ACHAT D'UN VEHICULE	[05/11/2020] => : Renault Clio (ID :  24)  	AU CLIENT : Maes Maxime(ID : 8)	 POUR LE PRIX DE : 140000€
+											_________________________________________
+
+
+
+SUPPRESSION ACHAT D'UN VEHICULE	[12/11/2020] => :   (ID :  28)  	AU CLIENT : Bruce Willis(ID : 5)	 POUR LE PRIX DE : 18000€
+											_________________________________________
+
+
+
+SUPPRESSION ACHAT D'UN VEHICULE	[06/11/2020] => : Peugeot 3008 (ID :  31)  	AU CLIENT : Maes Maxime(ID : 8)	 POUR LE PRIX DE : 15000€
+												_________________________________________
+
+
+
+VENTE D'UN VEHICULE	[05/12/2020]: Renault E30 (ID :  29)  	AU CLIENT : Bruce Willis(ID : 5)	 POUR LE PRIX DE : 4567€
+												_________________________________________
+
+
+
+SUPPRESSION VENTE D'UN VEHICULE	[05/12/2020]:  (ID :  29)  	AU CLIENT : Bruce Willis(ID : 5)	 POUR LE PRIX DE : 4567€
+												_________________________________________
+
+
+
+VENTE D'UN VEHICULE	[05/12/2020]: Audi RS6 (ID :  32)  	AU CLIENT : Dethier Vanessa(ID : 3)	 POUR LE PRIX DE : 20000€
+												_________________________________________
+
+
+
+SUPPRESSION VENTE D'UN VEHICULE	[05/12/2020]:  (ID :  32)  	AU CLIENT : Dethier Vanessa(ID : 3)	 POUR LE PRIX DE : 20000€

@@ -4,7 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ISET2018_WPFBD.Model;
+using System.Windows.Controls;
+
 using System.Collections.ObjectModel;
+using System.IO;
+using ISET2018_WPFBD.Classes;
+using System.Windows.Forms;
 
 namespace ISET2018_WPFBD.ViewModel
 {
@@ -13,6 +18,7 @@ namespace ISET2018_WPFBD.ViewModel
         #region Données Écran
         private string chConnexion = @"Data Source=DESKTOP-5KJPBES;Initial Catalog=C:\USERS\MAESM\DOCUMENTS\COMPLEMENT_P\ISET2018_WPFBD_MVVM_CONCEPT\ISET2018_WPFBD\BD_VOITURE_MVVM.MDF;Integrated Security=True";
         private int nAjout;
+        JournalEvenements journal = new JournalEvenements();
         private bool _ActiverUneFiche;
         public bool ActiverUneFiche
         {
@@ -131,8 +137,34 @@ namespace ISET2018_WPFBD.ViewModel
         {
             if (VenteSelectionnee != null)
             {
-                new Model.G_AchatVente(chConnexion).Supprimer(VenteSelectionnee.idOperation);
-                BcpVente.Remove(VenteSelectionnee);
+                if (MessageBox.Show("Supprimer l'enregistrement ?", "Confirmer", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    int Iid = VenteSelectionnee.idClient;
+                    C_ClientsVoiture clTmp = new G_ClientsVoiture(chConnexion).Lire_ID(Iid);
+
+                    //Suppression de la facture associée à la vente dans le dossier
+                    string nomFichier = clTmp.nomClient + "_" + clTmp.prenomClient + "_IDC" + Iid.ToString() + "_IDV" + VenteSelectionnee.idVoiture.ToString() + "_FactureVente.txt";
+                    string nomRepertoire = @"C:\Users\Maesm\Documents\Complement_P\ISET2018_WPFBD_MVVM_concept\Factures_V";
+                    string path = nomRepertoire + "/" + nomFichier;
+                    MessageBox.Show(path);
+                    if (File.Exists(path))
+                    {
+                        MessageBox.Show("Suppression du fichier texte associé");
+                        File.Delete(path);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fichier texte introuvable");
+                    }
+                    int iId = VenteSelectionnee.idOperation;
+                    C_AchatVente tmpVente = new G_AchatVente(chConnexion).Lire_ID(iId);
+
+                    //Ajout évenements au journal de modif
+                    journal.AjoutSuppressionVenteJournal(VenteSelectionnee.idVoiture, Iid, clTmp.nomClient, clTmp.prenomClient, tmpVente.dateOperation.ToShortDateString(), tmpVente.prixOperation);
+
+                    new Model.G_AchatVente(chConnexion).Supprimer(VenteSelectionnee.idOperation);
+                    BcpVente.Remove(VenteSelectionnee);
+                }
             }
         }
         public void EssaiSelMult(object lListe)

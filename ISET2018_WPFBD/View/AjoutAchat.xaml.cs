@@ -31,6 +31,7 @@ namespace ISET2018_WPFBD.View
 
         private string sConnexion = @"Data Source=DESKTOP-5KJPBES;Initial Catalog=C:\USERS\MAESM\DOCUMENTS\COMPLEMENT_P\ISET2018_WPFBD_MVVM_CONCEPT\ISET2018_WPFBD\BD_VOITURE_MVVM.MDF;Integrated Security=True";
 
+        JournalEvenements journal = new JournalEvenements();
         public AjoutAchat()
         {
             InitializeComponent();
@@ -66,7 +67,11 @@ namespace ISET2018_WPFBD.View
                  , DateTime.Parse(dtpDate.Text), int.Parse(tbPaiementID.Text), "achat");
                 factA.creerFactureAchat(tbIDClientConf, tbNom, tbPre, tbIDVoitureConf, cbMarque, cbModele,
                 cbCategorie, tbAnneeFabr, cbCarburant, cbCouleur, tbKilometrage, tbPrix, dtpDate, tbPaiementID, cbPaiement);
-                AnnulerInfo(); //Pour vider les textbox
+                //Ajout au journal des évenements
+                C_ClientsVoiture tmp = new G_ClientsVoiture(sConnexion).Lire_ID(int.Parse(tbIDClientConf.Text));
+                journal.AjoutAchatJournal(tbIDVoitureConf, cbMarque, cbModele, tbIDClientConf, tmp.nomClient, tmp.prenomClient, dtpDate, tbPrix);
+                //Pour vider les textbox
+                AnnulerInfo(); 
                 ActualiserDataGridAchat();
                 MessageBox.Show("Achat N° : " + iID.ToString() + " effectué");
             }

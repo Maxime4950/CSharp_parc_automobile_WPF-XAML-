@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ISET2018_WPFBD.Model;
+using System.IO;
 
 namespace ISET2018_WPFBD.View
 {

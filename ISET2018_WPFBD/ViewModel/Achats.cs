@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using ISET2018_WPFBD.Model;
 using System.Collections.ObjectModel;
+using System.Windows.Forms;
+using System.IO;
+using ISET2018_WPFBD.Classes;
+using ISET2018_WPFBD.DataAccess.DataObject;
 
 namespace ISET2018_WPFBD.ViewModel
 {
@@ -13,6 +17,7 @@ namespace ISET2018_WPFBD.ViewModel
         #region Données Écran
         private string chConnexion = @"Data Source=DESKTOP-5KJPBES;Initial Catalog=C:\USERS\MAESM\DOCUMENTS\COMPLEMENT_P\ISET2018_WPFBD_MVVM_CONCEPT\ISET2018_WPFBD\BD_VOITURE_MVVM.MDF;Integrated Security=True";
         private int nAjout;
+        JournalEvenements journal = new JournalEvenements();
         private bool _ActiverUneFiche;
         public bool ActiverUneFiche
         {
@@ -131,8 +136,67 @@ namespace ISET2018_WPFBD.ViewModel
         {
             if (AchatSelectionnee != null)
             {
-                new Model.G_AchatVente(chConnexion).Supprimer(AchatSelectionnee.idOperation);
-                BcpAchats.Remove(AchatSelectionnee);
+                if (MessageBox.Show("Supprimer l'enregistrement ?", "Confirmer", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    int Iid = AchatSelectionnee.idClient;
+                    C_ClientsVoiture clTmp = new G_ClientsVoiture(chConnexion).Lire_ID(Iid);
+                    int IidVoit = AchatSelectionnee.idVoiture;
+
+                    //Suppression de la facture associée à la vente dans le dossier
+                    string nomFichier = clTmp.nomClient + "_" + clTmp.prenomClient + "_IDC" + Iid.ToString() + "_IDV" + IidVoit.ToString() + "_FactureAchat.txt";
+                    string nomRepertoire = @"C:/Users/Maesm/Desktop/MAES_Maxime_projet_BD_V2/Factures_A";
+                    string path = nomRepertoire + "/" + nomFichier;
+                    if (File.Exists(path))
+                    {
+                        MessageBox.Show("Suppression du fichier texte associé");
+                        File.Delete(path);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fichier texte introuvable");
+                    }
+
+                    //Pour récuperer les données afin de signaler la suppression au journal des évenements
+                    //Marque
+                    C_StockVoiture tmpStock = new G_StockVoiture(chConnexion).Lire_ID(IidVoit); //On va voir dans le stock pour
+                    int IidMarque = tmpStock.idMarque;
+                    C_Marque tmpMarque = new G_Marque(chConnexion).Lire_ID(IidMarque);
+
+                    //Modèle
+
+                    int IidModele = tmpStock.idModele;
+                    C_Modele tmpModele = new G_Modele(chConnexion).Lire_ID(IidModele);
+
+                    //Date + prix
+                    int iId = AchatSelectionnee.idOperation; //ID opération
+                    C_AchatVente tmpAchat = new G_AchatVente(chConnexion).Lire_ID(iId);
+
+                    //Ajout évenements au journal de modif
+                    journal.AjoutSuppressionAchatJournal(IidVoit, tmpMarque.nomMarque, tmpModele.nomModele, Iid, clTmp.nomClient, clTmp.prenomClient, tmpAchat.dateOperation.ToShortDateString(), tmpAchat.prixOperation);
+
+                    //supp de l'achat dans BD avec id opération
+                    new Model.G_AchatVente(chConnexion).Supprimer(AchatSelectionnee.idOperation);
+
+
+                    //supp de la voiture achetée du stock
+                    supprimerFraisAssocieALaVoitSupp();
+                    new G_StockVoiture(chConnexion).Supprimer(IidVoit);
+
+                    BcpAchats.Remove(AchatSelectionnee);
+                }
+            }
+        }
+        private void supprimerFraisAssocieALaVoitSupp()
+        {
+            FraisDataContext DCFrais = new FraisDataContext();
+
+            var requete = from frais in DCFrais.FraisVoiture
+                          where frais.idVoiture == AchatSelectionnee.idVoiture
+                          select frais.idFrais;
+
+            foreach (var aa in requete)
+            {
+                new G_Frais(chConnexion).Supprimer(aa);
             }
         }
         public void EssaiSelMult(object lListe)

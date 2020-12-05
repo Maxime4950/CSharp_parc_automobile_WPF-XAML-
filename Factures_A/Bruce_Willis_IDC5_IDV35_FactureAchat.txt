@@ -7,7 +7,7 @@
 |______________________________________________________________________________|
 
 
-[ID Client] : 8	[Nom] : Maes		[Prénom] : Maxime
+[ID Client] : 5	[Nom] : Bruce		[Prénom] : Willis
 
  ______________________________________________________________________________
 |                                                                              |
@@ -15,17 +15,17 @@
 |______________________________________________________________________________|
 
 
-[ID Voiture] : 31		[Marque] : Peugeot			[Modele] : 3008
-[Categorie] : Monospace	[Année de fabrication] : 2016
-[Carburant] : Diesel	[Couleur] : blanc
-[Kilométrage] : 1000000
+[ID Voiture] : 35		[Marque] : Peugeot			[Modele] : 3008
+[Categorie] : Monospace	[Année de fabrication] : 2014
+[Carburant] : Essence	[Couleur] : gris
+[Kilométrage] : 16000
  ______________________________________________________________________________
 |                                                                              |
 |                           DETAILS DE L'ACHAT                                 |
 |______________________________________________________________________________|
 
 
-[Prix] : 15000 €		[Date de vente] : 06/11/2020
+[Prix] : 15000 €		[Date de vente] : 05/12/2020
 [Id Paiement] : 1		[Nom Paiement] : Bancontact
 
  ______________________________________________________________________________
@@ -34,18 +34,10 @@
 |______________________________________________________________________________|
 
 
------------------------------------
+[N° : 1]
 
-[ID Frais] : 21 €		[Nom Frais] : changements pneus
-[Description Frais] : 4 pneus lisse à absolument changer.		[Cout Frais] : 150
-
-
------------------------------------
-
------------------------------------
-
-[ID Frais] : 22 €		[Nom Frais] : Bosse
-[Description Frais] : Bosse dans la portière gauche 		[Cout Frais] : 200
+[ID Frais] : Numéro : 25		[Nom Frais] : test35
+[Description Frais] : test35		[Cout Frais] : 1000 €
 
 
------------------------------------
+MONTANT TOTAL DE LA FACTURE : 16000 €
