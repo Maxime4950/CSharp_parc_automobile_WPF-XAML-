@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ISET2018_WPFBD.View"
         mc:Ignorable="d"
-        Title="Gestion des clients" WindowState="Maximized" >
+        Title="Gestion des clients" WindowState="Maximized" Height="586.4" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -25,6 +25,7 @@
                 <DataGridTextColumn Header="Boite" Binding="{Binding Path=boiteClient}" Width="*" />
                 <DataGridTextColumn Header="Code Postal" Binding="{Binding Path=codePoClient}" Width="*" />
                 <DataGridTextColumn Header="Localité" Binding="{Binding Path=localiteClient}" Width="*" />
+                <DataGridTextColumn Header="Email" Binding="{Binding Path=emailClient}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
 
@@ -78,6 +79,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100px" />
@@ -122,6 +124,11 @@
                 <TextBlock Name="tLocalite" Grid.Row="7" Text="Localité :" VerticalAlignment="Center" Margin="5"/>
                 <TextBox Name="tbLocalite" Grid.Row="7" Grid.Column="1" Margin="10"
             Text="{Binding Path=UnePersonne.Localite, Mode=TwoWay}" />
+
+                <!--EMAIL-->
+                <TextBlock Name="tEmail" Grid.Row="8" Text="Email :" VerticalAlignment="Center" Margin="5"/>
+                <TextBox Name="tbEmail" Grid.Row="8" Grid.Column="1" Margin="10"
+            Text="{Binding Path=UnePersonne.Email, Mode=TwoWay}" />
             </Grid>
         </Grid>
     </Grid>

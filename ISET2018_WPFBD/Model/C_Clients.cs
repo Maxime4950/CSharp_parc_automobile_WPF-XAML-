@@ -17,11 +17,12 @@ namespace ISET2018_WPFBD.Model
         private int? _boiteClient;
         private int _codePoClient;
         private string _localiteClient;
+        private string _emailClient;
         #endregion
         #region Constructeurs
         public C_ClientsVoiture()
         { }
-        public C_ClientsVoiture(string nomClient_, string prenomClient_, string rueClient_, int numeroClient_, int? boiteClient_, int codePoClient_, string localiteClient_)
+        public C_ClientsVoiture(string nomClient_, string prenomClient_, string rueClient_, int numeroClient_, int? boiteClient_, int codePoClient_, string localiteClient_, string emailClient_)
         {
             nomClient = nomClient_;
             prenomClient = prenomClient_;
@@ -30,9 +31,10 @@ namespace ISET2018_WPFBD.Model
             boiteClient = boiteClient_;
             codePoClient = codePoClient_;
             localiteClient = localiteClient_;
+            emailClient = emailClient_;
         }
-        public C_ClientsVoiture(int idClient_, string nomClient_, string prenomClient_, string rueClient_, int numeroClient_, int? boiteClient_, int codePoClient_, string localiteClient_)
-         : this(nomClient_, prenomClient_, rueClient_, numeroClient_, boiteClient_, codePoClient_, localiteClient_)
+        public C_ClientsVoiture(int idClient_, string nomClient_, string prenomClient_, string rueClient_, int numeroClient_, int? boiteClient_, int codePoClient_, string localiteClient_, string emailClient_)
+         : this(nomClient_, prenomClient_, rueClient_, numeroClient_, boiteClient_, codePoClient_, localiteClient_,emailClient_)
         {
             idClient = idClient_;
         }
@@ -77,6 +79,11 @@ namespace ISET2018_WPFBD.Model
         {
             get { return _localiteClient; }
             set { _localiteClient = value; }
+        }
+        public string emailClient
+        {
+            get { return _emailClient; }
+            set { _emailClient = value; }
         }
         #endregion
     }

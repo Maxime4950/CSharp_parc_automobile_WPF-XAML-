@@ -64,3 +64,18 @@ VENTE D'UN VEHICULE	[05/12/2020]: Audi RS6 (ID :  32)  	AU CLIENT : Dethier Vane
 
 
 SUPPRESSION VENTE D'UN VEHICULE	[05/12/2020]:  (ID :  32)  	AU CLIENT : Dethier Vanessa(ID : 3)	 POUR LE PRIX DE : 20000€
+											_________________________________________
+
+
+
+ACHAT D'UN VEHICULE	[18/12/2020] => : Peugeot A4 (ID :  39)  	AU CLIENT : flaquette roux(ID : 15)	 POUR LE PRIX DE : 15600€
+											_________________________________________
+
+
+
+ACHAT D'UN VEHICULE	[18/12/2020] => : Peugeot RS6 (ID :  40)  	AU CLIENT : flaquette roux(ID : 15)	 POUR LE PRIX DE : 19800€
+											_________________________________________
+
+
+
+ACHAT D'UN VEHICULE	[18/12/2020] => : Peugeot RS6 (ID :  41)  	AU CLIENT : Dethier Vanessa(ID : 3)	 POUR LE PRIX DE : 16000€

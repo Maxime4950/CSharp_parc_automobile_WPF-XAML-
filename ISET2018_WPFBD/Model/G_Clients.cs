@@ -16,10 +16,10 @@ namespace ISET2018_WPFBD.Model
          : base(sChaineConnexion)
         { }
         #endregion
-        public int Ajouter(string nomClient, string prenomClient, string rueClient, int numeroClient, int? boiteClient, int codePoClient, string localiteClient)
-        { return new A_ClientsVoiture(ChaineConnexion).Ajouter(nomClient, prenomClient, rueClient, numeroClient, boiteClient, codePoClient, localiteClient); }
-        public int Modifier(int idClient, string nomClient, string prenomClient, string rueClient, int numeroClient, int? boiteClient, int codePoClient, string localiteClient)
-        { return new A_ClientsVoiture(ChaineConnexion).Modifier(idClient, nomClient, prenomClient, rueClient, numeroClient, boiteClient, codePoClient, localiteClient); }
+        public int Ajouter(string nomClient, string prenomClient, string rueClient, int numeroClient, int? boiteClient, int codePoClient, string localiteClient, string emailClient)
+        { return new A_ClientsVoiture(ChaineConnexion).Ajouter(nomClient, prenomClient, rueClient, numeroClient, boiteClient, codePoClient, localiteClient,emailClient); }
+        public int Modifier(int idClient, string nomClient, string prenomClient, string rueClient, int numeroClient, int? boiteClient, int codePoClient, string localiteClient, string emailClient)
+        { return new A_ClientsVoiture(ChaineConnexion).Modifier(idClient, nomClient, prenomClient, rueClient, numeroClient, boiteClient, codePoClient, localiteClient, emailClient); }
         public List<C_ClientsVoiture> Lire(string Index)
         { return new A_ClientsVoiture(ChaineConnexion).Lire(Index); }
         public C_ClientsVoiture Lire_ID(int idClient)

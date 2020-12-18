@@ -76,6 +76,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150px" />
@@ -121,6 +122,9 @@
                 <TextBlock Name="tKilometrage" Grid.Row="7" Text="Kilométrage :" VerticalAlignment="Center" Margin="5,11"/>
                 <TextBox Name="tbKilometrage" Grid.Row="7" Grid.Column="1" Margin="10"
             Text="{Binding Path=UnStock.Kilometrage, Mode=TwoWay}" Grid.ColumnSpan="2" IsReadOnly="True"/>
+
+                <!--Bouton liste client interessés-->
+                <Button Grid.Row="8" Grid.Column="1" Height="60px" Background="#FF3D4ED3" Name="bListe" Content="Liste des clients interessés" IsEnabled="{Binding Path=ActiverUneFiche, Mode=OneWay}" Click="bListe_Click"/>
             </Grid>
         </Grid>
     </Grid>

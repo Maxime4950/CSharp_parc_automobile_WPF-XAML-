@@ -15,7 +15,7 @@ namespace ISET2018_WPFBD.Model
             : base(sChaineConnexion)
         { }
         #endregion
-        public int Ajouter(string nomClient, string prenomClient, string rueClient, int numeroClient, int? boiteClient, int codePoClient, string localiteClient)
+        public int Ajouter(string nomClient, string prenomClient, string rueClient, int numeroClient, int? boiteClient, int codePoClient, string localiteClient, string emailClient)
         {
             CreerCommande("AjouterClientsVoiture");
             int res = 0;
@@ -29,13 +29,14 @@ namespace ISET2018_WPFBD.Model
             else Commande.Parameters.AddWithValue("@boiteClient", boiteClient);
             Commande.Parameters.AddWithValue("@codePoClient", codePoClient);
             Commande.Parameters.AddWithValue("@localiteClient", localiteClient);
+            Commande.Parameters.AddWithValue("@emailClient", emailClient);
             Commande.Connection.Open();
             Commande.ExecuteNonQuery();
             res = int.Parse(LireParametre("idClient"));
             Commande.Connection.Close();
             return res;
         }
-        public int Modifier(int idClient, string nomClient, string prenomClient, string rueClient, int numeroClient, int? boiteClient, int codePoClient, string localiteClient)
+        public int Modifier(int idClient, string nomClient, string prenomClient, string rueClient, int numeroClient, int? boiteClient, int codePoClient, string localiteClient,string emailClient)
         {
             CreerCommande("ModifierClientsVoiture");
             int res = 0;
@@ -48,6 +49,7 @@ namespace ISET2018_WPFBD.Model
             else Commande.Parameters.AddWithValue("@boiteClient", boiteClient);
             Commande.Parameters.AddWithValue("@codePoClient", codePoClient);
             Commande.Parameters.AddWithValue("@localiteClient", localiteClient);
+            Commande.Parameters.AddWithValue("@emailClient", emailClient);
             Commande.Connection.Open();
             Commande.ExecuteNonQuery();
             Commande.Connection.Close();
@@ -71,6 +73,7 @@ namespace ISET2018_WPFBD.Model
                 if (dr["boiteClient"] != DBNull.Value) tmp.boiteClient = int.Parse(dr["boiteClient"].ToString());
                 tmp.codePoClient = int.Parse(dr["codePoClient"].ToString());
                 tmp.localiteClient = dr["localiteClient"].ToString();
+                tmp.emailClient = dr["emailClient"].ToString();
                 res.Add(tmp);
             }
             dr.Close();
@@ -94,6 +97,7 @@ namespace ISET2018_WPFBD.Model
                 if (dr["boiteClient"] != DBNull.Value) res.boiteClient = int.Parse(dr["boiteClient"].ToString());
                 res.codePoClient = int.Parse(dr["codePoClient"].ToString());
                 res.localiteClient = dr["localiteClient"].ToString();
+                res.emailClient = dr["emailClient"].ToString();
             }
             dr.Close();
             Commande.Connection.Close();

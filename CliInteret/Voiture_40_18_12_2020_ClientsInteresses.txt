@@ -1,0 +1,14 @@
+				[LISTE DES CLIENTS INTERESSES]
+				---------------
+
+ ______________________________________________________________________________
+|                                                                              |
+|                            INFORMATIONS DU VEHICULE                          |
+|______________________________________________________________________________|
+
+
+[ID Voiture] : 40	[Nom Marque] : Peugeot		[Nom Modèle] : RS6		[Nom Categorie] : Suv		[Annee de fabrication] : 2009		[Carburant] : Essence		[Couleur] : noir		[Kilométrage] : 78000
+
+
+[ID Client] : 8	[Nom] : Maes		[Prenom] : Maxime		[Email] : 
+

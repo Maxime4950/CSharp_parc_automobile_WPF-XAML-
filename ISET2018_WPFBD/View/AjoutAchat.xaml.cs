@@ -32,6 +32,8 @@ namespace ISET2018_WPFBD.View
         private string sConnexion = @"Data Source=DESKTOP-5KJPBES;Initial Catalog=C:\USERS\MAESM\DOCUMENTS\COMPLEMENT_P\ISET2018_WPFBD_MVVM_CONCEPT\ISET2018_WPFBD\BD_VOITURE_MVVM.MDF;Integrated Security=True";
 
         JournalEvenements journal = new JournalEvenements();
+        ListeClientsInteresses listeInteret = new ListeClientsInteresses();
+
         public AjoutAchat()
         {
             InitializeComponent();
@@ -70,6 +72,8 @@ namespace ISET2018_WPFBD.View
                 //Ajout au journal des évenements
                 C_ClientsVoiture tmp = new G_ClientsVoiture(sConnexion).Lire_ID(int.Parse(tbIDClientConf.Text));
                 journal.AjoutAchatJournal(tbIDVoitureConf, cbMarque, cbModele, tbIDClientConf, tmp.nomClient, tmp.prenomClient, dtpDate, tbPrix);
+                //Création de la liste des personnes potentiellements interessés par le véhicule
+                listeInteret.creerListeClientsInt(tbIDVoitureConf, sConnexion);
                 //Pour vider les textbox
                 AnnulerInfo(); 
                 ActualiserDataGridAchat();
@@ -116,6 +120,7 @@ namespace ISET2018_WPFBD.View
             ficheInfoDGAchat.DataContext = LocalAchat;
         }
 
+        #region Fonction remplissage Combobox
         private void RemplirAllCb()
         {
             RemplirCbMarque();
@@ -197,6 +202,9 @@ namespace ISET2018_WPFBD.View
                 cbCouleur.Items.Add(aa.ToString());
             }
         }
+        #endregion
+
+        #region Selection changed combobox
 
         private void cbPaiement_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -242,16 +250,6 @@ namespace ISET2018_WPFBD.View
             View.FraisAchat f = new View.FraisAchat();
             f.tbIDVoiture.Text = tbIDVoitureConf.Text;
             f.ShowDialog();
-            /*
-            if (tbIDVoitureConf.Text != "")
-            {
-                View.FraisAchat f = new FraisAchat();
-                f.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Pas de véhicule sélectionné");
-            }*/
         }
 
         private void cbCategorie_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -292,6 +290,8 @@ namespace ISET2018_WPFBD.View
                 tbIDCouleur.Text = aa.ToString();
             }
         }
+
+        #endregion
 
         private void btnConfirmerVoiture_Click(object sender, RoutedEventArgs e)
         {

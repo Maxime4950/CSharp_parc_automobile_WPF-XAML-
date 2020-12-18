@@ -72,6 +72,7 @@ namespace ISET2018_WPFBD.ViewModel
            UnePersonne.Boite = 3;
            UnePersonne.CodePo = 4950;
            UnePersonne.Localite = "Sourbrodt";
+           UnePersonne.Email = "test@hotmail.com";
            string Index = UnePersonne.ID.ToString();
            BcpPersonnes = ChargerPersonnes(chConnexion, Index);
            ActiverUneFiche = false;
@@ -98,13 +99,13 @@ namespace ISET2018_WPFBD.ViewModel
         {
         if (nAjout == -1)
         {
-            UnePersonne.ID = new Model.G_ClientsVoiture(chConnexion).Ajouter(UnePersonne.Nom, UnePersonne.Pre, UnePersonne.Rue, UnePersonne.Numero, UnePersonne.Boite, UnePersonne.CodePo, UnePersonne.Localite);
-            BcpPersonnes.Add(new C_ClientsVoiture(UnePersonne.ID,UnePersonne.Nom, UnePersonne.Pre, UnePersonne.Rue, UnePersonne.Numero, UnePersonne.Boite, UnePersonne.CodePo, UnePersonne.Localite));
+            UnePersonne.ID = new Model.G_ClientsVoiture(chConnexion).Ajouter(UnePersonne.Nom, UnePersonne.Pre, UnePersonne.Rue, UnePersonne.Numero, UnePersonne.Boite, UnePersonne.CodePo, UnePersonne.Localite,UnePersonne.Email);
+            BcpPersonnes.Add(new C_ClientsVoiture(UnePersonne.ID,UnePersonne.Nom, UnePersonne.Pre, UnePersonne.Rue, UnePersonne.Numero, UnePersonne.Boite, UnePersonne.CodePo, UnePersonne.Localite,UnePersonne.Email));
         }
         else
         {
-            new Model.G_ClientsVoiture(chConnexion).Modifier(UnePersonne.ID, UnePersonne.Nom, UnePersonne.Pre, UnePersonne.Rue, UnePersonne.Numero, UnePersonne.Boite, UnePersonne.CodePo, UnePersonne.Localite);
-            BcpPersonnes[nAjout] = new C_ClientsVoiture(UnePersonne.ID, UnePersonne.Nom, UnePersonne.Pre, UnePersonne.Rue, UnePersonne.Numero, UnePersonne.Boite, UnePersonne.CodePo, UnePersonne.Localite);
+            new Model.G_ClientsVoiture(chConnexion).Modifier(UnePersonne.ID, UnePersonne.Nom, UnePersonne.Pre, UnePersonne.Rue, UnePersonne.Numero, UnePersonne.Boite, UnePersonne.CodePo, UnePersonne.Localite,UnePersonne.Email);
+            BcpPersonnes[nAjout] = new C_ClientsVoiture(UnePersonne.ID, UnePersonne.Nom, UnePersonne.Pre, UnePersonne.Rue, UnePersonne.Numero, UnePersonne.Boite, UnePersonne.CodePo, UnePersonne.Localite,UnePersonne.Email);
         }
         ActiverUneFiche = false;
         }
@@ -133,6 +134,7 @@ namespace ISET2018_WPFBD.ViewModel
             UnePersonne.Boite = Tmp.boiteClient;
             UnePersonne.CodePo = Tmp.codePoClient;
             UnePersonne.Localite = Tmp.localiteClient;
+            UnePersonne.Email = Tmp.emailClient;
             nAjout = BcpPersonnes.IndexOf(PersonneSelectionnee);
             ActiverUneFiche = true;
         }
@@ -164,13 +166,14 @@ namespace ISET2018_WPFBD.ViewModel
            UnePersonne.Boite = PersonneSelectionnee.boiteClient;
            UnePersonne.CodePo = PersonneSelectionnee.codePoClient;
            UnePersonne.Localite = PersonneSelectionnee.localiteClient;
+           UnePersonne.Email = PersonneSelectionnee.emailClient;
         }
     }
     public class VM_UnePersonne : BasePropriete
     {
         private int _ID, _Numero, _CodePo;
         private int? _Boite;
-        private string _Nom, _Pre, _Rue, _Localite;
+        private string _Nom, _Pre, _Rue, _Localite,_Email;
         public int ID
         {
             get { return _ID; }
@@ -217,6 +220,11 @@ namespace ISET2018_WPFBD.ViewModel
         {
             get { return _CodePo; }
             set { AssignerChamp<int>(ref _CodePo, value, System.Reflection.MethodBase.GetCurrentMethod().Name); }
+        }
+        public string Email
+        {
+            get { return _Email; }
+            set { AssignerChamp<string>(ref _Email, value, System.Reflection.MethodBase.GetCurrentMethod().Name); }
         }
     }
 }

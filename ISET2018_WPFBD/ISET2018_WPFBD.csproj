@@ -81,6 +81,7 @@
     <Compile Include="Classes\FactureAchat.cs" />
     <Compile Include="Classes\FactureVente.cs" />
     <Compile Include="Classes\JournalEvenements.cs" />
+    <Compile Include="Classes\ListeClientsInteresses.cs" />
     <Compile Include="DataAccess\DataObject\AchatVente.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,6 +106,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Couleur.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\DataObject\Desideratas.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Desideratas.dbml</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\DataObject\Frais.designer.cs">
       <AutoGen>True</AutoGen>
@@ -240,6 +246,11 @@
       <LastGenOutput>Couleur.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="DataAccess\DataObject\Desideratas.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Desideratas.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataAccess\DataObject\Frais.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Frais.designer.cs</LastGenOutput>
@@ -281,6 +292,9 @@
     </None>
     <None Include="DataAccess\DataObject\AchatVente.dbml.layout">
       <DependentUpon>AchatVente.dbml</DependentUpon>
+    </None>
+    <None Include="DataAccess\DataObject\Desideratas.dbml.layout">
+      <DependentUpon>Desideratas.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
