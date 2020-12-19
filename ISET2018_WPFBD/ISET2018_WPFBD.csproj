@@ -52,6 +52,9 @@
     <Reference Include="EasyHTMLReports, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EasyHTMLReports.1.0.0\lib\EasyHTMLReports.dll</HintPath>
     </Reference>
+    <Reference Include="SautinSoft.Document, Version=5.0.10.23, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\sautinsoft.document.5.0.10.23\lib\net461\SautinSoft.Document.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -133,6 +136,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Paiement.dbml</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\DataObject\Stock.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stock.dbml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs" />
     <Compile Include="Model\A_AchatVente.cs" />
     <Compile Include="Model\A_Carburant.cs" />
@@ -188,6 +196,9 @@
     </Compile>
     <Compile Include="View\FraisAchat.xaml.cs">
       <DependentUpon>FraisAchat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Navigateur.xaml.cs">
+      <DependentUpon>Navigateur.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Ventes.xaml.cs">
       <DependentUpon>Ventes.xaml</DependentUpon>
@@ -297,6 +308,9 @@
     <None Include="DataAccess\DataObject\Desideratas.dbml.layout">
       <DependentUpon>Desideratas.dbml</DependentUpon>
     </None>
+    <None Include="DataAccess\DataObject\Stock.dbml.layout">
+      <DependentUpon>Stock.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -304,6 +318,11 @@
     <None Include="DataAccess\DataObject\Paiement.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Paiement.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataAccess\DataObject\Stock.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Stock.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -355,6 +374,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FraisAchat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Navigateur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

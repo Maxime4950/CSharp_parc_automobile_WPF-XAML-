@@ -93,7 +93,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Label Name="lblBeneficePerte" Content="BENEFICE/PERTE HEBDOMADAIRE : " Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20px" />
-            <Button Content="Quitter"  Grid.Column="1" FontSize="15px"></Button>
+            <Button Content="Quitter"  Grid.Column="1" FontSize="15px" Click="Button_Click"></Button>
         </Grid>
     </Grid>
 </Window>

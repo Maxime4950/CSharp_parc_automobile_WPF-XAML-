@@ -115,5 +115,10 @@ namespace ISET2018_WPFBD.View
                 dtpDateFin.SelectedDate = DateTime.Today;
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
