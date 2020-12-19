@@ -1,0 +1,24 @@
+				[LISTE DES CLIENTS INTERESSES]
+				---------------
+
+ ______________________________________________________________________________
+|                                                                              |
+|                            INFORMATIONS DU VEHICULE                          |
+|______________________________________________________________________________|
+
+
+[ID Voiture] : 45	[Nom Marque] : Peugeot		[Nom Modèle] : RS6		[Nom Categorie] : Citadine		[Annee de fabrication] : 2010		[Carburant] : Diesel		[Couleur] : noir		[Kilométrage] : 1333
+
+ ______________________________________________________________________________
+|                                                                              |
+|                            LISTE DES CLIENTS                                 |
+|______________________________________________________________________________|
+
+
+[ID Client] : 8	[Nom] : Maes		[Prenom] : Maxime		[Email] : maxime.maes4950@gmail.com
+
+
+
+[ID Client] : 15	[Nom] : flaquette		[Prenom] : roux		[Email] : rouxf@gmail.com
+
+

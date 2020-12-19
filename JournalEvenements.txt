@@ -79,3 +79,33 @@ ACHAT D'UN VEHICULE	[18/12/2020] => : Peugeot RS6 (ID :  40)  	AU CLIENT : flaqu
 
 
 ACHAT D'UN VEHICULE	[18/12/2020] => : Peugeot RS6 (ID :  41)  	AU CLIENT : Dethier Vanessa(ID : 3)	 POUR LE PRIX DE : 16000€
+											_________________________________________
+
+
+
+ACHAT D'UN VEHICULE	[18/12/2020] => : Renault Corolla 2019 (ID :  42)  	AU CLIENT : Bruce Willis(ID : 5)	 POUR LE PRIX DE : 188899€
+											_________________________________________
+
+
+
+ACHAT D'UN VEHICULE	[18/12/2020] => : Peugeot RS6 (ID :  43)  	AU CLIENT : Maes Maxime(ID : 8)	 POUR LE PRIX DE : 123333€
+											_________________________________________
+
+
+
+ACHAT D'UN VEHICULE	[18/12/2020] => : Peugeot RS6 (ID :  45)  	AU CLIENT : Maes Maxime(ID : 8)	 POUR LE PRIX DE : 20000€
+											_________________________________________
+
+
+
+ACHAT D'UN VEHICULE	[18/12/2020] => : Peugeot RS6 (ID :  46)  	AU CLIENT : Maes Maxime(ID : 8)	 POUR LE PRIX DE : 15555€
+											_________________________________________
+
+
+
+ACHAT D'UN VEHICULE	[18/12/2020] => : Peugeot RS6 (ID :  47)  	AU CLIENT : Maes Maxime(ID : 8)	 POUR LE PRIX DE : 15000€
+											_________________________________________
+
+
+
+ACHAT D'UN VEHICULE	[16/12/2020] => : Peugeot RS6 (ID :  48)  	AU CLIENT : Maes Maxime(ID : 8)	 POUR LE PRIX DE : 15000€

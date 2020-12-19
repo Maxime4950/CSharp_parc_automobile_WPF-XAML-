@@ -16,13 +16,13 @@ namespace ISET2018_WPFBD.Classes
     public class ListeClientsInteresses
     {
         #region Initialisaton des variables
-   
+        Email email = new Email();
         #endregion
 
         #region Constructeur Liste des clients interessés
         public ListeClientsInteresses()
         {
-
+            
         }
         #endregion
 
@@ -32,6 +32,7 @@ namespace ISET2018_WPFBD.Classes
         {
             string nomFichier = "Voiture_"+ tbIdVoiture.Text + "_" + DateTime.Now.Day + "_" + DateTime.Now.Month + "_" + DateTime.Now.Year + "_ClientsInteresses.txt"; //Attention si datetime.now.tostring s'écrit avec des / et pasd des _
             string nomRepertoire = @"C:\Users\Maesm\Documents\Complement_P\ISET2018_WPFBD_MVVM_concept\CliInteret";
+        
 
             //Accès aux données
             C_StockVoiture voitTmp = new G_StockVoiture(chConnexion).Lire_ID(int.Parse(tbIdVoiture.Text));
@@ -86,6 +87,10 @@ namespace ISET2018_WPFBD.Classes
                          + "\t\t[Prenom] : " + clientTmp.prenomClient.ToString()
                          + "\t\t[Email] : " + clientTmp.emailClient.ToString()
                          + "\n\n");
+                        if(clientTmp.emailClient != "")
+                        {
+                            email.Envoyer(clientTmp.emailClient);
+                        }
                     }
 
                     fic.Close();
@@ -131,7 +136,13 @@ namespace ISET2018_WPFBD.Classes
                          + "\t\t[Prenom] : " + clientTmp.prenomClient.ToString()
                          + "\t\t[Email] : " + clientTmp.emailClient.ToString()
                          + "\n\n");
+
+                        if (clientTmp.emailClient != "")
+                        {
+                            email.Envoyer(clientTmp.emailClient);
+                        }
                     }
+                   
 
                     fic.Close();
                 }

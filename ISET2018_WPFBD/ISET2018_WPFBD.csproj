@@ -78,6 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Email.cs" />
     <Compile Include="Classes\FactureAchat.cs" />
     <Compile Include="Classes\FactureVente.cs" />
     <Compile Include="Classes\JournalEvenements.cs" />
